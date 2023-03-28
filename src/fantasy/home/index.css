@@ -1,0 +1,21 @@
+
+.p-outer{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translate(0%, -50%);
+}
+.p-inner {
+    display: table;
+    margin: 0 auto;
+
+}
+
+.p-search-icon {
+    bottom: 7px;
+    left: 12px;
+    position: absolute;
+    color: rgb(131, 141, 148);
+}
+
+

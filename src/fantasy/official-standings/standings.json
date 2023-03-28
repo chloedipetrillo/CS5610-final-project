@@ -1,0 +1,37 @@
+[{
+  "_id": 123,
+  "name": "Arsenal",
+  "points": 69,
+  "wins": 22,
+  "draws": 3,
+  "losses": 3,
+  "image": "https://1000logos.net/wp-content/uploads/2016/10/Color-Arsenal-logo.jpg"
+},
+  {
+    "_id": 124,
+    "name": "Manchester City",
+    "points": 61,
+    "wins": 19,
+    "draws": 4,
+    "losses": 4,
+    "image": "https://logos-world.net/wp-content/uploads/2020/06/Manchester-City-Logo-1972-1976.jpg"
+  },
+  {
+    "_id": 125,
+    "name": "Manchester United",
+    "points": 50,
+    "wins": 15,
+    "draws": 5,
+    "losses": 6,
+    "image": "https://1000logos.net/wp-content/uploads/2017/03/Color-of-the-Manchester-United-Logo.jpg"
+  },
+  {
+    "_id": 126,
+    "name": "Tottenham",
+    "points": 49,
+    "wins": 15,
+    "draws": 4,
+    "losses": 9,
+    "image": "https://1000logos.net/wp-content/uploads/2018/06/Tottenham-Hotspur-2006.jpg"
+  }
+]

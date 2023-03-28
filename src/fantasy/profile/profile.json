@@ -1,0 +1,11 @@
+[{
+  "_id": 123,
+  "name": "Rock",
+  "username": "@rock",
+  "profilePicture": "https://betterpet.com/wp-content/uploads/2022/08/Shih-tzu-funfacts.jpeg",
+  "bannerPicture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOKfRTuGmudOek5wwrXoC4vAFAANBFv7N17nezL6Ow&s",
+  "dateJoined": "4/2009",
+  "team": [{"p_id": 234}, {"p_id": 245}],
+  "leagueWins": 0
+}
+]
