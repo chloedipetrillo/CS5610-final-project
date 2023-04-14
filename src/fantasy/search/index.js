@@ -1,24 +1,39 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import SearchItem from "./search-item";
 import personArray from "./fakedata.json"
 import "./index.css"
+import {useNavigate} from "react-router";
+import {findPlayerSearchThunk} from "../../services/search/search-thunks.js";
+import {useDispatch} from "react-redux";
+import axios from "axios";
+const USERS_API_URL = "http://localhost:4000/api/players";
 
 const SearchComponent = (
 
 ) => {
-    const [people, setPeople] = useState(personArray)
-
+    // const dispatch = useDispatch()
     const [toSearch, setSearch] = useState("")
+    //
+    const [people, setPeople] = useState({})
+    //
 
-    const searchHandler = () => {
-        setPeople(personArray.filter(person => person.name.toUpperCase().includes(toSearch.toUpperCase()) ||
-            person.team.toUpperCase().includes(toSearch.toUpperCase()) || person.position.toUpperCase().includes(toSearch.toUpperCase())));
-
+    const getList = async () => {
+        let request = USERS_API_URL + "/:" +toSearch;
+        const res = await fetch(request);
+        const data = await res.json();
+        console.log(data)
+        setPeople(data)
+        return data
     }
+    const searchHandler = () => {
+        let p = getList();
+    }
+
 
     const searchValue = (val)=>{
         setSearch(val)
     }
+
 
 
     return (
@@ -44,10 +59,10 @@ const SearchComponent = (
 
             <ul className="list-group mt-2">
                 <li className="list-group-item">Search Results</li>
-                {
+                { people.length > 0 ?
                     people.map(person => <SearchItem
                         key={person._id}
-                        person={person}/>)
+                        person={person}/>) : ''
                 }
             </ul>
         </div>

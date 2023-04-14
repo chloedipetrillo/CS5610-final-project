@@ -22,16 +22,16 @@ const SearchItem = (
             <li className="list-group-item" onClick={() => hideHandler()}>
                 <div className="row">
                     <div className="col-3">
-                        <img className="rounded-circle wd-small-team-icon"
-                             src={person.image}/>
+                        <img className="wd-small-team-icon"
+                             src={person.photo}/>
                     </div>
                     <div className="col-9">
-                        <div className="fw-bold">{person.name}</div>
-                        <div> Team: {person.team} </div>
+                        <div className="fw-bold">{person.first_name} {person.second_name}</div>
+                        <div> Team: {person.team_name} </div>
                         <div> Position: {person.position} </div>
-                        <div> Age: {person.age} </div>
-                        <div> Height: {person.height} </div>
-                        <div> Season Goals: {person.seasonGoals} </div>
+                        <div> Value: {person.value} </div>
+                        {/*<div> Height: {person.height} </div>*/}
+                        {/*<div> Season Goals: {person.seasonGoals} </div>*/}
 
 
                     </div>
@@ -41,12 +41,12 @@ const SearchItem = (
             <li className="list-group-item" onClick={() => showHandler()} >
                 <div className="row">
                     <div className="col-3">
-                        <img className="rounded-circle wd-small-team-icon"
-                             src={person.image}/>
+                        <img className="wd-small-team-icon"
+                             src={person.photo}/>
                     </div>
                     <div className="col-9">
-                        <div className="fw-bold">{person.name}</div>
-                        <div> Team: {person.team} </div>
+                        <div className="fw-bold">{person.first_name} {person.second_name}</div>
+                        <div> Team: {person.team_name} </div>
 
 
                     </div>
