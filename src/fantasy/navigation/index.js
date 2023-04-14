@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import "../index.css"
 import "./index.css"
 import {Link, useLocation} from "react-router-dom";
+import {useSelector, useDisptach, useDispatch} from "react-redux";
+import {logoutThunk} from "../../services/users/users-thunks";
+import {useNavigate} from "react-router";
 
 
 
@@ -12,6 +15,10 @@ const NavComponent = (
 ) => {
 
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { currentUser } = useSelector((state) => state.users);
+    let loggedIn = currentUser !== null;
     let start = false
     const [showDrop, setDrop] = useState(start)
     const handleDropdown =() => {
@@ -20,6 +27,13 @@ const NavComponent = (
     const {pathname} = useLocation();
     const paths = pathname.split('/')
     const active = paths[1];
+
+    const handleLogout = () => {
+        dispatch(logoutThunk());
+        navigate("/login-signup")
+
+
+    };
 
     return (
         <div>
@@ -73,20 +87,6 @@ const NavComponent = (
                                         </div>
                                     </li>
 
-
-
-                                    <li className="nav-item">
-
-                                            <Link to="../login-signup" className=
-                                                  {active === "login-signup" ?
-                                                      "nav-link text-black active override-active-nav fw-bold"
-                                                      :
-                                                      "nav-link text-white fw-bold"
-                                                  }
-                                            >Login/Sign-up</Link>
-
-
-                                    </li>
                                     <li className="nav-item">
                                         <Link to="../how-to-play" className=
                                             {active === "how-to-play" ?
@@ -96,6 +96,19 @@ const NavComponent = (
                                             }
                                         >How to Play</Link>
                                     </li>
+                                    { loggedIn ? '' :
+                                        <li className="nav-item">
+
+                                            <Link to="../login-signup" className=
+                                                {active === "login-signup" ?
+                                                    "nav-link text-black active override-active-nav fw-bold"
+                                                    :
+                                                    "nav-link text-white fw-bold"
+                                                }
+                                            >Login/Sign-up</Link>
+
+
+                                        </li>}
 
                                     <li className="nav-item">
                                         <Link to="../profile" className=
@@ -106,6 +119,15 @@ const NavComponent = (
                                             }
                                         ><i className="bi bi-person-fill"></i></Link>
                                     </li>
+
+                                    {loggedIn ?
+                                        <li className="nav-item">
+                                            <div onClick={handleLogout} className="nav-link text-white fw-bold">
+                                                <i className="bi bi-power"></i>
+                                            </div>
+                                        </li>
+                                        : ''
+                                    }
 
                                 </ul>
                             </div>

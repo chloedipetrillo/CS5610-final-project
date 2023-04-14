@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import LogInComponent from "../log-in";
 import SignUpComponent from "../sign-up";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 
 
@@ -12,6 +13,9 @@ const LogInSignUp = (
 
 
 ) => {
+    const { currentUser } = useSelector((state) => state.users);
+    let loggedIn = currentUser !== null;
+
     let start = true;
     const [log, setLogin] = useState(start)
 
@@ -34,9 +38,7 @@ const LogInSignUp = (
 
                 {log ? <LogInComponent/> : <SignUpComponent/>}
 
-                <Link to="../#">
-                    <button className="btn override-sub float-end mt-1" >Submit</button>
-                </Link>
+
             </div>
 
             <div className="d-none d-md-block col-3">

@@ -24,7 +24,7 @@ const DraftPerson = (
                     <div className="col-9">
                         { person.drafted ?
                             <button className="btn btn-danger float-end"
-                                    onClick={() => onDraftBoolHandler(person)}>Un Draft</button>
+                                    onClick={() => onDraftBoolHandler(person)}>X</button>
                             :
                             <button className="btn btn-success float-end"
                                     onClick={() => onDraftBoolHandler(person)}>Draft</button>

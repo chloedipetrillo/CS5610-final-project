@@ -5,14 +5,17 @@ import Fantasy from "./fantasy";
 
 function App() {
   return (
-      <BrowserRouter>
-        <div className="container-fluid">
-          <Routes>
-            <Route index path="/*"
-                   element={<Fantasy />}/>
-          </Routes>
-        </div>
-      </BrowserRouter>
+
+          <BrowserRouter>
+              <div className="container-fluid">
+                  <Routes>
+                      <Route index path="/*"
+                             element={<Fantasy />}/>
+                  </Routes>
+              </div>
+          </BrowserRouter>
+
+
   );
 }
 
