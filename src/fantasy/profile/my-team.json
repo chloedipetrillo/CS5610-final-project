@@ -1,0 +1,61 @@
+[{
+  "_id": 123,
+  "name": "Bukayo Saka",
+  "team": "Arsenal",
+  "age": 22,
+  "jerseyNumber": 4,
+  "height": 65,
+  "seasonGoals": 0,
+  "position": "striker",
+  "image": "https://e0.365dm.com/20/02/2048x1152/skysports-bukayo-saka-arsenal_4923293.jpg",
+  "drafted": false
+},
+  {
+    "_id": 234,
+    "name": "Chloe DiPetrillo",
+    "team": "Arsenal",
+    "age": 22,
+    "jerseyNumber": 4,
+    "height": 65,
+    "seasonGoals": 10,
+    "position": "striker",
+    "image": "http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcR0e5p5-ISJDJY-d5e2r1-88eaOZcHqu8B_LYkR7VutRJeGYu1BIyljF_AglP7PG_Ubr2ok-oR896b_zYk",
+    "drafted": false
+  },
+  {
+    "_id": 456,
+    "name": "Ronaldo",
+    "team": "Arsenal",
+    "jerseyNumber": 4,
+    "age": 22,
+    "height": 65,
+    "seasonGoals": 1,
+    "position": "goalkeeper",
+    "image": "https://imageio.forbes.com/specials-images/imageserve/627bd291633f3fbbcda36428/0x0.jpg?format=jpg&crop=2057,2059,x918,y85,safe&height=416&width=416&fit=bounds",
+    "drafted": false
+  },
+  {
+    "_id": 789,
+    "name": "Mbappe",
+    "team": "PSG",
+    "age": 22,
+    "height": 65,
+    "jerseyNumber": 4,
+    "seasonGoals": 2,
+    "position": "midfield",
+    "image": "https://s.hs-data.com/bilder/spieler/gross/284095.jpg",
+    "drafted": false
+  },
+  {
+    "_id": 122,
+    "name": "Olivier Giroud",
+    "team": "Milan",
+    "age": 22,
+    "jerseyNumber": 4,
+    "height": 65,
+    "seasonGoals": 3,
+    "position": "defender",
+    "image": "https://assets-eu-01.kc-usercontent.com/1293c890-579f-01b7-8480-902cca7de55e/6d8e58cd-b388-4279-b71c-9dd462e6e90f/2022.09.30-MVP-Settembre-Interna.jpg",
+    "drafted": false
+  }
+]
