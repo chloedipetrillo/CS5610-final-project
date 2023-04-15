@@ -47,16 +47,13 @@ const NavComponent = (
                             <div className="float-end mt-2 mb-2">
                                 <ul className="nav nav-pills">
                                     <li className="nav-item ">
-                                        <Link to="../stats" htmlFor="search" className="nav-link text-white"><i className="bi bi-search"></i> </Link>
+                                        <Link to="../search" htmlFor="search" className={active === "search" ?
+                                            "nav-link text-black active override-active-nav fw-bold"
+                                            :
+                                            "nav-link text-white fw-bold"
+                                        }><i className="bi bi-search"></i> </Link>
                                     </li>
-                                    <li className="nav-item">
-                                        <Link to="../stats" className=
-                                              {active === "stats" ?
-                                                  "nav-link text-black active override-active-nav fw-bold"
-                                                  :
-                                                  "nav-link text-white fw-bold"
-                                                } >Stats</Link>
-                                    </li>
+
                                     <li className="nav-item">
                                         <div className="dropdown">
                                             <Link to="../my-league" className={active === "my-team" || active === "draft"
@@ -69,18 +66,18 @@ const NavComponent = (
                                             >MyLeague</Link>
                                             <div className="dropdown-content">
                                                 <div className="list-group">
-                                                    <li className="list-group-item override-lgi-nav-below">
+                                                    <div className="list-group-item override-lgi-nav-below">
                                                         <Link to="../my-league/my-team" className="text-decoration-none fw-bold text-white"
                                                         >MyTeam</Link>
-                                                    </li>
-                                                    <li className="list-group-item override-lgi-nav-below">
+                                                    </div>
+                                                    <div className="list-group-item override-lgi-nav-below">
                                                         <Link to="../my-league/draft" className="text-decoration-none fw-bold text-white"
                                                         >Draft</Link>
-                                                    </li>
-                                                    <li className="list-group-item override-lgi-nav-below">
+                                                    </div>
+                                                    <div className="list-group-item override-lgi-nav-below">
                                                         <Link to="../my-league/leaderboard" className="text-decoration-none fw-bold text-white"
                                                         >Leaderboard</Link>
-                                                    </li>
+                                                    </div>
                                                 </div>
 
                                             </div>
@@ -142,22 +139,14 @@ const NavComponent = (
                             </li>
 
                             <li className="list-group-item override-lgi-nav">
-                                <Link to="../stats" htmlFor="search" className="text-white fw-bold text-decoration-none"><i className="bi bi-search"></i> </Link>
+                                <Link to="../search" htmlFor="search" className={active === "search" ?
+                                    "list-group-item override-lgi-nav-selected fw-bold"
+                                    :
+                                    "list-group-item override-lgi-nav text-white"
+                                }><i className="bi bi-search"></i> </Link>
                             </li>
-                            <li className=
-                                    {active === "stats" ?
-                                        "list-group-item override-lgi-nav-selected fw-bold"
-                                        :
-                                        "list-group-item override-lgi-nav"
-                                    }>
-                                <Link to="../stats"
-                                className={
-                                    active === "stats" ?
-                                        "text-decoration-none fw-bold text-black"
-                                        :
-                                        "text-decoration-none fw-bold text-white"
-                                }>Stats</Link>
-                            </li>
+
+
                             <li className={active === "my-league" ?
                                 "list-group-item override-lgi-nav-selected fw-bold"
                                 :
@@ -175,6 +164,19 @@ const NavComponent = (
 
                                 </Link>
                             </li>
+                            <li className={active === "how-to-play" ?
+                                "list-group-item override-lgi-nav-selected fw-bold"
+                                :
+                                "list-group-item override-lgi-nav"
+                            }>
+                                <Link to="../how-to-play" className={
+                                    active === "how-to-play" ?
+                                        "text-decoration-none fw-bold text-black"
+                                        :
+                                        "text-decoration-none fw-bold text-white"
+                                }>How to Play</Link>
+                            </li>
+
                             <li className={active === "login-signup" ?
                                 "list-group-item override-lgi-nav-selected fw-bold"
                                 :
@@ -190,18 +192,6 @@ const NavComponent = (
 
 
                             </li>
-                            <li className={active === "how-to-play" ?
-                                "list-group-item override-lgi-nav-selected fw-bold"
-                                :
-                                "list-group-item override-lgi-nav"
-                            }>
-                                <Link to="../how-to-play" className={
-                                    active === "how-to-play" ?
-                                        "text-decoration-none fw-bold text-black"
-                                        :
-                                        "text-decoration-none fw-bold text-white"
-                                }>How to Play</Link>
-                            </li>
 
                             <Link to="../profile" className={active === "profile" ?
                                 "list-group-item override-lgi-nav-selected fw-bold"
@@ -215,6 +205,15 @@ const NavComponent = (
                                         "text-decoration-none fw-bold text-white"
                                 }><i className="bi bi-person-fill"></i></Link>
                             </Link>
+
+                            {loggedIn ?
+                                <li className="list-group-item override-lgi-nav">
+                                    <div onClick={handleLogout} className="text-decoration-none fw-bold text-white">
+                                        <i className="bi bi-power"></i>
+                                    </div>
+                                </li>
+                                : ''
+                            }
 
                         </ul>
                     </div>

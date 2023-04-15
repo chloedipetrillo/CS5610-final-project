@@ -16,7 +16,7 @@ const LogInComponent = () => {
         try {
             await dispatch(loginThunk({ username, password }));
 
-            navigate("/profile");
+             navigate("/profile");
         } catch (err) {
             console.log(err);
         }
