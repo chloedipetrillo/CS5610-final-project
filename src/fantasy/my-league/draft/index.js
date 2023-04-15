@@ -1,44 +1,66 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import DraftPerson from "./draft-person";
 import playerArray from "../../componentSearch/fakedata.json"
 import "../../componentSearch/index.css"
 import TeamDraftComponent from "../my-team-draft";
+import SearchItem from "../../componentSearch/search-item";
+const USERS_API_URL = "http://localhost:4000/api/players";
 
 const DraftComponent = (
 
 ) => {
 
-
-
-    const [people, setPeople] = useState(playerArray)
-
+    // const dispatch = useDispatch()
     const [toSearch, setSearch] = useState("")
+    //
+    const [people, setPeople] = useState({})
+    //
 
-    const [team, setTeam] = useState([])
-    const searchHandler = () => {
-        setPeople(playerArray.filter(person => person.name.toUpperCase().includes(toSearch.toUpperCase()) ||
-            person.team.toUpperCase().includes(toSearch.toUpperCase()) || person.position.toUpperCase().includes(toSearch.toUpperCase())));
+    const getList = async () => {
+        if (toSearch) {
+            let request = USERS_API_URL + "/:" +toSearch;
+            const res = await fetch(request);
+            const data = await res.json();
+            console.log(data)
+            setPeople(data)
+        }else{
+            setPeople({})
+        }
 
-        console.log(team)
     }
+    const searchHandler = () => {
+        let p = getList();
+        console.log(people)
+    }
+
 
     const searchValue = (val)=>{
         setSearch(val)
     }
 
+    // load from user
+    const [team, setTeam] = useState([])
 
-    const onDraftBoolHandler = (player) => {
-        player.drafted = !player.drafted
-        const newTeam = playerArray.map((person)=> {
-            if(person._id === player._id){
-                return player
-            } else {
-                return person
-            }
-        })
-        const myTeam = newTeam.filter(person => person.drafted ? person : '')
-        console.log(team)
-        setTeam(myTeam)
+
+    useEffect(() => {
+        if (toSearch) {
+            searchHandler();
+        }else{
+            setPeople({})
+        }
+    }, [toSearch]);
+
+
+
+
+    const onDraftBoolHandler = (player, bool) => {
+        if (bool) {
+            team.push(player);
+            setTeam(team)
+            searchHandler()
+        } else {
+            setTeam(team.filter(member => member._id !== player._id));
+        }
         console.log(team)
     }
 
@@ -63,11 +85,15 @@ const DraftComponent = (
                     </div>
                     <ul className="list-group mt-2">
                         <li className="list-group-item">Search Results</li>
-                        {
-                            people.map(person => <DraftPerson onDraftBoolHandler={onDraftBoolHandler}
+                        { people.length > 0 ?
+                            people.map(person => <DraftPerson team={team} onDraftBoolHandler={onDraftBoolHandler}
 
-                                key={person._id}
-                                person={person}/>)
+                                                              key={person._id}
+                                                              person={person}/>)
+                            :
+                            <li className="list-group-item">
+                                No results to display...
+                            </li>
                         }
                     </ul>
                 </div>

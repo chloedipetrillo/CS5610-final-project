@@ -10,13 +10,22 @@ function TeamDraftComponent(
     }
 ) {
 
+    const saveDraft = ()=> {
+        alert("Drafting players!")
+    }
+
     return (
         <div className="row mt-2">
             <div className="col-1">
             </div>
             <div className="col-11">
                 <ul className="list-group">
-                    <li className="list-group-item">My Drafted Players</li>
+                    <li className="list-group-item">
+                        <button className="float-end btn btn-dark rounded-pill"
+                        onClick={()=>saveDraft()}> Save </button>
+                        <div>Drafted Players</div>
+
+                    </li>
                     {
                         draftList.map(player => <TeamDraftPlayer
                             key={player._id}
