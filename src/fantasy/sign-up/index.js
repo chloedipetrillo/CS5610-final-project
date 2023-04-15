@@ -1,42 +1,54 @@
 import React, {useState} from "react";
 import "./index.css"
+import {registerThunk} from "../../services/users/users-thunks";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 const SignUpComponent = (
 
 ) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     function getRadioValue()
     {
         if (document.getElementById('radio-manager').checked)
         {
-            alert(document.getElementById('radio-manager').value)
             return document.getElementById('radio-manager').value;
 
         }
         else if (document.getElementById('radio-commissioner').checked)
         {
-            alert(document.getElementById('radio-commissioner').value)
             return document.getElementById('radio-commissioner').value;
         }
         else if (document.getElementById('radio-admin').checked)
         {
-            alert(document.getElementById('radio-admin').value)
             return document.getElementById('radio-admin').value;
         }
     }
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confPassword, setConfPassword] = useState("");
-    const [first, setFirst] = useState("");
-    const [last, setLast] = useState("");
+    const [firstName, setFirst] = useState("");
+    const [lastName, setLast] = useState("");
     const [email, setEmail] = useState("");
 
-    const handleSignUp = () => {
-        if (password == confPassword) {
-            let type = getRadioValue()
-            alert(username + password + first + last + email );
+    const handleSignUp = async () => {
+        let userType = getRadioValue()
+        console.log(userType)
+        if (password !== confPassword){
+            alert("Passwords do not match. Try Again!");
+        }
+        else if ( !(firstName.trim().length > 0 && lastName.trim().length > 0 && username.trim().length > 0
+            && password.trim().length > 0 && email.trim().length > 0 && userType))  {
+            alert("Invalid User Registration. All Fields are Required. Try Again!");
         } else {
-            alert("passwords dont match! try again");
+            try {
+                dispatch(registerThunk({ firstName, lastName, email, username, password, userType}));
+                navigate("/profile");
+            } catch (err) {
+                console.log(err);
+            }
         }
 
     }

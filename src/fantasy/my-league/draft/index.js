@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import DraftPerson from "./draft-person";
-import playerArray from "../../search/fakedata.json"
-import "../../search/index.css"
+import playerArray from "../../componentSearch/fakedata.json"
+import "../../componentSearch/index.css"
 import TeamDraftComponent from "../my-team-draft";
 
 const DraftComponent = (

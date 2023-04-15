@@ -1,11 +1,13 @@
 import React, {useState} from "react";
 import "./index.css"
+import {Link} from "react-router-dom";
 
 const SearchItem = (
     {
         person
     }
 ) => {
+
 
     const [showStats, setShow] = useState(false)
 
@@ -30,6 +32,10 @@ const SearchItem = (
                         <div> Team: {person.team_name} </div>
                         <div> Position: {person.position} </div>
                         <div> Value: {person.value} </div>
+
+                        <Link to={`/search/${person._id}`} className="btn btn-dark rounded-pill mt-2"
+                                >More Details</Link>
+
                         {/*<div> Height: {person.height} </div>*/}
                         {/*<div> Season Goals: {person.seasonGoals} </div>*/}
 

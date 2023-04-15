@@ -1,5 +1,5 @@
 import React from "react";
-import SearchItem from "../../search/search-item";
+import SearchItem from "../../componentSearch/search-item";
 import TeamDraftPlayer from "./my-team-draft";
 
 
