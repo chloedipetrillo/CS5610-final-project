@@ -15,7 +15,7 @@ function UserComponent() {
     const { currentUser } = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
 
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [toPost, setComment] = useState("")
     const getUser = async () =>{
@@ -23,17 +23,19 @@ function UserComponent() {
         setUser(user)
 
     }
-    const getCurrentUser = async () =>{
-        const { payload } = await dispatch(profileThunk());
-        setProfile(payload);
-    }
+
+
+    // const getCurrentUser = async () =>{
+    //     const { payload } = await dispatch(profileThunk());
+    //     setProfile(payload);
+    // }
 
     const {wall, loading} = useSelector(state => state.wall)
 
     useEffect( () => {
         getUser();
         dispatch(findAllPostsThunk());
-        getCurrentUser();
+        // getCurrentUser();
     }, []);
 
     const getAccountType =()=>{
@@ -74,12 +76,10 @@ function UserComponent() {
 
     }
 
-    console.log(profile)
-    console.log(wall)
     return (
         <div className="mb-5">
             <div className="row">
-                <div className="col-12 col-md-5 pt-3 ">
+                <div className="col-12 col-lg-5 pt-3 ">
                     <div className="wd-profile fw-bold">
                         {usersPage.username}'s Profile
                     </div>
@@ -95,7 +95,7 @@ function UserComponent() {
                                 IMAGE
                             </div>
 
-                            <div className="col-6 col-md-5 pt-5">
+                            <div className="col-6 col-lg-5 pt-5">
                                 <div className="wd-inner-profile-box">
                                     <div className="wd-inner-profile-box-font ">
                                         User: <span className="wd-inner-profile-box-font-2"> {getAccountType() }</span>
@@ -117,11 +117,7 @@ function UserComponent() {
 
                     </div>
 
-                </div>
-            </div>
-
-            <div className="row">
-                <div className="col-12 col-md-5 pt-3">
+                    <br></br>
                     <ul className="list-group override-no-borders">
                         <li className="list-group-item override-blue-dark-my-team fw-bold ">
                             My Team
@@ -149,9 +145,10 @@ function UserComponent() {
                         </li>
 
                     </ul>
+
                 </div>
 
-                <div className="col-12 col-md-7 pt-3">
+                <div className="col-12 col-lg-7 pt-3">
                     <ul className="list-group override-no-borders">
                         <li className="list-group-item override-purple-dark-my-wall fw-bolder">
                             My Wall
@@ -183,6 +180,15 @@ function UserComponent() {
 
 
                 </div>
+
+            </div>
+
+            <div className="row">
+                <div className="col-12 col-md-5 pt-3">
+
+                </div>
+
+
 
             </div>
 

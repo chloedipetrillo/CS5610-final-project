@@ -216,34 +216,35 @@ const ProfileComponent = () => {
                         </div>
 
                         <div className="col-12 col-md-7 pt-3">
-                            <ul className="list-group override-no-borders">
-                                <li className="list-group-item override-purple-dark-my-wall fw-bolder">
-                                    My Wall
-                                </li>
-
-                                { wall.filter(e => e.uid === profile._id).length > 0 ?
-                                    wall.filter(e => e.uid === profile._id).map(post=> <WallPostComponent
-                                        key={post._id}
-                                        post={post}/>)
-                                    :
-                                    <li className="list-group-item override-purple-light-my-wall">
-                                        No comments to display... Be the first to leave a comment!
+                            <div className="wd-comment-box overflow-auto">
+                                <ul className="list-group override-no-borders ">
+                                    <li className="list-group-item override-purple-dark-my-wall fw-bolder">
+                                        My Wall
                                     </li>
-                                }
 
-                                <li className="list-group-item override-purple-dark-my-wall fw-bolder">
-                                    <div className="d-flex justify-content-between mt-1">
-                                        <form id="Form" className="w-100 pe-3">
-                                            <input className="form form-control" placeholder="Comment...."
-                                                   onChange={(event) => searchValue(event.target.value)}/>
-                                        </form>
-                                        <button className="btn override-button"
-                                                onClick={()=>handleComment()}>Comment</button>
-                                    </div>
-                                </li>
+                                    { wall.filter(e => e.uid === profile._id).length > 0 ?
+                                        wall.filter(e => e.uid === profile._id).map(post=> <WallPostComponent
+                                            key={post._id}
+                                            post={post}/>)
+                                        :
+                                        <li className="list-group-item override-purple-light-my-wall">
+                                            No comments to display... Be the first to leave a comment!
+                                        </li>
+                                    }
 
+                                </ul>
+                            </div>
+                            <li className="list-group-item override-purple-dark-my-wall fw-bolder">
+                                <div className="d-flex justify-content-between mt-1">
+                                    <form id="Form" className="w-100 pe-3">
+                                        <input className="form form-control" placeholder="Comment...."
+                                               onChange={(event) => searchValue(event.target.value)}/>
+                                    </form>
+                                    <button className="btn override-button"
+                                            onClick={()=>handleComment()}>Comment</button>
+                                </div>
+                            </li>
 
-                            </ul>
 
 
                         </div>

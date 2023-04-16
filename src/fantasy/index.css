@@ -11,6 +11,13 @@
     width: 30px;
 }
 
+.wd-prof-edit-pic {
+    height: 140px;
+    width: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
 .wd-green {
     color: rgb(0,255,133);
 }
@@ -155,4 +162,12 @@
 
 .wd-private-info {
     font-size: 14px;
+}
+
+
+.wd-comment-no-border-box {
+    border-radius: 10px;
+    border-style: none;
+    height: 300px;
+
 }

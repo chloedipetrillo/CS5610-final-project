@@ -1,4 +1,4 @@
-import {useParams} from "react-router";
+import {useNavigate, useParams} from "react-router";
 import fakeArray from "./fakePerson.json"
 import {useEffect, useState} from "react";
 import "./index.css"
@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {createChatThunk, findAllCommentsThunk, findCommentsThunk} from "../../services/comments/comment-thunks";
 
 import CommentComponent from "./comments";
+import {profileThunk} from "../../services/users/users-thunks";
 
 const USERS_API_URL = "http://localhost:4000/api/search";
 const CHAT_API_URL = "http://localhost:4000/api/chat";
@@ -25,29 +26,17 @@ const SearchPersonComponent = () => {
         setPlayer(data)
         return data;
     }
-    //
-    // const searchComments = async () => {
-    //     let request = CHAT_API_URL + "/" + pid;
-    //     const res = await fetch(request);
-    //     const data = await res.json();
-    //     setComments(data);
-    // }
-    //
-    // console.log(comments)
-    // //
-    // // getList()
-    // //
-    // // const person = player[0]
-    // // console.log(person)
-    // useEffect(() => {
-    //
-    //         searchPlayers();
-    //         searchComments();
-    //
-    // }, []);
-    //  let person = fakeArray[0]
-    //
+
+    const { currentUser } = useSelector((state) => state.users);
+    const [profile, setProfile] = useState(currentUser);
+
+    const getUser = async () =>{
+        const { payload } = await dispatch(profileThunk());
+        setProfile(payload);
+    }
+
     const [toComment, setComment] = useState("")
+
     const searchValue = (val)=>{
         setComment(val)
     }
@@ -55,50 +44,52 @@ const SearchPersonComponent = () => {
     function clearInput() {
         document.getElementById("Form").reset();
     }
-    // const handleComment = () => {
-    //      let currentUser = "";
-    //     let toSend = "";
-    //     if (!currentUser){
-    //         toSend ="Anon: " + toComment
-    //     }else{
-    //         toSend = currentUser + ": " + toComment
-    //     }
-    //     alert(toSend)
-    //     setComments(comments.push(toSend));
-    //     console.log("NEW")
-    //     console.log(comments)
-    //     clearInput()
-    //      alert(toComment)
-    //
-    // }
-    //
+
+
+
+    // ALL THIS SOMEHTING IS WRONG
+    const { coms } = useSelector((state) => state.comments);
+
+    const [allComments, setComments] = useState(coms)
+    const dispatch = useDispatch();
+
+
+    const getComments = async () =>{
+        const { payload } = await dispatch(findAllCommentsThunk());
+        console.log(payload);
+        setComments(payload);
+    }
+
+    useEffect(() => {
+        searchPlayers();
+        getUser();
+        getComments();
+
+
+    }, [])
+
+
     const handleComment = () => {
         let userID = ""; //currentUser._id
         let currentUser =""; // THIS WILL BE SOMETHING
         let toSend = "";
-        if (!currentUser){
-            toSend ="Anon: " + toComment
+        console.log(profile)
+        if (profile){
+            userID = profile._id;
 
-        }else{
-            toSend = toComment
         }
         let sending = {
             "pid": player._id,
-            "comment" : toSend,
+            "comment" : toComment,
             "user" : userID,
             "date": (new Date()).getTime()
         }
+        console.log(sending)
         dispatch(createChatThunk(sending));
+        // setComments(allComments)
         clearInput()
-        // setComment('')
 
     }
-    const {comments, loading} = useSelector(state => state.comments)
-    const dispatch = useDispatch();
-    useEffect(() => {
-        searchPlayers();
-        dispatch(findAllCommentsThunk())
-    }, [])
 
 
 
@@ -145,18 +136,23 @@ const SearchPersonComponent = () => {
                         <h3 className="mt-5">
                             Comments:
                         </h3>
-                        <div className="wd-comment-box overflow-auto list-group">
+                        {allComments && (
 
-                            { comments.filter(e => e.pid === pid).length > 0 ?
-                                comments.filter(e => e.pid === pid).map(com=> <CommentComponent
-                                    key={com._id}
-                                    c={com}/>)
-                                :
-                                <li className="list-group-item text-muted">
-                                    No comments to display... Be the first to leave a comment!
-                                </li>
-                            }
-                        </div>
+                            <div className="wd-comment-no-border-box border-0 overflow-auto list-group">
+
+                                { allComments.filter(e => e.pid === pid).length > 0 ?
+                                    allComments.filter(e => e.pid === pid).map(com=> <CommentComponent
+                                        key={com._id}
+                                        c={com}/>)
+                                    :
+                                    <li className="list-group-item text-muted">
+                                        No comments to display... Be the first to leave a comment!
+                                    </li>
+                                }
+                            </div>
+
+                        )}
+
                         <div className="d-flex justify-content-between mt-1">
                             <form id="Form" className="w-100 pe-3">
                                 <input className="form form-control" placeholder="Comment...."

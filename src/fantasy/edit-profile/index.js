@@ -6,10 +6,6 @@ import {loginThunk, profileThunk, updateUserThunk} from "../../services/users/us
 import "./index.css"
 
 
-
-
-
-
 function EditProfileComponent() {
     const { currentUser } = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
@@ -90,7 +86,7 @@ function EditProfileComponent() {
                     <div className="row">
 
                         <div className="position-relative ">
-                            <img className="wd-profile-pg-pic wd-nudge-edit mb-2" src={profile.image}/>
+                            <img className="wd-profile-pg-pic wd-nudge-edit mb-2 wd-prof-edit-pic" src={profile.image}/>
                             <div className="mb-3 position-relative">
                                 <label htmlFor="name" className="wd-label-nudge text-muted fs-6"> Change Image Link</label>
                                 <input className="form-control pt-4 w-100"
