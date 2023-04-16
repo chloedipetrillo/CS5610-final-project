@@ -36,8 +36,7 @@ const SearchItem = (
                         <Link to={`/search/${person._id}`} className="btn btn-dark rounded-pill mt-2"
                                 >More Details</Link>
 
-                        {/*<div> Height: {person.height} </div>*/}
-                        {/*<div> Season Goals: {person.seasonGoals} </div>*/}
+
 
 
                     </div>

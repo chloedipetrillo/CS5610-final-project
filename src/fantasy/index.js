@@ -19,8 +19,8 @@ function Fantasy() {
     return (
         <Provider store={store}>
             <div>
-                <div className=""> <NavComponent/> </div>
-                <div className="container-fluid">
+                <div className="mb-5"> <NavComponent/> </div>
+                <div className="container-fluid mb-5">
                     <Routes>
                         <Route path="/" index element ={<HomeComponent/>}/>
                         <Route path="/home" index element ={<HomeComponent/>}/>
@@ -28,8 +28,9 @@ function Fantasy() {
                         <Route path="/login-signup" element ={<LogInSignUp/>}/>
                         <Route path="/how-to-play" element ={<HowToPlayComponent/>}/>
                         <Route path="/my-league/*" element={<MyLeagueComponent/>}/>
-                        <Route path="/profile" element={<ProfileComponent/>}/>
+                        {/*<Route path="/profile" element={<ProfileComponent/>}/>*/}
                         <Route path="/search/:pid" element={<SearchPersonComponent/>}/>
+                        <Route path="/profile/:uid" element={<SearchPersonComponent/>}/>
 
                     </Routes>
                 </div>
