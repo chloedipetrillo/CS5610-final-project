@@ -12,6 +12,8 @@ import MyLeagueComponent from "./my-league";
 import ProfileComponent from "./profile";
 import store from "../redux/store.js"
 import SearchPersonComponent from "./search/search-person-component";
+import EditProfile from "./edit-profile";
+import EditProfileComponent from "./edit-profile";
 
 
 
@@ -30,6 +32,7 @@ function Fantasy() {
                         <Route path="/my-league/*" element={<MyLeagueComponent/>}/>
                         <Route path="/profile" element={<ProfileComponent/>}/>
                         <Route path="/search/:pid" element={<SearchPersonComponent/>}/>
+                        <Route path="/edit-profile" element={<EditProfileComponent/>}/>
 
                     </Routes>
                 </div>

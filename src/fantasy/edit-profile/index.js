@@ -34,7 +34,6 @@ function EditProfileComponent() {
     const UpdateDOBHandler = (target) => {
         //setAccount({...account, dateOfBirth: target})
     }
-
     const user = profileArray[0]
     return (
         <div>

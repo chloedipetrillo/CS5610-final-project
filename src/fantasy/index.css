@@ -61,3 +61,101 @@
 .nav-tabs .nav-link.override-link {
     background-color: rgb(233,0,82);;
 }
+
+.wd-profile {
+    color: white;
+    background-color:rgb(233,0,82);
+    font-size: 45px;
+    height: 70px;
+    border-radius: 15px;
+    padding-left: 5px;
+}
+
+.wd-profile-info-box {
+    color: black;
+    background-color: rgb(214, 255, 235);
+    padding-left: 15px;
+    border-radius: 10px;
+}
+
+.wd-profile-icon {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.wd-profile-name-font {
+    font-size: 20px;
+}
+
+.wd-inner-profile-box {
+    background-color: rgb(255, 211, 226);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.wd-inner-profile-box-font {
+    color: rgb(233,0,82);
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.wd-inner-profile-box-font-2 {
+    font-size: 12px;
+    font-weight: lighter;
+    color: black;
+}
+
+.wd-team-icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.list-group-item.override-blue-dark-my-team {
+    background-color: rgb(155, 251, 255);
+}
+
+.list-group-item.override-blue-light-my-team {
+    background-color: rgb(215, 253, 255);
+}
+
+.list-group-item.override-purple-dark-my-wall {
+    background-color: rgb(250, 183, 255);
+}
+
+.list-group-item.override-purple-light-my-wall {
+    background-color: rgb(254, 243, 255);
+}
+
+.list-group-item.override-pink-dark-information{
+    background-color: rgb(255, 144, 183);
+}
+
+.list-group-item.override-pink-light-information {
+    background-color: rgb(255, 211, 226);
+}
+
+.list-group.override-no-borders {
+    --bs-list-group-border-width: 0px;
+}
+
+.wd-team-details-font {
+    font-size:14px;
+}
+
+.wd-wall-profile-pic {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.wd-private-info {
+    font-size: 14px;
+}
+
+
+
