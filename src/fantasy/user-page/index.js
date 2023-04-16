@@ -16,6 +16,18 @@ function UserComponent() {
 
     }
 
+    const getAccountType =()=>{
+        if (usersPage.userType === "manager"){
+            return "Manager";
+        }
+        else if (usersPage.userType === "admin"){
+            return "Admin";
+        }
+        else {
+            return "Commissioner";
+        }
+    }
+
     useEffect(() =>{
         if(uid){
             getUser()
@@ -44,7 +56,7 @@ function UserComponent() {
                             <div className="col-6 col-md-5 pt-5">
                                 <div className="wd-inner-profile-box">
                                     <div className="wd-inner-profile-box-font ">
-                                        User: <span className="wd-inner-profile-box-font-2"> {usersPage.userType }</span>
+                                        User: <span className="wd-inner-profile-box-font-2"> {getAccountType() }</span>
                                     </div>
                                     <div className="wd-inner-profile-box-font">
                                         Status: <span className="wd-inner-profile-box-font-2"> NEED STATUS</span>
