@@ -56,11 +56,6 @@ export const profile = async () => {
     return user;
 };
 
-export const register = async (username, password) => {
-    const response = await api.post(`${USERS_URL}/register`, {
-        username,
-        password,
-    });
-    const user = response.data;
-    return user;
+export const register = (user) => {
+    return axios.post(`${USERS_URL}/register`, user);
 };

@@ -1,20 +1,40 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router";
+import {useNavigate, useParams} from "react-router";
 import {findUserById} from "../../services/users/users-services";
 import {Link} from "react-router-dom";
+import WallPostComponent from "../profile/wall-posts";
+import {createPostThunk, findAllPostsThunk} from "../../services/wall/wall-thunks";
+import {useDispatch, useSelector} from "react-redux";
+import {profileThunk} from "../../services/users/users-thunks";
 
 
 function UserComponent() {
     let {uid} = useParams();
-    console.log(uid)
     const [usersPage, setUser] = useState([])
 
+    const { currentUser } = useSelector((state) => state.users);
+    const [profile, setProfile] = useState(currentUser);
 
+
+    const dispatch = useDispatch();
+    const [toPost, setComment] = useState("")
     const getUser = async () =>{
         const user = await findUserById(uid);
         setUser(user)
 
     }
+    const getCurrentUser = async () =>{
+        const { payload } = await dispatch(profileThunk());
+        setProfile(payload);
+    }
+
+    const {wall, loading} = useSelector(state => state.wall)
+
+    useEffect( () => {
+        getUser();
+        dispatch(findAllPostsThunk());
+        getCurrentUser();
+    }, []);
 
     const getAccountType =()=>{
         if (usersPage.userType === "manager"){
@@ -34,6 +54,28 @@ function UserComponent() {
 
         }
     });
+
+    const searchValue = (val)=>{
+        setComment(val)
+    }
+    //
+    function clearInput() {
+        document.getElementById("Form").reset();
+    }
+
+    const handleComment = () => {
+        let sending = {
+            "uid" : usersPage._id,
+            "cid": profile._id,
+            "post" : toPost,
+        }
+        dispatch(createPostThunk(sending));
+        clearInput()
+
+    }
+
+    console.log(profile)
+    console.log(wall)
     return (
         <div className="mb-5">
             <div className="row">
@@ -115,31 +157,24 @@ function UserComponent() {
                             My Wall
                         </li>
 
-                        <li className="list-group-item override-purple-light-my-wall">
-                            <div className="row">
-                                <div className="d-flex justify-content-start">
-                                    <div>
-                                        {/*<img className="rounded-circle wd-wall-profile-pic" src={wall.image}/>*/}
-                                        IMAGE
-                                    </div>
-                                    <div className="ps-2">
-                                        <span className="fw-bold pe-2">
-                                            {/*<span className="pe-1 ">{wall.name}</span>*/}
-                                            wall name
+                        { wall.filter(e => e.uid === usersPage._id).length > 0 ?
+                            wall.filter(e => e.uid === usersPage._id).map(post=> <WallPostComponent
+                                key={post._id}
+                                post={post}/>)
+                            :
+                            <li className="list-group-item override-purple-light-my-wall">
+                                No comments to display... Be the first to leave a comment!
+                            </li>
+                        }
 
-                                        </span>
-                                        <span className="text-secondary">
-                                            {/*{wall.commenter} • {wall.time}*/}
-                                        </span> <br></br>
-
-                                        <span>
-                                            {/*{wall.comment}*/}
-                                        </span>
-
-
-                                    </div>
-                                </div>
-
+                        <li className="list-group-item override-purple-dark-my-wall fw-bolder">
+                            <div className="d-flex justify-content-between mt-1">
+                                <form id="Form" className="w-100 pe-3">
+                                    <input className="form form-control" placeholder="Comment...."
+                                           onChange={(event) => searchValue(event.target.value)}/>
+                                </form>
+                                <button className="btn override-button"
+                                        onClick={()=>handleComment()}>Comment</button>
                             </div>
                         </li>
 

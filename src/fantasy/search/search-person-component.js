@@ -82,7 +82,6 @@ const SearchPersonComponent = () => {
         }else{
             toSend = toComment
         }
-        alert(toSend)
         let sending = {
             "pid": player._id,
             "comment" : toSend,

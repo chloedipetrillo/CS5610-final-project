@@ -13,33 +13,29 @@ const CommentComponent = (
 ) => {
 
     const [userComment, setCommented] = useState([])
-    const [toDisplay, setToDisplay] = useState("")
 
     const getCommenter = async () =>{
         const writer = await findUserById(c.user);
-        setCommented(writer)
+        setCommented(writer.username)
 
     }
-
-
-
 
     useEffect(() =>{
         if(c.user){
             getCommenter()
 
         }
-        comment()
-    });
-    const comment = async () => {
-        //console.log(user)
-        let toDisplay = ""
-        if (userComment.length === undefined){
-            setToDisplay(userComment.username +": " + c.comment)
-        } else  {
-            setToDisplay(c.comment)
-        }
 
+    });
+    const comment = () => {
+        // //console.log(user)
+        // let toDisplay = ""
+        // if (userComment.length === undefined){
+        //     setToDisplay(userComment.username +": " + c.comment)
+        // } else  {
+        //     setToDisplay(c.comment)
+        // }
+    console.log(userComment)
     }
     const handleDate = () => {
         let parts = c.date.split("-")
@@ -60,10 +56,9 @@ const CommentComponent = (
             <div className="row">
                 <div className="col-9">
                     <div>
-                        {
-                            userComment.length === undefined ?
-                                <Link to={`../../profile/${userComment._id}`}>
-                                    {userComment.username  + ": "}
+                        {c.user ?
+                                <Link to={`../../profile/${c.user}`}>
+                                    {userComment + ": "}
                                 </Link>
                                 : 'Anon: '
                         }

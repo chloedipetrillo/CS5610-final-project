@@ -29,8 +29,8 @@ const NavComponent = (
     const active = paths[1];
 
     const handleLogout = () => {
-        // dispatch(logoutThunk());
-        // navigate("/login-signup")
+        dispatch(logoutThunk());
+        navigate("/login-signup")
         console.log("hi")
 
 

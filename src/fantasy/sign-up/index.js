@@ -32,6 +32,7 @@ const SignUpComponent = (
     const [firstName, setFirst] = useState("");
     const [lastName, setLast] = useState("");
     const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
 
     const handleSignUp = async () => {
         let userType = getRadioValue()
@@ -44,7 +45,7 @@ const SignUpComponent = (
             alert("Invalid User Registration. All Fields are Required. Try Again!");
         } else {
             try {
-                dispatch(registerThunk({ firstName, lastName, email, username, password, userType}));
+                dispatch(registerThunk({ firstName, lastName, email, phone, username, password, userType}));
                 navigate("/profile");
             } catch (err) {
                 console.log(err);
@@ -75,6 +76,11 @@ const SignUpComponent = (
                 <i className="wd-icon-in-box-bottom bi bi-envelope-at-fill"></i>
                 <input className="form form-control ps-5" placeholder="E-mail"
                        onChange={(event) => setEmail(event.target.value)}/>
+            </div>
+            <div className="list-group-item position-relative">
+                <i className="wd-icon-in-box-bottom bi bi-phone"></i>
+                <input className="form form-control ps-5" placeholder="Phone Number"
+                       onChange={(event) => setPhone(event.target.value)}/>
             </div>
             <div className="list-group-item position-relative">
                 <i className="wd-icon-in-box-bottom bi bi-person-fill"></i>

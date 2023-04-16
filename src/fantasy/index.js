@@ -14,6 +14,7 @@ import store from "../redux/store.js"
 import SearchPersonComponent from "./search/search-person-component";
 import LoadProfile from "./load-profile-component";
 import UserComponent from "./user-page";
+import EditProfileComponent from "./edit-profile";
 
 
 
@@ -34,6 +35,7 @@ function Fantasy() {
                         <Route path="/profile" element={<ProfileComponent/>}/>
                         <Route path="/details/:pid" element={<SearchPersonComponent/>}/>
                         <Route path="/profile/:uid" element={<UserComponent/>}/>
+                        <Route path="/edit-profile/" element={<EditProfileComponent/>}/>
 
                     </Routes>
                 </div>
