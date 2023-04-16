@@ -134,10 +134,19 @@ const SearchPersonComponent = () => {
                         </ul>
                     </div>
                     <div className="col-6">
-                        <h3>
+                        <div className="mb-5">
+                            <h3 >
+                                Top Managers with {player.first_name} on their team:
+                            </h3>
+                            <div>
+                                have to have stuff from db here
+                            </div>
+                        </div>
+
+                        <h3 className="mt-5">
                             Comments:
                         </h3>
-                        <div className="wd-comment-box overflow-auto">
+                        <div className="wd-comment-box overflow-auto list-group">
 
                             { comments.filter(e => e.pid === pid).length > 0 ?
                                 comments.filter(e => e.pid === pid).map(com=> <CommentComponent
@@ -150,7 +159,7 @@ const SearchPersonComponent = () => {
                             }
                         </div>
                         <div className="d-flex justify-content-between mt-1">
-                            <form id="Form" className="w-75">
+                            <form id="Form" className="w-100 pe-3">
                                 <input className="form form-control" placeholder="Comment...."
                                        onChange={(event) => searchValue(event.target.value)}/>
                             </form>

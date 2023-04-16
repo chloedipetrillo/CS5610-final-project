@@ -1,58 +1,36 @@
-import * as userService from "./users-services.js";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import * as userService from "./users-services";
 
-export const findAllUsersThunk = createAsyncThunk("users/findAll", async () => {
-    const users = await userService.findAllUsers();
-    return users;
-});
-
-export const findUserByIdThunk = createAsyncThunk(
-    "users/findById",
-    async (id) => {
-        const response = await userService.findUserById(id);
-        return response.data;
-    }
-);
-
-export const createUserThunk = createAsyncThunk(
-    "users/create",
-    async (user) => {
-        const response = await userService.createUser(user);
-        return response.data;
-    }
-);
-
-export const updateUserThunk = createAsyncThunk(
-    "users/update",
-    async (user) => {
-        await userService.updateUser(user);
+export const loginThunk = createAsyncThunk(
+    "userz/login",
+    async (credentials) => {
+        const user = await userService.login(credentials);
         return user;
     }
 );
 
-export const deleteUserThunk = createAsyncThunk("users/delete", async (id) => {
-    await userService.deleteUser(id);
-    return id;
-});
-
-export const loginThunk = createAsyncThunk("users/login", async (user) => {
-    const response = await userService.login(user);
-    return response.data;
-});
+export const updateUserThunk = createAsyncThunk(
+    "users/updateUser",
+    async (user) => {
+        const status = await userService.updateUser(user);
+        return user;
+    }
+);
 
 export const logoutThunk = createAsyncThunk("users/logout", async () => {
-    await userService.logout();
+    const status = await userService.logout();
+    return status;
+});
+
+export const profileThunk = createAsyncThunk("users/profile", async () => {
+    const user = await userService.profile();
+    return user;
 });
 
 export const registerThunk = createAsyncThunk(
     "users/register",
-    async (user) => {
-        const response = await userService.register(user);
-        return response.data;
+    async (credentials) => {
+        const user = await userService.register(credentials);
+        return user;
     }
 );
-
-export const profileThunk = createAsyncThunk("users/profile", async () => {
-    const response = await userService.profile();
-    return response.data;
-});

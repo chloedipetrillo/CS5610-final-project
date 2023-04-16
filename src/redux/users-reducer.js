@@ -1,71 +1,41 @@
-const { createSlice } = require("@reduxjs/toolkit");
-const {
-    findAllUsersThunk,
-    findUserByIdThunk,
-    createUserThunk,
-    deleteUserThunk,
-    updateUserThunk,
+import { createSlice } from "@reduxjs/toolkit";
+import {
     loginThunk,
     logoutThunk,
-    profileThunk,
     registerThunk,
-} = require("../services/users/users-thunks.js");
+    profileThunk,
+    updateUserThunk,
+} from "../services/users/users-thunks";
 
 const initialState = {
-    users: [],
-    loading: false,
-    error: null,
     currentUser: null,
 };
-
-const usersSlice = createSlice({
+const userSlice = createSlice({
     name: "users",
     initialState,
-    reducers: {},
+    reducers: {
+        updateCurrentUser: (state, { payload }) => {
+            state.currentUser = payload;
+        },
+    },
     extraReducers: {
-        [updateUserThunk.fulfilled]: (state, action) => {
-            state.users = state.users.map((user) =>
-                user.id === action.payload.id ? action.payload : user
-            );
+        [loginThunk.fulfilled]: (state, { payload }) => {
+            state.currentUser = payload;
         },
-        [createUserThunk.fulfilled]: (state, action) => {
-            state.users.push(action.payload);
-        },
-        [deleteUserThunk.fulfilled]: (state, action) => {
-            state.users = state.users.filter((user) => user.id !== action.payload);
-        },
-        [findAllUsersThunk.pending]: (state, action) => {
-            state.loading = true;
-            state.users = [];
-        },
-        [findAllUsersThunk.fulfilled]: (state, action) => {
-            state.loading = false;
-            state.users = action.payload;
-        },
-        [findAllUsersThunk.rejected]: (state, action) => {
-            state.loading = false;
-            state.error = action.error.message;
-        },
-        [findUserByIdThunk.pending]: (state, action) => {
-            state.loading = true;
-        },
-        [findUserByIdThunk.fulfilled]: (state, action) => {
-            state.loading = false;
-            state.currentUser = action.payload;
-        },
-        [loginThunk.fulfilled]: (state, action) => {
-            state.currentUser = action.payload;
-        },
-        [logoutThunk.fulfilled]: (state, action) => {
+        [logoutThunk.fulfilled]: (state) => {
             state.currentUser = null;
         },
-        [profileThunk.fulfilled]: (state, action) => {
-            state.currentUser = action.payload;
+        [profileThunk.fulfilled]: (state, { payload }) => {
+            state.currentUser = payload;
         },
-        [registerThunk.fulfilled]: (state, action) => {
-            state.currentUser = action.payload;
+        [registerThunk.fulfilled]: (state, { payload }) => {
+            state.currentUser = payload;
+        },
+        [updateUserThunk.fulfilled]: (state, { payload }) => {
+            state.currentUser = payload;
         },
     },
 });
 
-export default usersSlice.reducer;
+export default userSlice.reducer;
+export const { updateCurrentUser } = userSlice.actions;

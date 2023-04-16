@@ -12,30 +12,33 @@ import MyLeagueComponent from "./my-league";
 import ProfileComponent from "./profile";
 import store from "../redux/store.js"
 import SearchPersonComponent from "./search/search-person-component";
+import LoadProfile from "./load-profile-component";
+import UserComponent from "./user-page";
 
 
 
 function Fantasy() {
     return (
         <Provider store={store}>
-            <div>
+            <LoadProfile>
                 <div className="mb-5"> <NavComponent/> </div>
                 <div className="container-fluid mb-5">
                     <Routes>
                         <Route path="/" index element ={<HomeComponent/>}/>
                         <Route path="/home" index element ={<HomeComponent/>}/>
                         <Route path="/search" element ={<StatsComponent/>}/>
+                        <Route path="/search/:searched" element ={<StatsComponent/>}/>
                         <Route path="/login-signup" element ={<LogInSignUp/>}/>
                         <Route path="/how-to-play" element ={<HowToPlayComponent/>}/>
                         <Route path="/my-league/*" element={<MyLeagueComponent/>}/>
-                        {/*<Route path="/profile" element={<ProfileComponent/>}/>*/}
-                        <Route path="/search/:pid" element={<SearchPersonComponent/>}/>
-                        <Route path="/profile/:uid" element={<SearchPersonComponent/>}/>
+                        <Route path="/profile" element={<ProfileComponent/>}/>
+                        <Route path="/details/:pid" element={<SearchPersonComponent/>}/>
+                        <Route path="/profile/:uid" element={<UserComponent/>}/>
 
                     </Routes>
                 </div>
 
-            </div>
+            </LoadProfile>
         </Provider>
 
 

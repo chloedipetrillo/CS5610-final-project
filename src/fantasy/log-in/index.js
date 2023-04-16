@@ -7,7 +7,7 @@ import { loginThunk } from "../../services/users/users-thunks.js";
 
 const LogInComponent = () => {
 
-    const { currentUser } = useSelector((state) => state.users);
+    //const { currentUser } = useSelector((state) => state.users);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const dispatch = useDispatch();

@@ -29,8 +29,9 @@ const NavComponent = (
     const active = paths[1];
 
     const handleLogout = () => {
-        dispatch(logoutThunk());
-        navigate("/login-signup")
+        // dispatch(logoutThunk());
+        // navigate("/login-signup")
+        console.log("hi")
 
 
     };
@@ -119,7 +120,7 @@ const NavComponent = (
 
                                     {loggedIn ?
                                         <li className="nav-item">
-                                            <div onClick={handleLogout} className="nav-link text-white fw-bold">
+                                            <div onClick={() => handleLogout()} className="nav-link text-white fw-bold">
                                                 <i className="bi bi-power"></i>
                                             </div>
                                         </li>
@@ -208,7 +209,7 @@ const NavComponent = (
 
                             {loggedIn ?
                                 <li className="list-group-item override-lgi-nav">
-                                    <div onClick={handleLogout} className="text-decoration-none fw-bold text-white">
+                                    <div onClick={() => handleLogout()} className="text-decoration-none fw-bold text-white">
                                         <i className="bi bi-power"></i>
                                     </div>
                                 </li>

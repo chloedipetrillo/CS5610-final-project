@@ -33,7 +33,7 @@ const SearchItem = (
                         <div> Position: {person.position} </div>
                         <div> Value: {person.value} </div>
 
-                        <Link to={`/search/${person._id}`} className="btn btn-dark rounded-pill mt-2"
+                        <Link to={`../details/${person._id}`} className="btn btn-dark rounded-pill mt-2"
                                 >More Details</Link>
 
 

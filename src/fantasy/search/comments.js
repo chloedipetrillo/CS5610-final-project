@@ -21,6 +21,9 @@ const CommentComponent = (
 
     }
 
+
+
+
     useEffect(() =>{
         if(c.user){
             getCommenter()
@@ -38,20 +41,42 @@ const CommentComponent = (
         }
 
     }
+    const handleDate = () => {
+        let parts = c.date.split("-")
+        let year = parts[0]
+        let m = parts[1]
+        let moreParts = parts[2].split("T")
+        let day = moreParts[0]
+        const date = new Date()
+        date.setMonth(m-1)
+        let month = date.toLocaleString('en-US', { month: 'long' });
+        return month +" " + day +", " + year
+    }
+
+
 
     return (
         <li className="list-group-item pt-2">
-            <>
-                {
-                    userComment.length === undefined ?
-                        <Link to={`profile/${userComment._id}`}>
-                            {userComment.username + ": "}
-                        </Link>
-                         : ''
-                }
+            <div className="row">
+                <div className="col-9">
+                    <div>
+                        {
+                            userComment.length === undefined ?
+                                <Link to={`../../profile/${userComment._id}`}>
+                                    {userComment.username  + ": "}
+                                </Link>
+                                : 'Anon: '
+                        }
 
-            </>
-            <span className="text-muted" > { c.comment}</span>
+                    </div>
+                    <span className="text-muted" > { c.comment}</span>
+                </div>
+                <div className="text-muted col-3">
+                    {handleDate()}
+                </div>
+            </div>
+
+
         </li>
     );
 }
