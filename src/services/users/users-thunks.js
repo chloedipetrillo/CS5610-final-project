@@ -22,6 +22,7 @@ export const logoutThunk = createAsyncThunk("users/logout", async () => {
     return status;
 });
 
+
 export const profileThunk = createAsyncThunk("users/profile", async () => {
     const user = await userService.profile();
     return user;
