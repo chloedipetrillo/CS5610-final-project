@@ -6,7 +6,7 @@ import wallReducer from "./wall-reducer.js";
 
 const store = configureStore({
     reducer: {
-        users: usersReducer, comments: commentsReducer, wall: wallReducer
+        users: usersReducer, commentData: commentsReducer, wall: wallReducer
     },
 });
 

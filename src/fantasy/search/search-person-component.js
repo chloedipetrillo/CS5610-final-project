@@ -14,10 +14,7 @@ const CHAT_API_URL = "http://localhost:4000/api/chat";
 
 const SearchPersonComponent = () => {
     const {pid} = useParams()
-
     const [player, setPlayer] = useState({})
-    //  const [comments, setComments] = useState({})
-    //
     const searchPlayers = async () => {
         let request = USERS_API_URL + "/:" + pid;
         const res = await fetch(request);
@@ -29,54 +26,24 @@ const SearchPersonComponent = () => {
 
     const { currentUser } = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
-
     const getUser = async () =>{
         const { payload } = await dispatch(profileThunk());
         setProfile(payload);
     }
 
-    const [toComment, setComment] = useState("")
 
-    const searchValue = (val)=>{
+
+    const [toComment, setComment] = useState("")
+    const commentValue = (val)=>{
         setComment(val)
     }
-    //
     function clearInput() {
         document.getElementById("Form").reset();
     }
-
-
-
-    // ALL THIS SOMEHTING IS WRONG
-    const { coms } = useSelector((state) => state.comments);
-
-    const [allComments, setComments] = useState(coms)
-    const dispatch = useDispatch();
-
-
-    const getComments = async () =>{
-        const { payload } = await dispatch(findAllCommentsThunk());
-        console.log(payload);
-        setComments(payload);
-    }
-
-    useEffect(() => {
-        searchPlayers();
-        getUser();
-        getComments();
-
-
-    }, [])
-
-
     const handleComment = () => {
-        let userID = ""; //currentUser._id
-        let currentUser =""; // THIS WILL BE SOMETHING
-        let toSend = "";
-        console.log(profile)
+        let userID = "";
         if (profile){
             userID = profile._id;
-
         }
         let sending = {
             "pid": player._id,
@@ -84,13 +51,23 @@ const SearchPersonComponent = () => {
             "user" : userID,
             "date": (new Date()).getTime()
         }
-        console.log(sending)
         dispatch(createChatThunk(sending));
-        // setComments(allComments)
         clearInput()
-
     }
 
+
+
+    // IS THIS WRONG HOW DO U GET TO ALWAYS UPDATE ?
+    const {comments, load} = useSelector(state => state.commentData)
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        searchPlayers();
+        getUser();
+        dispatch(findAllCommentsThunk());
+
+    }, [])
 
 
     return(
@@ -136,12 +113,16 @@ const SearchPersonComponent = () => {
                         <h3 className="mt-5">
                             Comments:
                         </h3>
-                        {allComments && (
+
+                        {load &&
+                        <h3> loading </h3>
+                        }
+                        {comments && (
 
                             <div className="wd-comment-no-border-box border-0 overflow-auto list-group">
 
-                                { allComments.filter(e => e.pid === pid).length > 0 ?
-                                    allComments.filter(e => e.pid === pid).map(com=> <CommentComponent
+                                { comments.filter(e => e.pid === pid).length > 0 ?
+                                    comments.filter(e => e.pid === pid).map(com=> <CommentComponent
                                         key={com._id}
                                         c={com}/>)
                                     :
@@ -156,7 +137,7 @@ const SearchPersonComponent = () => {
                         <div className="d-flex justify-content-between mt-1">
                             <form id="Form" className="w-100 pe-3">
                                 <input className="form form-control" placeholder="Comment...."
-                                       onChange={(event) => searchValue(event.target.value)}/>
+                                       onChange={(event) => commentValue(event.target.value)}/>
                             </form>
                             <button className="btn override-button"
                                     onClick={()=>handleComment()}>Comment</button>
