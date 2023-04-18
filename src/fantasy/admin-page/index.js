@@ -4,6 +4,7 @@ import ManageUsersComponent from "./view-users";
 import ManageScoresComponent from "./manage-scores";
 import {useNavigate} from "react-router";
 import {profileThunk} from "../../services/users/users-thunks";
+import "./index.css";
 
 
 
@@ -58,8 +59,18 @@ const AdminComponent = (
 
                 </div>
                 :
-                <div>
-                    {navigate("../home")}
+                <div className="mt-5">
+                    <div className="mt-5 center wd-access-blocked">
+                        <i className="bi bi-lock-fill fs-5"></i>
+                        <div>
+                            ADMIN ACCESS ONLY, PAGE BLOCKED.
+                        </div>
+                        <div>
+                            MUST BE AN ADMIN
+                        </div>
+
+                    </div>
+
                 </div>
             }
         </>
