@@ -11,7 +11,7 @@ function EditProfileComponent() {
     const [profile, setProfile] = useState(currentUser);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    const [saved, setSaved] = useState(false);
 
     const getUser = async () =>{
         const { payload } = await dispatch(profileThunk());
@@ -25,7 +25,8 @@ function EditProfileComponent() {
     //console.log(profile)
 
     const saveChangesHandler = async () => {
-        dispatch(updateUserThunk(profile));
+        await dispatch(updateUserThunk(profile));
+        (navigate("../profile"))
 
     }
     const updateNameHandler = (target) => {
@@ -74,12 +75,12 @@ function EditProfileComponent() {
                         </div>
 
                         <div className="col-3">
-                            <Link to="../profile">
+                            <div >
                                 <button className="btn btn-dark rounded-pill w-85 float-end mt-1 me-2 mb-2"
                                         onClick={() => saveChangesHandler()}>
                                     Save
                                 </button>
-                            </Link>
+                            </div>
                         </div>
                     </div>
 

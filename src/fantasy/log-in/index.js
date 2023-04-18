@@ -15,8 +15,13 @@ const LogInComponent = () => {
     const handleLogin = async () => {
         try {
            const action = await dispatch(loginThunk({ username, password }));
-            console.log(action)
-             // navigate("/profile");
+            if (action.error){
+                alert("Incorrect username and password try again!")
+            }
+            else{
+                navigate("/profile");
+            }
+
         } catch (err) {
             console.log(err);
         }

@@ -59,6 +59,8 @@ function UserComponent() {
 
     const searchValue = (val)=>{
         setComment(val)
+        console.log(currentUser)
+        console.log("hi")
     }
     //
     function clearInput() {
@@ -73,6 +75,13 @@ function UserComponent() {
         }
         dispatch(createPostThunk(sending));
         clearInput()
+
+    }
+
+    const handleCommentNoUser = () => {
+        alert("You must be logged in to comment! Navigating to login screen.")
+        clearInput()
+        navigate("../../login-signup")
 
     }
 
@@ -170,8 +179,18 @@ function UserComponent() {
                                     <input className="form form-control" placeholder="Comment...."
                                            onChange={(event) => searchValue(event.target.value)}/>
                                 </form>
-                                <button className="btn override-button"
-                                        onClick={()=>handleComment()}>Comment</button>
+
+                                {currentUser.length > 0 ?
+                                    <button className="btn override-button"
+                                            onClick={()=>handleComment()}>Comment</button>
+
+                                    :
+
+                                    <button className="btn override-button"
+                                            onClick={()=>handleCommentNoUser()}>Comment</button>
+
+                                }
+
                             </div>
                         </li>
 
