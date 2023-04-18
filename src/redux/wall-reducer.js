@@ -1,3 +1,5 @@
+import {deletePostThunk} from "../services/wall/wall-thunks";
+
 const { createSlice } = require("@reduxjs/toolkit");
 const {
     findAllPostsThunk,
@@ -34,7 +36,13 @@ const commentsSlice = createSlice({
             (state, {payload}) => {
             state.loading = false;
             state.wall.push(payload);
-        }
+        },
+        [deletePostThunk.fulfilled] :
+            (state, { payload }) => {
+                state.loading = false
+                state.wall = state.wall.filter(p => p._id !== payload)
+            },
+
     },
 });
 

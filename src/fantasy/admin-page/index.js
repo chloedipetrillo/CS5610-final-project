@@ -66,7 +66,7 @@ const AdminComponent = (
                             ADMIN ACCESS ONLY, PAGE BLOCKED.
                         </div>
                         <div>
-                            MUST BE AN ADMIN
+                            USER TYPE MUST BE AN ADMIN.
                         </div>
 
                     </div>

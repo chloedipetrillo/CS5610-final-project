@@ -87,9 +87,7 @@ const ProfileComponent = () => {
                                         <div className="pt-2 fw-bolder wd-profile-name-font">
                                             {profile.firstName} {profile.lastName}
                                         </div>
-
                                         <img className="wd-profile-icon" src = {profile.image}/>
-                                        IMAGE
                                     </div>
 
                                     <div className="col-6 col-md-5 pt-5">
@@ -252,8 +250,13 @@ const ProfileComponent = () => {
                     </div>
                 </>
             ) :
-                <div>
-                    {navigate("../login-signup")}
+                <div className="wd-access-blocked mt-5 center">
+                    <div className="mb-3">NOT SIGNED IN</div>
+                    <Link to="../login-signup">
+                        <button className="btn btn-primary">
+                            Log-In/Sign-Up
+                        </button>
+                    </Link>
                 </div>
             }
 

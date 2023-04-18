@@ -13,3 +13,10 @@ export const createPostThunk = createAsyncThunk(
         return await wallServices.createPost(post);
     }
 );
+
+export const deletePostThunk = createAsyncThunk(
+    'wall/delete',
+    async (id) => {
+        await wallServices.deletePost(id)
+        return id
+    })
