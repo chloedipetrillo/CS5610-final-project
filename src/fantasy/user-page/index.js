@@ -91,18 +91,19 @@ function UserComponent() {
             <div className="row">
                 <div className="col-12 col-lg-5 pt-3 ">
                     <div className="wd-profile fw-bold">
-                        {usersPage.username}'s Profile
+                        {usersPage.firstName}'s Profile
                     </div>
 
                     <div className="wd-profile-info-box mt-2 pb-3">
                         <div className="row">
                             <div className="col-4">
                                 <div className="pt-2 fw-bolder wd-profile-name-font">
-                                    {usersPage.firstName} {usersPage.lastName}
+                                    {usersPage.firstName}
+                                    <div className="fw-light fs-6 mb-2">{usersPage.username}</div>
                                 </div>
 
-                                {/*<img className="wd-profile-icon" src = {user.image}/>*/}
-                                IMAGE
+                                <img className="wd-profile-icon" src = {usersPage.image}/>
+
                             </div>
 
                             <div className="col-6 col-lg-5 pt-5">
@@ -111,7 +112,7 @@ function UserComponent() {
                                         User: <span className="wd-inner-profile-box-font-2"> {getAccountType() }</span>
                                     </div>
                                     <div className="wd-inner-profile-box-font">
-                                        Status: <span className="wd-inner-profile-box-font-2"> NEED STATUS</span>
+                                        Status: <span className="wd-inner-profile-box-font-2"> {usersPage.status}</span>
                                         {/*Status: <span className="wd-inner-profile-box-font-2"> {user.status}</span>*/}
                                     </div>
                                 </div>
@@ -129,7 +130,7 @@ function UserComponent() {
 
                     <br></br>
                     <ul className="list-group override-no-borders">
-                        <li className="list-group-item override-blue-dark-my-team fw-bold ">
+                        <li className="list-group-item override-blue-dark-my-team fw-bold text-white">
                             My Team
                         </li>
                         <li className="list-group-item override-blue-light-my-team">
@@ -159,44 +160,47 @@ function UserComponent() {
                 </div>
 
                 <div className="col-12 col-lg-7 pt-3">
-                    <ul className="list-group override-no-borders">
-                        <li className="list-group-item override-purple-dark-my-wall fw-bolder">
-                            My Wall
-                        </li>
+                    <div className="ps-3 wd-wall-format fw-bolder text-white">
+                        My Wall
+                    </div>
+                    <div className="wd-comment-box-grey overflow-auto">
+                        <ul className="list-group override-no-borders">
+                            {/*<li className="list-group-item override-purple-dark-my-wall fw-bolder text-white">*/}
+                            {/*    My Wall*/}
+                            {/*</li>*/}
 
-                        { wall.filter(e => e.uid === usersPage._id).length > 0 ?
-                            wall.filter(e => e.uid === usersPage._id).map(post=> <WallPostComponent
-                                key={post._id}
-                                post={post}/>)
-                            :
-                            <li className="list-group-item override-purple-light-my-wall">
-                                No comments to display... Be the first to leave a comment!
-                            </li>
-                        }
+                            { wall.filter(e => e.uid === usersPage._id).length > 0 ?
+                                wall.filter(e => e.uid === usersPage._id).map(post=> <WallPostComponent
+                                    key={post._id}
+                                    post={post}/>)
+                                :
+                                <li className="list-group-item override-purple-light-my-wall">
+                                    No comments to display... Be the first to leave a comment!
+                                </li>
+                            }
 
-                        <li className="list-group-item override-purple-dark-my-wall fw-bolder">
-                            <div className="d-flex justify-content-between mt-1">
-                                <form id="Form" className="w-100 pe-3">
-                                    <input className="form form-control" placeholder="Comment...."
-                                           onChange={(event) => searchValue(event.target.value)}/>
-                                </form>
+                        </ul>
+                    </div>
+                    <li className="list-group-item fw-bolder">
+                        <div className="d-flex justify-content-between mt-1">
+                            <form id="Form" className="w-100 pe-3">
+                                <input className="form form-control" placeholder="Comment...."
+                                       onChange={(event) => searchValue(event.target.value)}/>
+                            </form>
 
-                                {currentUser !== null ?
-                                    <button className="btn override-button"
-                                            onClick={()=>handleComment()}>Comment</button>
+                            {currentUser !== null ?
+                                <button className="btn override-button"
+                                        onClick={()=>handleComment()}>Comment</button>
 
-                                    :
+                                :
 
-                                    <button className="btn override-button"
-                                            onClick={()=>handleCommentNoUser()}>Comment</button>
+                                <button className="btn override-button"
+                                        onClick={()=>handleCommentNoUser()}>Comment</button>
 
-                                }
+                            }
 
-                            </div>
-                        </li>
-
-
-                    </ul>
+                        </div>
+                    </li>
 
 
                 </div>

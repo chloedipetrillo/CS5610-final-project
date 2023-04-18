@@ -44,11 +44,11 @@ const AdminComponent = (
 
                     <div className="col-12 col-md-6">
                         <div className="d-flex justify-content-center">
-                            <span className="pe-2"> <button className="btn override-log pe-2 mb-1" onClick={() => viewUsersHandler()}>View Users</button> </span>
-                            <button className="btn override-log mb-1" onClick={() => viewPointsHandler()}>Manage Scores</button>
+                            <span className="pe-2"> <button className="btn override-log pe-2 mb-1" onClick={() => viewUsersHandler()}>Manage Scores</button> </span>
+                            <button className="btn override-log mb-1" onClick={() => viewPointsHandler()}>View Users</button>
                         </div>
 
-                        {seeUsers ? <ManageUsersComponent/> : <ManageScoresComponent/>}
+                        {seeUsers ? <ManageScoresComponent/> : <ManageUsersComponent/> }
 
 
                     </div>

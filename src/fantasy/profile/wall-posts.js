@@ -41,7 +41,7 @@ const WallPostComponent = (
 
         <li className="list-group-item override-purple-light-my-wall">
 
-            < div className="row mb-2">
+            < div className="row">
                 <div className="col-11">
                     <div className="d-flex">
                         <div className="">
@@ -49,9 +49,11 @@ const WallPostComponent = (
                         </div>
                         <div className="ps-3">
                             { parts.length > 2 ?
-                                <Link to={`../profile/${userComment._id}`} > {userComment.firstName} </Link>
+                                <Link to={`../profile/${userComment._id}`}
+                                className="text-decoration-none fw-bold text-black"> {userComment.firstName} </Link>
                                 :
-                                <Link to={userComment._id} > {userComment.firstName} </Link>
+                                <Link to={userComment._id} className="text-decoration-none fw-bold text-black">
+                                    {userComment.firstName} </Link>
                             }
                             <div>
                                 {post.post}
@@ -72,11 +74,6 @@ const WallPostComponent = (
 
                 </div>
             </div>
-
-
-
-
-
 
         </li>
     );
