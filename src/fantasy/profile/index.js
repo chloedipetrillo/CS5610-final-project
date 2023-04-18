@@ -72,7 +72,7 @@ const ProfileComponent = () => {
 
     return(
         <div className="mb-5">
-            {profile && (
+            {profile ? (
 
                 <>
                     <div className="row">
@@ -251,7 +251,11 @@ const ProfileComponent = () => {
 
                     </div>
                 </>
-            )}
+            ) :
+                <div>
+                    {navigate("../login-signup")}
+                </div>
+            }
 
         </div>
 

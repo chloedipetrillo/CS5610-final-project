@@ -4,11 +4,15 @@ import {
     logoutThunk,
     registerThunk,
     profileThunk,
-    updateUserThunk,
+    updateUserThunk, findAllUsersThunk,
 } from "../services/users/users-thunks";
 
 const initialState = {
+    usersData: [],
+    loading: false,
+    error: null,
     currentUser: null,
+
 };
 const userSlice = createSlice({
     name: "users",
@@ -39,6 +43,18 @@ const userSlice = createSlice({
         },
         [updateUserThunk.fulfilled]: (state, { payload }) => {
             state.currentUser = payload;
+        },
+        [findAllUsersThunk.pending]: (state, action) => {
+            state.loading = true;
+            state.usersData = [];
+        },
+        [findAllUsersThunk.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.usersData = action.payload;
+        },
+        [findAllUsersThunk.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.error.message;
         },
     },
 });

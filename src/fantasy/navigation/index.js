@@ -35,6 +35,7 @@ const NavComponent = (
 
     };
 
+
     return (
         <div>
             <div className="row">
@@ -116,7 +117,19 @@ const NavComponent = (
                                             }
                                         ><i className="bi bi-person-fill"></i></Link>
                                     </li>
-
+                                    {
+                                        loggedIn && currentUser.userType === "admin" ?
+                                            <li className="nav-item">
+                                                <Link to="../admin-page" className=
+                                                    {active === "admin-page" ?
+                                                        "nav-link text-black active override-active-nav fw-bold"
+                                                        :
+                                                        "nav-link text-white fw-bold"
+                                                    }
+                                                >Admin</Link>
+                                            </li>
+                                            : ''
+                                    }
                                     {loggedIn ?
                                         <li className="nav-item">
                                             <div onClick={() => handleLogout()} className="nav-link text-white fw-bold">

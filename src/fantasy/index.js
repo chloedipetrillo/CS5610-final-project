@@ -15,6 +15,7 @@ import SearchPersonComponent from "./search/search-person-component";
 import LoadProfile from "./load-profile-component";
 import UserComponent from "./user-page";
 import EditProfileComponent from "./edit-profile";
+import AdminComponent from "./admin-page";
 
 
 
@@ -36,6 +37,7 @@ function Fantasy() {
                         <Route path="/details/:pid" element={<SearchPersonComponent/>}/>
                         <Route path="/profile/:uid" element={<UserComponent/>}/>
                         <Route path="/edit-profile/" element={<EditProfileComponent/>}/>
+                        <Route path="/admin-page/" element={<AdminComponent/>}/>
 
                     </Routes>
                 </div>

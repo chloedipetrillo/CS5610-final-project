@@ -35,3 +35,12 @@ export const registerThunk = createAsyncThunk(
         return user;
     }
 );
+
+
+export const findAllUsersThunk = createAsyncThunk(
+    "users/findAll",
+    async () => {
+        const all = await userService.findAllUsers();
+        return all;
+    }
+)
