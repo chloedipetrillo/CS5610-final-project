@@ -41,6 +41,9 @@ const userSlice = createSlice({
         [registerThunk.fulfilled]: (state, { payload }) => {
             state.currentUser = payload;
         },
+        [registerThunk.rejected]: (state, action) => {
+            state.error = action.error.message;
+        },
         [updateUserThunk.fulfilled]: (state, { payload }) => {
             state.currentUser = payload;
         },
