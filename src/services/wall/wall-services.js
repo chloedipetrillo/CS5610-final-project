@@ -7,6 +7,7 @@ export const findAllWallPosts = async () => {
     return response.data;
 };
 
-export const createPost = (post) => {
-    return axios.post(USERS_API_URL, post);
+export const createPost = async (post) => {
+    const response = await axios.post(USERS_API_URL, post);
+    return response.data;
 };

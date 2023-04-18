@@ -7,7 +7,7 @@ import "./index.css"
 
 
 function EditProfileComponent() {
-    const { currentUser } = useSelector((state) => state.users);
+    const { currentUser, load } = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ function EditProfileComponent() {
         getUser();
     }, []);
 
-    console.log(profile)
+    //console.log(profile)
 
     const saveChangesHandler = async () => {
         dispatch(updateUserThunk(profile));

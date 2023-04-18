@@ -10,7 +10,6 @@ export const findAllPostsThunk = createAsyncThunk(
 export const createPostThunk = createAsyncThunk(
     "wall/create",
     async (post) => {
-        const response = await wallServices.createPost(post);
-        return response.data;
+        return await wallServices.createPost(post);
     }
 );

@@ -9,16 +9,42 @@ const HomeComponent = (
     const { currentUser } = useSelector((state) => state.users);
     return (
         <>
-            <div className="p-outer row" >
-                <div className="d-none d-md-block col-3"></div>
-                <div className="col-12 col-md-6">
-                    {currentUser === null ?
-                    "component1 and component 2" : `Hi ${currentUser.firstName}`}
-
+            <div className=" row" >
+                <div className="col-12 wd-profile fw-bolder">
+                    Premier Fantasy League
                 </div>
-                <div className="d-none d-md-block col-3"></div>
 
             </div>
+
+            <div className="row">
+                {/*<div className="d-none d-md-block col-3"></div>*/}
+
+                    {currentUser === null ?
+                        "component1 and component 2" :
+                        <div className="center fw-bolder">
+
+                            <div className="pe-5 fw-bold wd-welcome-font">
+                                Welcome,
+                            </div>
+                            <div className="ps-5 fw-bolder wd-user-name">
+                                {currentUser.firstName}!
+                            </div>
+
+                        </div>
+                    }
+
+
+
+
+
+
+                {/*<div className="d-none d-md-block col-3"></div>*/}
+
+            </div>
+
+
+
+
         </>
 
 

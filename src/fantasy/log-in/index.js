@@ -14,9 +14,9 @@ const LogInComponent = () => {
     const navigate = useNavigate();
     const handleLogin = async () => {
         try {
-            await dispatch(loginThunk({ username, password }));
-
-             navigate("/profile");
+           const action = await dispatch(loginThunk({ username, password }));
+            console.log(action)
+             // navigate("/profile");
         } catch (err) {
             console.log(err);
         }

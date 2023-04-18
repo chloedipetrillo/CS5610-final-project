@@ -11,7 +11,7 @@ import WallPostComponent from "./wall-posts";
 import {createChatThunk} from "../../services/comments/comment-thunks";
 const ProfileComponent = () => {
 
-    const { currentUser } = useSelector((state) => state.users);
+    const { currentUser, load} = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
     const [showInfo, setInfo] = useState([]);
     const dispatch = useDispatch();

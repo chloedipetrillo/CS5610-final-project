@@ -30,6 +30,11 @@ const commentsSlice = createSlice({
                 state.loading = false
                 state.error = action.error
             },
+        [createPostThunk.fulfilled]:
+            (state, {payload}) => {
+            state.loading = false;
+            state.wall.push(payload);
+            }
     },
 });
 

@@ -171,3 +171,36 @@
     height: 300px;
 
 }
+
+.wd-welcome-box {
+    background-color: rgb(178, 0, 190);
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.wd-welcome {
+    font-size: 35px;
+    color: black;
+    font-weight: bolder;
+}
+
+.wd-user-name {
+    font-size: 35px;
+    color: rgb(233,0,82);
+
+}
+
+.wd-home-fantasy-font {
+    font-size: 50px;
+    color: rgb(56,0,60);
+}
+
+.center {
+    text-align: center;
+}
+
+.wd-welcome-font {
+    font-size: 35px;
+    color: rgb(56,0,60);
+}
