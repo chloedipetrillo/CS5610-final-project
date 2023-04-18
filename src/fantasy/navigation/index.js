@@ -26,8 +26,7 @@ const NavComponent = (
     }
     const {pathname} = useLocation();
     const paths = pathname.split('/')
-    const active = paths[1];
-
+    const active = paths[ paths.length-1];
     const handleLogout = () => {
         dispatch(logoutThunk());
         navigate("/login-signup")

@@ -20,7 +20,12 @@ function UserComponent() {
     const [toPost, setComment] = useState("")
     const getUser = async () =>{
         const user = await findUserById(uid);
-        setUser(user)
+        if (user._id === profile._id){
+            navigate("../profile")
+        } else {
+            setUser(user)
+        }
+
 
     }
 

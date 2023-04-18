@@ -45,7 +45,7 @@ const SignUpComponent = (
             alert("Invalid User Registration. All Fields are Required. Try Again!");
         } else {
             try {
-                dispatch(registerThunk({ firstName, lastName, email, phone, username, password, userType}));
+                await dispatch(registerThunk({ firstName, lastName, email, phone, username, password, userType}));
                 navigate("/profile");
             } catch (err) {
                 console.log(err);
