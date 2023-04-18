@@ -71,7 +71,7 @@
 
 .wd-profile {
     color: white;
-    background-color:rgb(233,0,82);
+    background-color:rgb(56,0,60);
     font-size: 45px;
     height: 70px;
     border-radius: 15px;
@@ -80,7 +80,7 @@
 
 .wd-profile-info-box {
     color: black;
-    background-color: rgb(214, 255, 235);
+    background-color: #d3d3d3;
     padding-left: 15px;
     border-radius: 10px;
 }
@@ -97,13 +97,13 @@
 }
 
 .wd-inner-profile-box {
-    background-color: rgb(255, 211, 226);
+    background-color: rgb(0,255,133);
     border-radius: 10px;
     padding: 5px;
 }
 
 .wd-inner-profile-box-font {
-    color: rgb(233,0,82);
+    color: rgb(56,0,60);
     font-weight: bolder;
     font-size: 15px;
 }
@@ -122,27 +122,31 @@
 }
 
 .list-group-item.override-blue-dark-my-team {
-    background-color: rgb(155, 251, 255);
+    background-color: rgb(233,0,82);
 }
 
 .list-group-item.override-blue-light-my-team {
-    background-color: rgb(215, 253, 255);
+    background-color: lightgrey;
 }
 
 .list-group-item.override-purple-dark-my-wall {
-    background-color: rgb(250, 183, 255);
+    background-color: rgb(56,0,60);
+}
+
+.wd-font-white{
+    color: white;
 }
 
 .list-group-item.override-purple-light-my-wall {
-    background-color: rgb(254, 243, 255);
+    background-color: lightgrey;
 }
 
 .list-group-item.override-pink-dark-information{
-    background-color: rgb(255, 144, 183);
+    background-color: rgb(233,0,82);
 }
 
 .list-group-item.override-pink-light-information {
-    background-color: rgb(255, 211, 226);
+    background-color: lightgrey;
 }
 
 .list-group.override-no-borders {
@@ -212,3 +216,22 @@
     background-color: rgba(0,0,0,.125);
     padding: 10px;
 }
+
+.wd-comment-box-grey {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: lightgrey;
+    height: 300px;
+
+}
+.wd-wall-format {
+    background-color: rgb(56,0,60);
+    color: white;
+    height: 40px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px;
+}
+

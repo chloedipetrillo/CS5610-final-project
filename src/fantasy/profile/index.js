@@ -118,9 +118,12 @@ const ProfileComponent = () => {
 
                                 {showInfo ?
                                     <>
-                                        <li className="list-group-item override-pink-dark-information fw-bold"
+                                        <li className="list-group-item override-pink-dark-information fw-bold wd-font-white"
                                         onClick={()=>handleShow()}>
-                                            Hide Personal Information
+                                            <span className="wd-font-white">
+                                                Hide Personal Information
+                                            </span>
+
                                             <Link to="/edit-profile">
                                                 <button className="btn btn-dark border-dark rounded-pill w-85 float-end ">
                                                     Edit Profile
@@ -166,9 +169,12 @@ const ProfileComponent = () => {
 
 
                                     :
-                                    <li className="list-group-item override-pink-dark-information fw-bold"
+                                    <li className="list-group-item override-pink-dark-information fw-bold wd-font-white"
                                         onClick={()=>handleShow()}>
-                                        Show Personal Information
+                                        <span className="text-white">
+                                            Show Personal Information
+                                        </span>
+
                                         <Link to="/edit-profile">
                                             <button className="btn btn-dark border-dark rounded-pill w-85 float-end ">
                                                 Edit Profile
@@ -186,7 +192,9 @@ const ProfileComponent = () => {
                         <div className="col-12 col-md-5 pt-3">
                             <ul className="list-group override-no-borders">
                                 <li className="list-group-item override-blue-dark-my-team fw-bold ">
-                                    My Team
+                                   <span className="text-white">
+                                       My Team
+                                   </span>
                                 </li>
                                 <li className="list-group-item override-blue-light-my-team">
                                     <div className="row">
@@ -214,11 +222,18 @@ const ProfileComponent = () => {
                         </div>
 
                         <div className="col-12 col-md-7 pt-3">
-                            <div className="wd-comment-box overflow-auto">
+                            {/*<li className="list-group-item override-purple-dark-my-wall fw-bolder">*/}
+                                <div className="ps-3 wd-wall-format wd-font-white fw-bolder">
+                                    My Wall
+                                </div>
+                            {/*</li>*/}
+                            <div className="wd-comment-box-grey overflow-auto">
                                 <ul className="list-group override-no-borders ">
-                                    <li className="list-group-item override-purple-dark-my-wall fw-bolder">
-                                        My Wall
-                                    </li>
+                                    {/*<li className="list-group-item override-purple-dark-my-wall fw-bolder">*/}
+                                    {/*    <div className=" wd-font-white">*/}
+                                    {/*        My Wall*/}
+                                    {/*    </div>*/}
+                                    {/*</li>*/}
 
                                     { wall.filter(e => e.uid === profile._id).length > 0 ?
                                         wall.filter(e => e.uid === profile._id).map(post=> <WallPostComponent
@@ -232,7 +247,7 @@ const ProfileComponent = () => {
 
                                 </ul>
                             </div>
-                            <li className="list-group-item override-purple-dark-my-wall fw-bolder">
+                            <li className="list-group-item fw-bolder">
                                 <div className="d-flex justify-content-between mt-1">
                                     <form id="Form" className="w-100 pe-3">
                                         <input className="form form-control" placeholder="Comment...."
