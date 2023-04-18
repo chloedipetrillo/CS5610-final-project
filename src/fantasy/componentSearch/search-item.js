@@ -21,7 +21,7 @@ const SearchItem = (
 
     return(
         <>{ showStats ?
-            <li className="list-group-item" onClick={() => hideHandler()}>
+            <li className="list-group-item override-search-light-grey" onClick={() => hideHandler()}>
                 <div className="row">
                     <div className="col-3">
                         <img className="wd-small-team-icon"
@@ -43,7 +43,7 @@ const SearchItem = (
                 </div>
             </li>
         :
-            <li className="list-group-item" onClick={() => showHandler()} >
+            <li className="list-group-item override-search-light-grey" onClick={() => showHandler()} >
                 <div className="row">
                     <div className="col-3">
                         <img className="wd-small-team-icon"

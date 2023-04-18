@@ -31,6 +31,18 @@ const SearchPersonComponent = () => {
         setProfile(payload);
     }
 
+    const handleDate = (news_date) => {
+        let parts = news_date.split("-")
+        let year = parts[0]
+        let m = parts[1]
+        let moreParts = parts[2].split("T")
+        let day = moreParts[0]
+        const date = new Date()
+        date.setMonth(m-1)
+        let month = date.toLocaleString('en-US', { month: 'long' });
+        return month +" " + day +", " + year
+    }
+
 
 
     const [toComment, setComment] = useState("")
@@ -76,29 +88,61 @@ const SearchPersonComponent = () => {
                 <div className="row">
                     <div className="col-6">
                         <img src={player.photo}/>
-                        <h1>{player.first_name} {player.second_name}</h1>
+                        <div className="row">
+                            <div className="col-5">
+                                <div className="mt-2 mb-2 ps-4 wd-player-name-box">{player.first_name} {player.second_name}</div>
+                            </div>
+
+                        </div>
+
                         {player.news ?
                             <div>
                                 <h3>News</h3>
                                 <ul>
-                                    <li>{player.news} {player.news_added}</li>
+                                    <li>{player.news} {handleDate(player.news_added)}</li>
                                 </ul>
                             </div>
                             :
 
                             ''}
 
-                        <h3>Stats</h3>
-                        <ul>
-                            <li>Minutes: {player.minutes}</li>
-                            <li>Goals: {player.goals_scored}</li>
-                            <li>Assists: {player.assits}</li>
-                            <li>Yellow cards: {player.yellow_cards}</li>
-                            <li>Red Cards: {player.red_cards}</li>
-                            <li>Threat: {player.threat}</li>
-                            <li>Influence: {player.influence}</li>
+                        <div className="row">
+                            <div className="col-6">
+                                <div className="ps-3 wd-stats-box">Stats</div>
+                                <ul className="list-group override-no-borders">
+                                    <li className="list-group-item override-search-light-grey">
+                                        <div className="row">
+                                            <div className="col-3">
+                                                Position: {player.position}
+                                            </div>
+                                            <div className="col-9">
+                                                {player.minutes}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className="list-group-item override-search-light-grey">
+                                        <div className="row">
+                                            <div className="col-3">
+                                                Minutes:
+                                            </div>
+                                            <div className="col-9">
+                                                {player.minutes}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className="list-group-item override-search-light-grey">Goals: {player.goals_scored}</li>
+                                    <li className="list-group-item override-search-light-grey">Assists: {player.assits}</li>
+                                    <li className="list-group-item override-search-light-grey">Yellow cards: {player.yellow_cards}</li>
+                                    <li className="list-group-item override-search-light-grey">Red Cards: {player.red_cards}</li>
+                                    <li className="list-group-item override-search-light-grey">Threat: {player.threat}</li>
+                                    <li className="list-group-item override-search-light-grey">Influence: {player.influence}</li>
 
-                        </ul>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
                     </div>
                     <div className="col-6">
                         <div className="mb-5">
@@ -110,27 +154,27 @@ const SearchPersonComponent = () => {
                             </div>
                         </div>
 
-                        <h3 className="mt-5">
-                            Comments:
-                        </h3>
+                        <div className="mt-5 ps-3 wd-comment-format text-white fw-bolder wd-font-comment-size">
+                            Comments
+                        </div>
 
                         {load &&
                         <h3> loading </h3>
                         }
                         {comments && (
 
-                            <div className="wd-comment-no-border-box border-0 overflow-auto list-group">
+                            <ul className="wd-comment-no-border-box override-border-radius overflow-auto list-group override-no-borders ">
 
                                 { comments.filter(e => e.pid === pid).length > 0 ?
                                     comments.filter(e => e.pid === pid).map(com=> <CommentComponent
                                         key={com._id}
                                         c={com}/>)
                                     :
-                                    <li className="list-group-item text-muted">
+                                    <li className="list-group-item text-black override-border-radius override-no-borders override-search-light-grey">
                                         No comments to display... Be the first to leave a comment!
                                     </li>
                                 }
-                            </div>
+                            </ul>
 
                         )}
 

@@ -32,6 +32,11 @@ function EditProfileComponent() {
     const updateNameHandler = (target) => {
         setProfile({...profile, firstName: target})
     }
+
+    const updatePasswordHandler = (target) => {
+        setProfile({...profile, password: target})
+    }
+
     const updateLastNameHandler = (target) => {
         setProfile({...profile, lastName: target})
     }
@@ -102,19 +107,19 @@ function EditProfileComponent() {
                     </div>
 
                     <div className="mb-3 position-relative">
-                        <label htmlFor="name" className="wd-label-nudge text-muted fs-6"> Name</label>
+                        <label htmlFor="first-name" className="wd-label-nudge text-muted fs-6"> First Name</label>
                         <input className="form-control pt-4 w-100"
                                value={profile.firstName}
-                               id="name"
+                               id="first-name"
                                onChange={(event) => updateNameHandler(event.target.value)}>
                         </input>
                     </div>
 
                     <div className="mb-3 position-relative">
-                        <label htmlFor="name" className="wd-label-nudge text-muted fs-6"> Name</label>
+                        <label htmlFor="last-name" className="wd-label-nudge text-muted fs-6"> Last Name</label>
                         <input className="form-control pt-4 w-100"
                                value={profile.lastName}
-                               id="name"
+                               id="last-name"
                                onChange={(event) => updateLastNameHandler(event.target.value)}>
                         </input>
                     </div>
@@ -137,6 +142,16 @@ function EditProfileComponent() {
                         </div>
                         <input className="form-control pt-4" value={profile.username}
                                onChange = {(event) => UpdateUsernameHandler(event.target.value)}></input>
+
+                    </div>
+
+
+                    <div className="position-relative mt-3">
+                        <div className=" wd-tuit-grey wd-label-nudge">
+                            Password
+                        </div>
+                        <input className="form-control pt-4" value={profile.password}
+                               onChange = {(event) => updatePasswordHandler(event.target.value)}></input>
 
                     </div>
 

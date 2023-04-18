@@ -170,8 +170,12 @@
 
 
 .wd-comment-no-border-box {
-    border-radius: 10px;
-    border-style: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #E1E8ED;
+    border-color: black;
     height: 300px;
 
 }
@@ -233,4 +237,17 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     padding: 5px;
+}
+
+.wd-comment-format {
+    background-color: rgb(233,0,82);
+    color: white;
+    height: 40px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px;
+}
+
+.wd-font-comment-size {
+    font-size: 20px;
 }

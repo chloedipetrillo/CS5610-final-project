@@ -52,19 +52,19 @@ const CommentComponent = (
 
 
     return (
-        <li className="list-group-item pt-2">
+        <li className="list-group-item pt-2 override-search-light-grey override-border-radius">
             <div className="row">
                 <div className="col-9">
                     <div>
                         {c.user ?
-                                <Link to={`../../profile/${c.user}`}>
+                                <Link className="text-decoration-none fw-bold text-black" to={`../../profile/${c.user}`}>
                                     {userComment + ": "}
                                 </Link>
                                 : 'Anon: '
                         }
 
                     </div>
-                    <span className="text-muted" > { c.comment}</span>
+                    <span className="text-black" > { c.comment}</span>
                 </div>
                 <div className="text-muted col-3">
                     {handleDate()}

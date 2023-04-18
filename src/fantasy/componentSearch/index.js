@@ -76,12 +76,12 @@ const SearchComponent = (
 
 
             <ul className="list-group mt-2">
-                <li className="list-group-item fw-bolder fs-4">Search Results</li>
+                <li className="list-group-item fw-bolder fs-4 override-blue-dark-my-team text-white">Search Results</li>
                 { people.length > 0 ?
                     people.map(person => <SearchItem
                         key={person._id}
                         person={person}/>) :
-                    <li className="list-group-item">
+                    <li className="list-group-item override-search-light-grey">
                         No results to display...
                     </li>
                 }
