@@ -31,7 +31,7 @@ const userSlice = createSlice({
         },
         [profileThunk.pending]: (state, { payload }) => {
             state.load = true;
-            state.currentUser = {};
+            state.currentUser = null;
         },
 
         [registerThunk.fulfilled]: (state, { payload }) => {

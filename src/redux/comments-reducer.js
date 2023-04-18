@@ -1,3 +1,6 @@
+import {createPostThunk} from "../services/wall/wall-thunks";
+import {createChatThunk} from "../services/comments/comment-thunks";
+
 const { createSlice } = require("@reduxjs/toolkit");
 const {
    findCommentsThunk,
@@ -30,6 +33,11 @@ const commentsSlice = createSlice({
                 state.loading = false
                 state.error = action.error
             },
+        [createChatThunk.fulfilled]:
+            (state, {payload}) => {
+                state.loading = false;
+                state.comments.push(payload);
+            }
     },
 });
 

@@ -180,7 +180,7 @@ function UserComponent() {
                                            onChange={(event) => searchValue(event.target.value)}/>
                                 </form>
 
-                                {currentUser.length > 0 ?
+                                {currentUser !== null ?
                                     <button className="btn override-button"
                                             onClick={()=>handleComment()}>Comment</button>
 

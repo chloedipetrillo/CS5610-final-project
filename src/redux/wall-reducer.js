@@ -34,7 +34,7 @@ const commentsSlice = createSlice({
             (state, {payload}) => {
             state.loading = false;
             state.wall.push(payload);
-            }
+        }
     },
 });
 
