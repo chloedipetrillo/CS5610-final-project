@@ -23,3 +23,9 @@ export const getFollowing = async (follower) =>{
     const response = await api.get(`${FOLLOW_URL}/following/${follower}`)
     return response.data
 };
+
+
+export const unfollowPerson = async (followed) =>{
+    const response = await api.delete(`${FOLLOW_URL}/${followed}`)
+    return response.data
+};

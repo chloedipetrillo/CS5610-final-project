@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {followUser} from "../../services/follows/follows-service";
 import {profileThunk} from "../../services/users/users-thunks";
 import FollowComponent from "../follow/follow-component";
+import {followUserThunk, unfollowUserThunk} from "../../services/follows/follows-thunk";
 
 
 function UserComponent() {
@@ -87,9 +88,25 @@ function UserComponent() {
     }
 
     const follow = async () =>{
-        const response = await followUser(uid)
-        console.log(response)
+        const action = await dispatch(followUserThunk(uid));
+        console.log(action)
+        console.log(action.error)
+        if (action.error){
+            alert("You are already following " + usersPage.firstName + "!")
+        }
+        alert("You are now following " + usersPage.firstName + "!")
     }
+
+    const unfollow = async () => {
+        const action = await dispatch(unfollowUserThunk(uid))
+        console.log(action)
+        console.log(action.error)
+        if (action.error){
+            alert("You are not following " + usersPage.firstName +"!")
+        }
+        alert("You have unfollowed " + usersPage.firstName + ".")
+    }
+
 
 
     return (
@@ -102,6 +119,8 @@ function UserComponent() {
                         {profile && (
                             <div className="pe-3">
                                 <button className="btn rounded-pill override-log" onClick={()=>follow()}> Follow </button>
+                               <span className="ps-2"><button className="btn rounded-pill override-log"
+                               onClick={()=>unfollow()}> Unfollow </button> </span>
                             </div>
                         )}
 

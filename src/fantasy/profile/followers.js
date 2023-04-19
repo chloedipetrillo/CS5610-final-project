@@ -62,7 +62,22 @@ function ProfileFollowsComponent({uid}) {
                     {following.map((followed) =>
                         (
                             <Link to={`/profile/${followed.followed._id}`} className="list-group-item override-blue-light-my-team" key={followed._id}>
-                                {followed.followed.firstName}
+                                <div className="d-flex">
+                                    <img className="wd-logo-pic-small"
+                                       src={followed.followed.image}/>
+
+                                    <div className="ps-3">
+                                        <div>
+                                            {followed.followed.firstName}
+                                        </div>
+                                        <div className="fs-6 fw-light">
+                                            {followed.followed.username}
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
                             </Link>
                         ) )}</>)}
                 {!hideAll && showFollowers && (<>
@@ -72,7 +87,21 @@ function ProfileFollowsComponent({uid}) {
                     {followers.map((follower) =>
                         (
                             <Link to={`/profile/${follower.follower._id}`} className="list-group-item override-blue-light-my-team" key={follower._id}>
-                                {follower.follower.username}
+                                <div className="d-flex mb-2">
+                                    <img className="wd-logo-pic-small mt-2 rounded"
+                                         src={follower.follower.image}/>
+
+                                    <div className="ps-3">
+                                        <div>
+                                            {follower.follower.firstName}
+                                        </div>
+                                        <div className="fs-6 fw-light">
+                                            {follower.follower.username}
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </Link>
                         ) )}
 

@@ -115,7 +115,7 @@ const ProfileComponent = () => {
                                 <ProfileFollowsComponent uid={profile._id}/>
 
                                 <ul className="list-group override-no-borders mt-3 mb-3">
-                                    <li className="list-group-item override-blue-dark-my-team fw-bold ">
+                                    <li className="list-group-item override-purple-dark-my-wall fw-bold ">
                                    <span className="text-white">
                                        My Team
                                    </span>
@@ -253,21 +253,6 @@ const ProfileComponent = () => {
                                     </div>
                                 </li>
                             </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="col-12 col-md-5 pt-3">
-
-                            </div>
-
-                            <div className="col-12 col-md-7 pt-3">
-                                {/*<li className="list-group-item override-purple-dark-my-wall fw-bolder">*/}
-
-
-
-
-                            </div>
-
                         </div>
                     </>
                 ) :
