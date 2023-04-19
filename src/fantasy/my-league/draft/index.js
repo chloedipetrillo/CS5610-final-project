@@ -84,14 +84,14 @@ const DraftComponent = (
                         </div>
                     </div>
                     <ul className="list-group mt-2">
-                        <li className="list-group-item">Search Results</li>
+                        <li className="list-group-item override-pink-dark-information text-white fw-bolder">Search Results</li>
                         { people.length > 0 ?
                             people.map(person => <DraftPerson team={team} onDraftBoolHandler={onDraftBoolHandler}
 
                                                               key={person._id}
                                                               person={person}/>)
                             :
-                            <li className="list-group-item">
+                            <li className="list-group-item override-search-light-grey">
                                 No results to display...
                             </li>
                         }

@@ -76,7 +76,7 @@ const ProfileComponent = () => {
 
                     <>
                         <div className="row">
-                            <div className="col-12 col-md-5 pt-3 ">
+                            <div className="col-12 col-md-5 ">
                                 <div className="wd-profile fw-bold">
                                     My Profile
                                 </div>
@@ -111,9 +111,39 @@ const ProfileComponent = () => {
 
                                 </div>
 
+                                <ul className="list-group override-no-borders mt-3 mb-3">
+                                    <li className="list-group-item override-blue-dark-my-team fw-bold ">
+                                   <span className="text-white">
+                                       My Team
+                                   </span>
+                                    </li>
+                                    <li className="list-group-item override-blue-light-my-team">
+                                        <div className="row">
+                                            <div className = "col-4">
+                                                {/*<img className="wd-team-icon" src = {team.image}/>*/}
+                                                IMAGE
+                                            </div>
+
+                                            <div className="col-8">
+                                                <div className="fw-bolder">
+                                                    Name: <span className="fw-lighter wd-team-details-font">team name <br></br> </span>
+                                                    Team: <span className="fw-lighter wd-team-details-font"> team <br></br></span>
+                                                    Position: <span className="fw-lighter wd-team-details-font"> position <br></br></span>
+                                                    {/*Name: <span className="fw-lighter wd-team-details-font">{team.name} <br></br> </span>*/}
+                                                    {/*Team: <span className="fw-lighter wd-team-details-font">{team.team} <br></br></span>*/}
+                                                    {/*Position: <span className="fw-lighter wd-team-details-font">{team.position} <br></br></span>*/}
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </li>
+
+                                </ul>
+
                             </div>
 
-                            <div className="col-12 col-md-7 pt-3">
+                            <div className="col-12 col-md-7">
                                 <ul className="list-group override-no-borders">
 
                                     {showInfo ?
@@ -185,45 +215,7 @@ const ProfileComponent = () => {
                                     }
 
                                 </ul>
-                            </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="col-12 col-md-5 pt-3">
-                                <ul className="list-group override-no-borders">
-                                    <li className="list-group-item override-blue-dark-my-team fw-bold ">
-                                   <span className="text-white">
-                                       My Team
-                                   </span>
-                                    </li>
-                                    <li className="list-group-item override-blue-light-my-team">
-                                        <div className="row">
-                                            <div className = "col-4">
-                                                {/*<img className="wd-team-icon" src = {team.image}/>*/}
-                                                IMAGE
-                                            </div>
-
-                                            <div className="col-8">
-                                                <div className="fw-bolder">
-                                                    Name: <span className="fw-lighter wd-team-details-font">team name <br></br> </span>
-                                                    Team: <span className="fw-lighter wd-team-details-font"> team <br></br></span>
-                                                    Position: <span className="fw-lighter wd-team-details-font"> position <br></br></span>
-                                                    {/*Name: <span className="fw-lighter wd-team-details-font">{team.name} <br></br> </span>*/}
-                                                    {/*Team: <span className="fw-lighter wd-team-details-font">{team.team} <br></br></span>*/}
-                                                    {/*Position: <span className="fw-lighter wd-team-details-font">{team.position} <br></br></span>*/}
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                    </li>
-
-                                </ul>
-                            </div>
-
-                            <div className="col-12 col-md-7 pt-3">
-                                {/*<li className="list-group-item override-purple-dark-my-wall fw-bolder">*/}
-                                <div className="ps-3 wd-wall-format wd-font-white fw-bolder">
+                                <div className="ps-3 mt-3 wd-wall-format wd-font-white fw-bolder">
                                     My Wall
                                 </div>
                                 {/*</li>*/}
@@ -257,6 +249,17 @@ const ProfileComponent = () => {
                                                 onClick={()=>handleComment()}>Comment</button>
                                     </div>
                                 </li>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-12 col-md-5 pt-3">
+
+                            </div>
+
+                            <div className="col-12 col-md-7 pt-3">
+                                {/*<li className="list-group-item override-purple-dark-my-wall fw-bolder">*/}
+
 
 
 

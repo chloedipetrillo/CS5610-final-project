@@ -29,7 +29,7 @@ const DraftPerson = (
 
     return(
         <>
-            <li className="list-group-item" >
+            <li className="list-group-item override-search-light-grey" >
                 <div className="row">
                     <div className="col-3"onClick={() => showHideHandler()} >
                         <img className="rounded-circle wd-small-team-icon"

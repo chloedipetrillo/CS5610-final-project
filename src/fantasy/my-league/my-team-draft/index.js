@@ -20,7 +20,7 @@ function TeamDraftComponent(
             </div>
             <div className="col-11">
                 <ul className="list-group">
-                    <li className="list-group-item">
+                    <li className="list-group-item override-pink-dark-information text-white fw-bolder">
                         <button className="float-end btn btn-dark rounded-pill"
                         onClick={()=>saveDraft()}> Save </button>
                         <div>Drafted Players</div>

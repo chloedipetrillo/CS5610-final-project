@@ -10,7 +10,7 @@ function TeamDraftPlayer(
     return (
         <>
             {person._id === undefined ? '' :
-                <li className="list-group-item" >
+                <li className="list-group-item override-search-light-grey" >
                     <div className="row">
                         <div className="col-3">
                             <img className="rounded-circle wd-small-team-icon"

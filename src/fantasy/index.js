@@ -23,7 +23,7 @@ function Fantasy() {
     return (
         <Provider store={store}>
             <LoadProfile>
-                <div className="mb-2"> <NavComponent/> </div>
+                <div className="mb-3"> <NavComponent/> </div>
                 <div className="container-fluid mb-5">
                     <Routes>
                         <Route path="/" index element ={<HomeComponent/>}/>
