@@ -52,7 +52,7 @@ const CommentComponent = (
 
 
     return (
-        <li className="list-group-item pt-2 override-search-light-grey override-border-radius">
+        <li className="list-group-item pt-2 override-search-light-grey override-border-radius mb-2">
             <div className="row">
                 <div className="col-9">
                     <div>
@@ -60,7 +60,7 @@ const CommentComponent = (
                                 <Link className="text-decoration-none fw-bold text-black" to={`../../profile/${c.user}`}>
                                     {userComment + ": "}
                                 </Link>
-                                : 'Anon: '
+                                : <span className="fw-bold"> Anon:  </span>
                         }
 
                     </div>

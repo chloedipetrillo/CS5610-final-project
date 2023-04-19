@@ -38,7 +38,7 @@ function ManageUsersComponent() {
         <div className="row mt-2">
             <div className="col-11">
                 <div className="position-relative pe-2">
-                    <input id="search" className="ps-5 form-control rounded-pill override-fc border-1"
+                    <input id="search" className="ps-5 form-control rounded-pill override-fc border-1 pe-5"
                            onChange={(event) => searchValue(event.target.value)}
                            placeholder="Search users..."/>
                     <span className="p-search-icon">
@@ -47,7 +47,7 @@ function ManageUsersComponent() {
                 </div>
             </div>
             <div className="col-1">
-                <button onClick={() => searchHandler()} className="btn override-button float-end ">Go</button>
+                <button onClick={() => searchHandler()} className="btn override-button float-end ps-2">Go</button>
             </div>
         </div>
 

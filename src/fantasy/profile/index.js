@@ -13,7 +13,7 @@ const ProfileComponent = () => {
 
     const { currentUser, load} = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
-    const [showInfo, setInfo] = useState([]);
+    const [showInfo, setInfo] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 

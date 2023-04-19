@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router";
 
 
 
@@ -9,6 +11,10 @@ const IndividualComponent = (
     }
 ) => {
 
+    const [showInfo, setInfo] = useState(false);
+    const handleShow = () => {
+        setInfo(!showInfo)
+    }
     const getAccountType =()=>{
         if (person.userType === "manager"){
             return "Manager";
@@ -23,31 +29,53 @@ const IndividualComponent = (
 
     return (
 
-        <li className="list-group-item">
-            <div className="d-flex">
+        <li className="list-group-item" onClick={()=>handleShow()}>
+            <div className="d-flex justify-content-start">
                 <div className="">
                     <img src={person.image} className="rounded-circle wd-logo-pic-small"/>
                 </div>
-                <Link to={`../profile/${person._id}`} className="ps-3 text-decoration-none">
-                    <div>
-                        {person.firstName} {person.lastName}
-                    </div>
-                    <div>
-                        {person.email}
-                    </div>
-                    <div>
-                        {person.phone}
-                    </div>
-                    <div>
-                        {person.username}
-                    </div>
-                    <div>
-                        {person.password}
-                    </div>
-                    <div>
-                        {getAccountType()}
-                    </div>
-                </Link>
+                { showInfo ?
+                    <Link to={`../profile/${person._id}`} className="ps-5 text-decoration-none text-black">
+                        <div className="fw-bold">
+                            {person.firstName} {person.lastName}
+                        </div>
+                        <div>
+                            Username: {person.username}
+                        </div>
+                        <div>
+                            E-mail: {person.email}
+                        </div>
+                        <div>
+                            Phone: {person.phone}
+                        </div>
+
+                        <div>
+                            Password: {person.password}
+                        </div>
+                        <div>
+                            Account Type: {getAccountType()}
+                        </div>
+                    </Link>
+                    :
+
+                    <Link to={`../profile/${person._id}`} className="ps-5 text-decoration-none text-black">
+                        <div className="fw-bold">
+                            {person.firstName} {person.lastName}
+                        </div>
+                        <div>
+                            Username: {person.username}
+                        </div>
+                    </Link>
+                }
+
+
+
+
+
+
+
+
+
             </div>
 
 

@@ -7,6 +7,9 @@ import {createChatThunk, findAllCommentsThunk, findCommentsThunk} from "../../se
 
 import CommentComponent from "./comments";
 import {profileThunk} from "../../services/users/users-thunks";
+import ForwardComponent from "./forward-component";
+import DefenderComponent from "./defender-component";
+import GoalkeeperComponent from "./goalkeeper-component";
 
 const USERS_API_URL = "http://localhost:4000/api/search";
 const CHAT_API_URL = "http://localhost:4000/api/chat";
@@ -86,10 +89,10 @@ const SearchPersonComponent = () => {
         <div>
             <div >
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-lg-6">
                         <img src={player.photo}/>
                         <div className="row">
-                            <div className="col-5">
+                            <div className="col-7">
                                 <div className="mt-2 mb-2 ps-4 wd-player-name-box">{player.first_name} {player.second_name}</div>
                             </div>
 
@@ -107,35 +110,94 @@ const SearchPersonComponent = () => {
                             ''}
 
                         <div className="row">
-                            <div className="col-6">
+                            <div className="col-9">
                                 <div className="ps-3 wd-stats-box">Stats</div>
                                 <ul className="list-group override-no-borders">
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
-                                            <div className="col-3">
-                                                Position: {player.position}
+                                            <div className="col-6">
+                                                Position:
                                             </div>
-                                            <div className="col-9">
-                                                {player.minutes}
+                                            <div className="col-6">
+                                                {player.position}
                                             </div>
                                         </div>
                                     </li>
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
-                                            <div className="col-3">
+                                            <div className="col-6">
                                                 Minutes:
                                             </div>
-                                            <div className="col-9">
+                                            <div className="col-6">
                                                 {player.minutes}
                                             </div>
                                         </div>
                                     </li>
-                                    <li className="list-group-item override-search-light-grey">Goals: {player.goals_scored}</li>
-                                    <li className="list-group-item override-search-light-grey">Assists: {player.assits}</li>
-                                    <li className="list-group-item override-search-light-grey">Yellow cards: {player.yellow_cards}</li>
-                                    <li className="list-group-item override-search-light-grey">Red Cards: {player.red_cards}</li>
-                                    <li className="list-group-item override-search-light-grey">Threat: {player.threat}</li>
-                                    <li className="list-group-item override-search-light-grey">Influence: {player.influence}</li>
+
+                                    {player.position === "Midfielder" ||
+                                        player.position === "Forward" && (
+                                        <ForwardComponent player={player}/>
+                                    )}
+
+                                    {player.position === "Defender" && (
+                                            <DefenderComponent player={player}/>
+                                        )}
+
+                                    {player.position === "Goalkeeper" && (
+                                        <GoalkeeperComponent player={player}/>
+                                    )}
+
+                                    <li className="list-group-item override-search-light-grey">
+                                        <div className="row">
+                                            <div className="col-6">
+                                                Yellow Cards:
+                                            </div>
+                                            <div className="col-6">
+                                                {player.yellow_cards}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className="list-group-item override-search-light-grey">
+                                        <div className="row">
+                                            <div className="col-6">
+                                                Red Cards:
+                                            </div>
+                                            <div className="col-6">
+                                                {player.red_cards}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className="list-group-item override-search-light-grey">
+                                        <div className="row">
+                                            <div className="col-6">
+                                                Threat:
+                                            </div>
+                                            <div className="col-6">
+                                                {player.threat}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className="list-group-item override-search-light-grey">
+                                        <div className="row">
+                                            <div className="col-6">
+                                                Influence:
+                                            </div>
+                                            <div className="col-6">
+                                                {player.influence}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className="list-group-item override-search-light-grey">
+                                        <div className="row">
+                                            <div className="col-6">
+                                                Chance of playing next round:
+                                            </div>
+                                            <div className="col-6">
+                                                {player.chance_playing_next_round}
+                                            </div>
+                                        </div>
+                                    </li>
+
 
                                 </ul>
                             </div>
@@ -144,7 +206,7 @@ const SearchPersonComponent = () => {
 
 
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-lg-6 mt-2">
                         <div className="mb-5">
                             <h3 >
                                 Top Managers with {player.first_name} on their team:

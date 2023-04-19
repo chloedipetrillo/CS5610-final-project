@@ -67,7 +67,7 @@ const DraftComponent = (
     return (
         <div >
             <div className="row">
-                <div className="col-8">
+                <div className="col-12 col-md-8">
                     <div className="row">
                         <div className="col-11">
                             <div className="position-relative pe-2">
@@ -79,8 +79,8 @@ const DraftComponent = (
                         </span>
                             </div>
                         </div>
-                        <div className="col-1">
-                            <button onClick={() => searchHandler()} className="btn override-button float-end ">Go</button>
+                        <div className="col-1 ps-2">
+                            <button onClick={() => searchHandler()} className="btn override-button float-end">Go</button>
                         </div>
                     </div>
                     <ul className="list-group mt-2">
@@ -97,7 +97,7 @@ const DraftComponent = (
                         }
                     </ul>
                 </div>
-                <div className="col-4">
+                <div className="col-12 col-md-4">
                     <TeamDraftComponent draftList={team}/>
                 </div>
             </div>
