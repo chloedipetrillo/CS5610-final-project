@@ -33,7 +33,7 @@ const CommissionerComponent = (
                     <div className="col-12 col-md-6">
 
 
-
+                        Test page for commissioner
                         ALL OF THE LEAGUE COMMISSIONER STUFF WILL GO HERE
 
 
