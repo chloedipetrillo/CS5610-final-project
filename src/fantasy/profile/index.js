@@ -9,6 +9,8 @@ import {createPostThunk, findAllPostsThunk} from "../../services/wall/wall-thunk
 
 import WallPostComponent from "./wall-posts";
 import {createChatThunk} from "../../services/comments/comment-thunks";
+import ProfileFollowsComponent from "./followers";
+
 const ProfileComponent = () => {
 
     const { currentUser, load} = useSelector((state) => state.users);
@@ -80,7 +82,6 @@ const ProfileComponent = () => {
                                 <div className="wd-profile fw-bold">
                                     My Profile
                                 </div>
-
                                 <div className="wd-profile-info-box mt-2 pb-3">
                                     <div className="row">
                                         <div className="col-4">
@@ -110,6 +111,8 @@ const ProfileComponent = () => {
 
 
                                 </div>
+
+                                <ProfileFollowsComponent uid={profile._id}/>
 
                                 <ul className="list-group override-no-borders mt-3 mb-3">
                                     <li className="list-group-item override-blue-dark-my-team fw-bold ">

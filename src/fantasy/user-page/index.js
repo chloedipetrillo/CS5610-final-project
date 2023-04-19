@@ -5,16 +5,20 @@ import {Link} from "react-router-dom";
 import WallPostComponent from "../profile/wall-posts";
 import {createPostThunk, findAllPostsThunk} from "../../services/wall/wall-thunks";
 import {useDispatch, useSelector} from "react-redux";
+import {followUser} from "../../services/follows/follows-service";
 import {profileThunk} from "../../services/users/users-thunks";
+import FollowComponent from "../follow/follow-component";
 
 
 function UserComponent() {
     let {uid} = useParams();
+
+
+
     const [usersPage, setUser] = useState([])
 
     const { currentUser } = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [toPost, setComment] = useState("")
@@ -25,19 +29,18 @@ function UserComponent() {
 
     }
 
-
-    // const getCurrentUser = async () =>{
-    //     const { payload } = await dispatch(profileThunk());
-    //     setProfile(payload);
-    // }
+    const getCurrentUser = async () =>{
+        const { payload } = await dispatch(profileThunk());
+        setProfile(payload);
+    }
 
     const {wall, loading} = useSelector(state => state.wall)
 
     useEffect( () => {
         getUser();
         dispatch(findAllPostsThunk());
-        // getCurrentUser();
-    }, []);
+        getCurrentUser();
+    }, [uid]);
 
     const getAccountType =()=>{
         if (usersPage.userType === "manager"){
@@ -50,13 +53,6 @@ function UserComponent() {
             return "Commissioner";
         }
     }
-
-    useEffect(() =>{
-        if(uid){
-            getUser()
-
-        }
-    });
 
     const searchValue = (val)=>{
         setComment(val)
@@ -86,14 +82,31 @@ function UserComponent() {
 
     }
 
+    const followHandler = () => {
+        alert("awww u want to follow me")
+    }
+
+    const follow = async () =>{
+        const response = await followUser(uid)
+        console.log(response)
+    }
+
+
     return (
         <div className="mb-5">
             <div className="row">
                 <div className="col-12 col-lg-5 pt-3 ">
-                    <div className="wd-profile fw-bold">
-                        {usersPage.firstName}'s Profile
-                    </div>
+                    <div className="wd-profile fw-bold d-flex justify-content-between">
+                        <span className="pe-2">Profile</span>
 
+                        {profile && (
+                            <div className="pe-3">
+                                <button className="btn rounded-pill override-log" onClick={()=>follow()}> Follow </button>
+                            </div>
+                        )}
+
+
+                    </div>
                     <div className="wd-profile-info-box mt-2 pb-3">
                         <div className="row">
                             <div className="col-4">
