@@ -5,7 +5,7 @@ function GoalkeeperComponent(player) {
         <>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Saves:
                     </div>
                     <div className="col-6">
@@ -15,7 +15,7 @@ function GoalkeeperComponent(player) {
             </li>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Penalties Saved:
                     </div>
                     <div className="col-6">
@@ -25,7 +25,7 @@ function GoalkeeperComponent(player) {
             </li>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Clean Sheets:
                     </div>
                     <div className="col-6">
@@ -35,7 +35,7 @@ function GoalkeeperComponent(player) {
             </li>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Own Goals:
                     </div>
                     <div className="col-6">
@@ -45,7 +45,7 @@ function GoalkeeperComponent(player) {
             </li>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Goals Conceded:
                     </div>
                     <div className="col-6">

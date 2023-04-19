@@ -18,6 +18,7 @@ const WallPostComponent = (
     const dispatch = useDispatch();
     const [userComment, setCommented] = useState([])
 
+
     const getCommenter = async () =>{
         const writer = await findUserById(post.cid);
         setCommented(writer)

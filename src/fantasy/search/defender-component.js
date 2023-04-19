@@ -8,7 +8,7 @@ const DefenderComponent = (
         <>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Goals:
                     </div>
                     <div className="col-6">
@@ -18,7 +18,7 @@ const DefenderComponent = (
             </li>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Assists:
                     </div>
                     <div className="col-6">
@@ -28,7 +28,7 @@ const DefenderComponent = (
             </li>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Clean Sheets:
                     </div>
                     <div className="col-6">
@@ -38,7 +38,7 @@ const DefenderComponent = (
             </li>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Own Goals:
                     </div>
                     <div className="col-6">
@@ -48,7 +48,7 @@ const DefenderComponent = (
             </li>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Goals Conceded:
                     </div>
                     <div className="col-6">

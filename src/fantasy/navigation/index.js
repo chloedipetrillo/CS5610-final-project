@@ -8,11 +8,7 @@ import {useNavigate} from "react-router";
 
 
 
-const NavComponent = (
-
-
-
-) => {
+const NavComponent = () => {
 
 
     const dispatch = useDispatch();
@@ -108,15 +104,6 @@ const NavComponent = (
 
                                         </li>}
 
-                                    <li className="nav-item">
-                                        <Link to="../profile" className=
-                                            {active === "profile" ?
-                                                "nav-link text-black active override-active-nav fw-bold"
-                                                :
-                                                "nav-link text-white fw-bold"
-                                            }
-                                        ><i className="bi bi-person-fill"></i></Link>
-                                    </li>
                                     {
                                         loggedIn && currentUser.userType === "admin" ?
                                             <li className="nav-item">
@@ -130,6 +117,30 @@ const NavComponent = (
                                             </li>
                                             : ''
                                     }
+                                    {
+                                        loggedIn && currentUser.userType === "commissioner" ?
+                                            <li className="nav-item">
+                                                <Link to="../league-commissioner" className=
+                                                    {active === "league-commissioner" ?
+                                                        "nav-link text-black active override-active-nav fw-bold"
+                                                        :
+                                                        "nav-link text-white fw-bold"
+                                                    }
+                                                >Commissioner</Link>
+                                            </li>
+                                            : ''
+                                    }
+
+                                    <li className="nav-item">
+                                        <Link to="../profile" className=
+                                            {active === "profile" ?
+                                                "nav-link text-black active override-active-nav fw-bold"
+                                                :
+                                                "nav-link text-white fw-bold"
+                                            }
+                                        ><i className="bi bi-person-fill"></i></Link>
+                                    </li>
+
                                     {loggedIn ?
                                         <li className="nav-item">
                                             <div onClick={() => handleLogout()} className="nav-link text-white fw-bold">
@@ -206,6 +217,42 @@ const NavComponent = (
 
                             </li>
 
+                            {loggedIn && currentUser.userType === "admin" && (
+                                <li className={active === "admin-page" ?
+                                    "list-group-item override-lgi-nav-selected fw-bold"
+                                    :
+                                    "list-group-item override-lgi-nav"
+                                }>
+
+                                    <Link to="../login-signup" className={
+                                        active === "admin-page" ?
+                                            "text-decoration-none fw-bold text-black"
+                                            :
+                                            "text-decoration-none fw-bold text-white"
+                                    } >Admin</Link>
+
+
+                                </li>)
+                            }
+
+                            {loggedIn && currentUser.userType === "commissioner" && (
+                                <li className={active === "league-commissioner" ?
+                                    "list-group-item override-lgi-nav-selected fw-bold"
+                                    :
+                                    "list-group-item override-lgi-nav"
+                                }>
+
+                                    <Link to="../league-commissioner" className={
+                                        active === "league-commissioner" ?
+                                            "text-decoration-none fw-bold text-black"
+                                            :
+                                            "text-decoration-none fw-bold text-white"
+                                    } >Commissioner</Link>
+
+
+                                </li>)
+                            }
+
                             <Link to="../profile" className={active === "profile" ?
                                 "list-group-item override-lgi-nav-selected fw-bold"
                                 :
@@ -218,6 +265,8 @@ const NavComponent = (
                                         "text-decoration-none fw-bold text-white"
                                 }><i className="bi bi-person-fill"></i></Link>
                             </Link>
+
+
 
                             {loggedIn ?
                                 <li className="list-group-item override-lgi-nav">

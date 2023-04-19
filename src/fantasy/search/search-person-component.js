@@ -112,10 +112,10 @@ const SearchPersonComponent = () => {
                         <div className="row">
                             <div className="col-9">
                                 <div className="ps-3 wd-stats-box">Stats</div>
-                                <ul className="list-group override-no-borders">
+                                <ul className="list-group override-no-borders override-border-radius">
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
-                                            <div className="col-6">
+                                            <div className="col-6 fw-bold">
                                                 Position:
                                             </div>
                                             <div className="col-6">
@@ -125,7 +125,7 @@ const SearchPersonComponent = () => {
                                     </li>
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
-                                            <div className="col-6">
+                                            <div className="col-6 fw-bold">
                                                 Minutes:
                                             </div>
                                             <div className="col-6">
@@ -149,7 +149,7 @@ const SearchPersonComponent = () => {
 
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
-                                            <div className="col-6">
+                                            <div className="col-6 fw-bold">
                                                 Yellow Cards:
                                             </div>
                                             <div className="col-6">
@@ -159,7 +159,7 @@ const SearchPersonComponent = () => {
                                     </li>
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
-                                            <div className="col-6">
+                                            <div className="col-6 fw-bold">
                                                 Red Cards:
                                             </div>
                                             <div className="col-6">
@@ -169,7 +169,7 @@ const SearchPersonComponent = () => {
                                     </li>
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
-                                            <div className="col-6">
+                                            <div className="col-6 fw-bold">
                                                 Threat:
                                             </div>
                                             <div className="col-6">
@@ -179,7 +179,7 @@ const SearchPersonComponent = () => {
                                     </li>
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
-                                            <div className="col-6">
+                                            <div className="col-6 fw-bold">
                                                 Influence:
                                             </div>
                                             <div className="col-6">
@@ -189,7 +189,7 @@ const SearchPersonComponent = () => {
                                     </li>
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
-                                            <div className="col-6">
+                                            <div className="col-6 fw-bold">
                                                 Chance of playing next round:
                                             </div>
                                             <div className="col-6">

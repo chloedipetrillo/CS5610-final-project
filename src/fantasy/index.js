@@ -16,6 +16,7 @@ import LoadProfile from "./load-profile-component";
 import UserComponent from "./user-page";
 import EditProfileComponent from "./edit-profile";
 import AdminComponent from "./admin-page";
+import CommissionerComponent from "./commissioner/commissioner-component";
 
 
 
@@ -38,6 +39,7 @@ function Fantasy() {
                         <Route path="/profile/:uid" element={<UserComponent/>}/>
                         <Route path="/edit-profile/" element={<EditProfileComponent/>}/>
                         <Route path="/admin-page/" element={<AdminComponent/>}/>
+                        <Route path="/league-commissioner/" element={<CommissionerComponent/>}/>
 
                     </Routes>
                 </div>

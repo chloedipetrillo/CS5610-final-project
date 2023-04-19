@@ -55,7 +55,7 @@ function ManageUsersComponent() {
 
 
         <ul className="list-group mt-2">
-            <li className="list-group-item">User Results</li>
+            <li className="list-group-item override-pink-dark-information text-white fw-bold wd-font-size-larger">User Results</li>
             {
                 people.map(person => <IndividualComponent
                     key={person._id}

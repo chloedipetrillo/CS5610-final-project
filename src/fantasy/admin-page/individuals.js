@@ -29,7 +29,7 @@ const IndividualComponent = (
 
     return (
 
-        <li className="list-group-item" onClick={()=>handleShow()}>
+        <li className="list-group-item override-search-light-grey" onClick={()=>handleShow()}>
             <div className="d-flex justify-content-start">
                 <div className="">
                     <img src={person.image} className="rounded-circle wd-logo-pic-small"/>
@@ -40,20 +40,45 @@ const IndividualComponent = (
                             {person.firstName} {person.lastName}
                         </div>
                         <div>
-                            Username: {person.username}
+                                Username:
+                            <span className="fw-light ps-1">
+                                {person.username}
+                            </span>
+
                         </div>
                         <div>
-                            E-mail: {person.email}
+                            E-mail:
+                            <span className="fw-light ps-1">
+                                {person.email}
+                            </span>
+
                         </div>
                         <div>
-                            Phone: {person.phone}
+                            Phone:
+
+                            <span className="fw-light ps-1">
+                                {person.phone}
+                            </span>
+
+
                         </div>
 
                         <div>
-                            Password: {person.password}
+                            Password:
+
+                            <span className="fw-light ps-1">
+                                {person.password}
+                            </span>
+
+
                         </div>
                         <div>
-                            Account Type: {getAccountType()}
+                            Account Type:
+
+                            <span className="fw-light ps-1">
+                                {getAccountType()}
+                            </span>
+
                         </div>
                     </Link>
                     :

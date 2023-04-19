@@ -8,7 +8,7 @@ const ForwardComponent = (
         <>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Goals:
                     </div>
                     <div className="col-6">
@@ -18,7 +18,7 @@ const ForwardComponent = (
             </li>
             <li className="list-group-item override-search-light-grey">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-6 fw-bold">
                         Assists:
                     </div>
                     <div className="col-6">
