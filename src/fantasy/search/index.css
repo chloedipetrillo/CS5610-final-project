@@ -27,6 +27,7 @@
     background-color: rgb(56,0,60);
     color: white;
     border-radius: 10px;
+
 }
 
 .wd-stats-box {
@@ -34,11 +35,7 @@
     background-color: rgb(0,255,133);
     color: black;
     font-weight: bolder;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
 
-}
 
-.wd-font-size-larger {
-    font-size: 18px;
 }

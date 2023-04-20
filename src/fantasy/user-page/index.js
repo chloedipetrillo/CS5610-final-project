@@ -5,16 +5,21 @@ import {Link} from "react-router-dom";
 import WallPostComponent from "../profile/wall-posts";
 import {createPostThunk, findAllPostsThunk} from "../../services/wall/wall-thunks";
 import {useDispatch, useSelector} from "react-redux";
+import {followUser} from "../../services/follows/follows-service";
 import {profileThunk} from "../../services/users/users-thunks";
+import FollowComponent from "../follow/follow-component";
+import {followUserThunk, unfollowUserThunk} from "../../services/follows/follows-thunk";
 
 
 function UserComponent() {
     let {uid} = useParams();
+
+
+
     const [usersPage, setUser] = useState([])
 
     const { currentUser } = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [toPost, setComment] = useState("")
@@ -24,20 +29,29 @@ function UserComponent() {
         setUser(user)
 
     }
+    const checkUsers = async () => {
+        const user = await findUserById(uid);
+        setUser(user)
+        const { payload } = await dispatch(profileThunk());
+        setProfile(payload);
+        if (user._id === payload._id){
+            navigate("../profile")
+        }
+    }
 
-
-    // const getCurrentUser = async () =>{
-    //     const { payload } = await dispatch(profileThunk());
-    //     setProfile(payload);
-    // }
+    const getCurrentUser = async () =>{
+        const { payload } = await dispatch(profileThunk());
+        setProfile(payload);
+    }
 
     const {wall, loading} = useSelector(state => state.wall)
 
     useEffect( () => {
-        getUser();
+        // getUser();
         dispatch(findAllPostsThunk());
         // getCurrentUser();
-    }, []);
+        checkUsers();
+    }, [uid]);
 
     const getAccountType =()=>{
         if (usersPage.userType === "manager"){
@@ -51,17 +65,9 @@ function UserComponent() {
         }
     }
 
-    useEffect(() =>{
-        if(uid){
-            getUser()
-
-        }
-    });
-
     const searchValue = (val)=>{
         setComment(val)
-        console.log(currentUser)
-        console.log("hi")
+
     }
     //
     function clearInput() {
@@ -86,14 +92,53 @@ function UserComponent() {
 
     }
 
+    const followHandler = () => {
+        alert("awww u want to follow me")
+    }
+
+    const follow = async () =>{
+        const action = await dispatch(followUserThunk(uid));
+        console.log(action)
+        console.log(action.error)
+        if (action.error){
+            alert("You are already following " + usersPage.firstName + "!")
+        } else {
+            alert("You are now following " + usersPage.firstName + "!")
+        }
+
+    }
+
+    const unfollow = async () => {
+        const action = await dispatch(unfollowUserThunk(uid))
+        console.log(action)
+        console.log(action.error)
+        if (action.error){
+            alert("You are not following " + usersPage.firstName +"!")
+        } else {
+            alert("You have unfollowed " + usersPage.firstName + ".")
+        }
+
+    }
+
+
+
     return (
         <div className="mb-5">
             <div className="row">
                 <div className="col-12 col-lg-5 pt-3 ">
-                    <div className="wd-profile fw-bold">
-                        {usersPage.firstName}'s Profile
-                    </div>
+                    <div className="wd-profile fw-bold d-flex justify-content-between">
+                        <span className="pe-2">Profile</span>
 
+                        {profile && (
+                            <div className="pe-3">
+                                <button className="btn rounded-pill override-log" onClick={()=>follow()}> Follow </button>
+                               <span className="ps-2"><button className="btn rounded-pill override-log"
+                               onClick={()=>unfollow()}> Unfollow </button> </span>
+                            </div>
+                        )}
+
+
+                    </div>
                     <div className="wd-profile-info-box mt-2 pb-3">
                         <div className="row">
                             <div className="col-4">
