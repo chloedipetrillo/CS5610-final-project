@@ -1,4 +1,4 @@
-import {createTeamThunk} from "../services/my-team/my-team-thunks";
+import {createTeamThunk, findTeamThunk} from "../services/my-team/my-team-thunks";
 
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -17,7 +17,12 @@ const myTeamSlice = createSlice({
             (state, {payload}) => {
                 state.loading = false;
                 state.myTeam.push(payload);
-            }
+            },
+        [findTeamThunk.fulfilled]:
+            (state, { payload }) => {
+                state.loading = false
+                state.myTeam = payload
+            },
     },
 });
 

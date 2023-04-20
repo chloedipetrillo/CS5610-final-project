@@ -56,18 +56,21 @@ const SearchPersonComponent = () => {
         document.getElementById("Form").reset();
     }
     const handleComment = () => {
-        let userID = "";
-        if (profile){
-            userID = profile._id;
+        if (toComment){
+            let userID = "";
+            if (profile){
+                userID = profile._id;
+            }
+            let sending = {
+                "pid": player._id,
+                "comment" : toComment,
+                "user" : userID,
+                "date": (new Date()).getTime()
+            }
+            dispatch(createChatThunk(sending));
+            clearInput()
         }
-        let sending = {
-            "pid": player._id,
-            "comment" : toComment,
-            "user" : userID,
-            "date": (new Date()).getTime()
-        }
-        dispatch(createChatThunk(sending));
-        clearInput()
+
     }
 
 

@@ -75,13 +75,16 @@ function UserComponent() {
     }
 
     const handleComment = () => {
-        let sending = {
-            "uid" : usersPage._id,
-            "cid": profile._id,
-            "post" : toPost,
+        if (toPost){
+            let sending = {
+                "uid" : usersPage._id,
+                "cid": profile._id,
+                "post" : toPost,
+            }
+            dispatch(createPostThunk(sending));
+            clearInput()
         }
-        dispatch(createPostThunk(sending));
-        clearInput()
+
 
     }
 

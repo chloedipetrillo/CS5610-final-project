@@ -69,10 +69,7 @@ const TeamDraftComponent = (
         if (profile){
             userID = profile._id;
         }
-        let sending = {
-            "userId": userID,
-        }
-        dispatch(findTeamThunk(sending));
+        dispatch(findTeamThunk(userID));
     }
 
     console.log("current user is : " + profile)
