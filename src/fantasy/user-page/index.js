@@ -29,6 +29,15 @@ function UserComponent() {
         setUser(user)
 
     }
+    const checkUsers = async () => {
+        const user = await findUserById(uid);
+        setUser(user)
+        const { payload } = await dispatch(profileThunk());
+        setProfile(payload);
+        if (user._id === payload._id){
+            navigate("../profile")
+        }
+    }
 
     const getCurrentUser = async () =>{
         const { payload } = await dispatch(profileThunk());
@@ -38,9 +47,10 @@ function UserComponent() {
     const {wall, loading} = useSelector(state => state.wall)
 
     useEffect( () => {
-        getUser();
+        // getUser();
         dispatch(findAllPostsThunk());
-        getCurrentUser();
+        // getCurrentUser();
+        checkUsers();
     }, [uid]);
 
     const getAccountType =()=>{
@@ -57,8 +67,7 @@ function UserComponent() {
 
     const searchValue = (val)=>{
         setComment(val)
-        console.log(currentUser)
-        console.log("hi")
+
     }
     //
     function clearInput() {
