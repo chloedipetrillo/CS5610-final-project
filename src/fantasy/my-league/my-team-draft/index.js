@@ -3,7 +3,12 @@ import SearchItem from "../../componentSearch/search-item";
 import TeamDraftPlayer from "./my-team-draft";
 import {useDispatch, useSelector} from "react-redux";
 import {profileThunk} from "../../../services/users/users-thunks";
-import {createTeamThunk} from "../../../services/my-team/my-team-thunks";
+import {
+    createTeamThunk,
+    deleteTeamThunk,
+    findTeamThunk,
+    updateTeamThunk
+} from "../../../services/my-team/my-team-thunks";
 
 const TeamDraftComponent = (
     {
@@ -36,6 +41,40 @@ const TeamDraftComponent = (
         dispatch(createTeamThunk(sending));
     }
 
+    const deleteTeam = () => {
+        let userID = "";
+        if (profile){
+            userID = profile._id;
+        }
+        let sending = {
+            "userId": userID,
+        }
+        dispatch(deleteTeamThunk(sending));
+    }
+
+    const updateTeam = (playerCodes) => {
+        let userID = "";
+        if (profile){
+            userID = profile._id;
+        }
+        let sending = {
+            "userId": userID,
+            "team" : playerCodes,
+        }
+        dispatch(updateTeamThunk(sending));
+    }
+
+    const findTeam = () => {
+        let userID = "";
+        if (profile){
+            userID = profile._id;
+        }
+        let sending = {
+            "userId": userID,
+        }
+        dispatch(findTeamThunk(sending));
+    }
+
     console.log("current user is : " + profile)
     const saveDraft = ()=> {
 
@@ -61,8 +100,12 @@ const TeamDraftComponent = (
             }
         });
         let total_players = no_of_gk + no_of_def + no_of_mid + no_of_att;
-        if(no_of_gk > 1 || no_of_def > 4 || no_of_mid > 3 || no_of_att > 3 || total_players > 11 || total_players === 0)
+        console.log("find team result is : " + findTeam())
+        if(no_of_gk > 1 || no_of_def > 4 || no_of_mid > 3 || no_of_att > 3 || total_players > 11 || total_players === 0) {
             alert("no of gk is : " + no_of_gk + "no of def is : " + no_of_def + "no of mid is : " + no_of_mid + "no of att is : " + no_of_att)
+        } else if(findTeam()){
+            updateTeam(playerCodes)
+        }
         else{
             createTeam(playerCodes)
             // alert("profile id is : " + profile._id + "\nplayers are : " + playerCodes)
