@@ -93,8 +93,10 @@ function UserComponent() {
         console.log(action.error)
         if (action.error){
             alert("You are already following " + usersPage.firstName + "!")
+        } else {
+            alert("You are now following " + usersPage.firstName + "!")
         }
-        alert("You are now following " + usersPage.firstName + "!")
+
     }
 
     const unfollow = async () => {
@@ -103,8 +105,10 @@ function UserComponent() {
         console.log(action.error)
         if (action.error){
             alert("You are not following " + usersPage.firstName +"!")
+        } else {
+            alert("You have unfollowed " + usersPage.firstName + ".")
         }
-        alert("You have unfollowed " + usersPage.firstName + ".")
+
     }
 
 

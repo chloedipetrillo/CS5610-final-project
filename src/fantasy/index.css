@@ -260,3 +260,156 @@
 .wd-font-comment-size {
     font-size: 20px;
 }
+
+.wd-home-page {
+    font-size: 45px;
+    height: auto;
+    border-radius: 15px;
+    padding-left: 5px;
+    background-image: linear-gradient(to right, rgb(4,245,255) , rgb(0,255,133));
+
+}
+
+.wd-sign-up {
+    background-image: linear-gradient(to right, rgb(4,245,255) , rgb(0,255,133));
+    color: white;
+
+}
+
+.wd-home-register-box {
+    background-color: rgb(56,0,60);
+    font-size: 20px;
+    font-weight: bolder;
+    height: auto;
+    color: white;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
+.wd-font-register {
+    font-size: 14px;
+
+}
+
+
+.slider {
+    width: 100%;
+    max-width: 1000px;
+    height: 300px;
+    background-color: yellow;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.image-container {
+    width: 3000px;
+    background-color: pink;
+    height: 300px;
+    clear: both;
+    position: relative;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+    border-radius: 10px;
+
+}
+.slide {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    border-radius: 10px;
+    opacity: 0.90;
+}
+
+.slide:hover{
+    opacity: 1;
+}
+
+#slide-1:target ~ .image-container {
+    left: 0px;
+}
+#slide-2:target ~ .image-container {
+    left: -1000px;
+}
+#slide-3:target ~ .image-container {
+    left: -2000px;
+}
+.buttons {
+    position: relative;
+    bottom: 25px;
+
+}
+.buttons a {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background-color: lightgrey;
+}
+
+.wd-width-height {
+    width:1000px;
+    height: 300px;
+    object-fit: cover;
+
+}
+
+.wd-background-home {
+    background-color: rgb(243, 246, 248);
+
+}
+
+.wd-welcome-nudge {
+    font-size: 70px;
+    font-weight: bold;
+    left: 50px;
+    bottom: 15px;
+    position: absolute;
+    background: -webkit-linear-gradient(rgb(0,255,133), rgb(4,245,255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.wd-welcome-nudge-md {
+    font-size: 40px;
+    font-weight: bold;
+    left: 50px;
+    bottom: 15px;
+    position: absolute;
+    background: -webkit-linear-gradient(rgb(0,255,133), rgb(4,245,255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.wd-welcome-nudge-md {
+    font-size: 40px;
+    font-weight: bold;
+    left: 20px;
+    bottom: 20px;
+    position: absolute;
+    background: -webkit-linear-gradient(rgb(0,255,133), rgb(4,245,255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.wd-welcome-nudge-xs {
+    font-size: 40px;
+    font-weight: bold;
+    left: 20px;
+    bottom: 20px;
+    position: absolute;
+    background: -webkit-linear-gradient(rgb(0,255,133), rgb(4,245,255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.text-responsive-p {
+    font-size: calc(100% + 1vw+ 1vh);
+}
