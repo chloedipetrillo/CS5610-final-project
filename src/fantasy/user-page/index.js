@@ -121,7 +121,7 @@ function UserComponent() {
     }
 
     const handleCommentNoUser = () => {
-        alert("You must be logged in to comment! Navigating to login screen.")
+        alert("You must be logged in to comment on a profile! Navigating to login screen.")
         clearInput()
         navigate("../../login-signup")
 

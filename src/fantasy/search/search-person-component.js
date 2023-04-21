@@ -10,6 +10,8 @@ import {profileThunk} from "../../services/users/users-thunks";
 import ForwardComponent from "./forward-component";
 import DefenderComponent from "./defender-component";
 import GoalkeeperComponent from "./goalkeeper-component";
+import {findTeams} from "../../services/my-team/my-team-services";
+import {Link} from "react-router-dom";
 
 const USERS_API_URL = "http://localhost:4000/api/search";
 const CHAT_API_URL = "http://localhost:4000/api/chat";
@@ -32,6 +34,7 @@ const SearchPersonComponent = () => {
     const getUser = async () =>{
         const { payload } = await dispatch(profileThunk());
         setProfile(payload);
+        return payload
     }
 
     const handleDate = (news_date) => {
@@ -73,16 +76,33 @@ const SearchPersonComponent = () => {
 
     }
 
+    const checkIfPlayerDrafted = () => {
+        return team.filter((p) => p._id === player._id).length > 0
+    }
 
+    const { myTeam, loading} = useSelector((state) => state.myTeam);
+    const [team, setTeam] = useState(myTeam)
 
-    // IS THIS WRONG HOW DO U GET TO ALWAYS UPDATE ?
+    const findTeam = async () => {
+        const prof = await getUser();
+
+        if (prof){
+            const t = await findTeams(prof._id);
+            if (t){
+
+                setTeam(t.team)
+            }
+
+        }
+
+    }
     const {comments, load} = useSelector(state => state.commentData)
     const dispatch = useDispatch();
 
 
     useEffect(() => {
         searchPlayers();
-        getUser();
+        findTeam();
         dispatch(findAllCommentsThunk());
 
     }, [])
@@ -210,14 +230,29 @@ const SearchPersonComponent = () => {
 
                     </div>
                     <div className="col-12 col-lg-6 mt-2">
-                        <div className="mb-5">
-                            <h3 >
-                                Top Managers with {player.first_name} on their team:
-                            </h3>
-                            <div>
-                                have to have stuff from db here
+                        { profile && (
+                            <div className="mb-5">
+
+                                { checkIfPlayerDrafted() ?
+
+                                    <h3 >
+                                        You have {player.first_name} on your team!
+                                    </h3>
+                                    :
+
+                                    <h3 >
+                                        You don't have {player.first_name} on your team!
+                                    </h3>
+
+                                }
+
+                                <div>
+                                    Want to change things up? Navigate to: <Link to={`../../my-league/draft/${player.first_name}/${player.second_name}`}
+                                                                                 className="btn override-button">Draft</Link>
+                                </div>
                             </div>
-                        </div>
+                        )}
+
 
                         <div className="mt-5 ps-3 wd-comment-format text-white fw-bolder wd-font-comment-size">
                             Comments

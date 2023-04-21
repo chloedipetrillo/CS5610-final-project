@@ -8,9 +8,10 @@
 }
 
 .wd-logo-pic-bigger {
-    height: 60px;
-    width: 60px;
-    object-fit: cover;
+    height: 90px;
+    border-radius: 10px;
+
+    /*object-fit: cover;*/
 }
 
 .wd-logo-pic-small {

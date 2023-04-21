@@ -7,11 +7,13 @@ import SearchItem from "../../componentSearch/search-item";
 import {findTeams} from "../../../services/my-team/my-team-services";
 import {useDispatch, useSelector} from "react-redux";
 import {profileThunk} from "../../../services/users/users-thunks";
+import {useParams} from "react-router";
 const USERS_API_URL = "http://localhost:4000/api/players";
 
 const DraftComponent = (
 
 ) => {
+    const {name, last} = useParams();
     const { currentUser, load} = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
     const dispatch = useDispatch();
@@ -23,7 +25,7 @@ const DraftComponent = (
     }
 
     // const dispatch = useDispatch()
-    const [toSearch, setSearch] = useState("")
+    const [toSearch, setSearch] = useState(name + " " + last)
     //
     const [people, setPeople] = useState({})
     //
@@ -79,6 +81,7 @@ const DraftComponent = (
         }else{
             setPeople({})
         }
+
     }, []);
 
 
@@ -97,47 +100,43 @@ const DraftComponent = (
 
     return (
         <div >
-            <div className="row">
-                <div className="col-12 col-md-8">
-                    <div className="row">
-                        <div className="col-11">
-                            <div className="position-relative pe-2">
-                                <input id="search" className="ps-5 form-control rounded-pill override-fc border-1"
-                                       onChange={(event) => searchValue(event.target.value)}
-                                       placeholder="Search Player by team, name, position..."/>
-                                <span className="p-search-icon">
+            { profile && (
+                <div className="row">
+                    <div className="col-12 col-md-8">
+                        <div className="row">
+                            <div className="col-11">
+                                <div className="position-relative pe-2">
+                                    <input id="search" className="ps-5 form-control rounded-pill override-fc border-1"
+                                           onChange={(event) => searchValue(event.target.value)}
+                                           placeholder="Search Player by team, name, position..."/>
+                                    <span className="p-search-icon">
                             <i className="bi bi-search"></i>
                         </span>
+                                </div>
+                            </div>
+                            <div className="col-1 ps-2">
+                                <button onClick={() => searchHandler()} className="btn override-button float-end">Go</button>
                             </div>
                         </div>
-                        <div className="col-1 ps-2">
-                            <button onClick={() => searchHandler()} className="btn override-button float-end">Go</button>
-                        </div>
+                        <ul className="list-group mt-2">
+                            <li className="list-group-item override-pink-dark-information text-white fw-bolder">Search Results</li>
+                            { people.length > 0 ?
+                                people.map(person => <DraftPerson team={team} onDraftBoolHandler={onDraftBoolHandler}
+
+                                                                  key={person._id}
+                                                                  person={person}/>)
+                                :
+                                <li className="list-group-item override-search-light-grey">
+                                    No results to display...
+                                </li>
+                            }
+                        </ul>
                     </div>
-                    <ul className="list-group mt-2">
-                        <li className="list-group-item override-pink-dark-information text-white fw-bolder">Search Results</li>
-                        { people.length > 0 ?
-                            people.map(person => <DraftPerson team={team} onDraftBoolHandler={onDraftBoolHandler}
-
-                                                              key={person._id}
-                                                              person={person}/>)
-                            :
-                            <li className="list-group-item override-search-light-grey">
-                                No results to display...
-                            </li>
-                        }
-                    </ul>
+                    <div className="col-12 col-md-4">
+                        <TeamDraftComponent draftList={team}/>
+                    </div>
                 </div>
-                <div className="col-12 col-md-4">
-                    <TeamDraftComponent draftList={team}/>
-                </div>
-            </div>
-
-
-
-
-
-
+            )}
         </div>
 
 

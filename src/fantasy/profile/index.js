@@ -109,7 +109,7 @@ const ProfileComponent = () => {
 
                     <>
                         <div className="row">
-                            <div className="col-12 col-md-5 ">
+                            <div className="col-12 col-lg-5 ">
                                 <div className="wd-profile fw-bold">
                                     My Profile
                                 </div>
@@ -167,7 +167,7 @@ const ProfileComponent = () => {
 
                             </div>
 
-                            <div className="col-12 col-md-7">
+                            <div className="col-12 col-lg-7">
                                 <ul className="list-group override-no-borders">
 
                                     {showInfo  ?

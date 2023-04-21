@@ -71,22 +71,15 @@ const MyTeamComponent = (
                                     <li className="list-group-item override-search-light-grey">
                                         <div className="row">
                                             <div className="col-3">
-                                                <img className="rounded-circle wd-logo-pic-bigger"
+                                                <img className=" wd-logo-pic-bigger mt-1 ps-2"
                                                      src={person.photo}/>
                                             </div>
-                                            <div className="col-9">
+                                            <Link to={`../../details/${person._id}`} className="col-9 text-decoration-none text-black">
                                                 <div className="fw-bold">{person.first_name} {person.second_name}</div>
                                                 <div> Team: {person.team_name} </div>
                                                 <div> Position: {person.position} </div>
                                                 <div> Value: {person.value} </div>
-
-                                                <Link to={`../../details/${person._id}`} className="btn btn-dark rounded-pill mt-2"
-                                                >More Details</Link>
-
-
-
-
-                                            </div>
+                                            </Link>
                                         </div>
                                     </li>)
                             }
