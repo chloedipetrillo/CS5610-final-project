@@ -10,6 +10,8 @@ import {createPostThunk, findAllPostsThunk} from "../../services/wall/wall-thunk
 import WallPostComponent from "./wall-posts";
 import {createChatThunk} from "../../services/comments/comment-thunks";
 import ProfileFollowsComponent from "./followers";
+import {findTeams} from "../../services/my-team/my-team-services";
+import TeamMemberComponent from "../team-member";
 
 const ProfileComponent = () => {
 
@@ -25,14 +27,40 @@ const ProfileComponent = () => {
     const getUser = async () =>{
         const { payload } = await dispatch(profileThunk());
         setProfile(payload);
+        return payload
     }
+
+    const { myTeam, l} = useSelector((state) => state.myTeam);
+    const [team, setTeam] = useState(myTeam)
+
+    const findTeam = async () => {
+        const prof = await getUser();
+
+        if (prof){
+            const t = await findTeams(prof._id);
+            if (t){
+
+                setTeam(t.team)
+            }
+
+        }
+
+    }
+
+    const [showTeam, setShowTeam] = useState(false)
+
+
+    const showHideHandler = () => {
+        setShowTeam(!showTeam)
+    }
+
 
     const [toPost, setComment] = useState("")
 
     const {wall, loading} = useSelector(state => state.wall)
 
     useEffect( () => {
-        getUser();
+        findTeam();
         dispatch(findAllPostsThunk())
     }, []);
 
@@ -119,31 +147,21 @@ const ProfileComponent = () => {
 
                                 <ul className="list-group override-no-borders mt-3 mb-3">
                                     <li className="list-group-item override-purple-dark-my-wall fw-bold ">
-                                   <span className="text-white">
+                                   <span className="text-white fs-4">
                                        My Team
                                    </span>
+                                        {
+                                            showTeam ?
+                                                <button className="btn btn-dark rounded-pill float-end"
+                                                        onClick={()=>showHideHandler()}>Hide Team</button>
+                                                :
+                                                <button className="btn btn-dark rounded-pill float-end"
+                                                        onClick={()=>showHideHandler()}>Show Team</button>
+                                        }
                                     </li>
-                                    <li className="list-group-item override-blue-light-my-team">
-                                        <div className="row">
-                                            <div className = "col-4">
-                                                {/*<img className="wd-team-icon" src = {team.image}/>*/}
-                                                IMAGE
-                                            </div>
-
-                                            <div className="col-8">
-                                                <div className="fw-bolder">
-                                                    Name: <span className="fw-lighter wd-team-details-font">team name <br></br> </span>
-                                                    Team: <span className="fw-lighter wd-team-details-font"> team <br></br></span>
-                                                    Position: <span className="fw-lighter wd-team-details-font"> position <br></br></span>
-                                                    {/*Name: <span className="fw-lighter wd-team-details-font">{team.name} <br></br> </span>*/}
-                                                    {/*Team: <span className="fw-lighter wd-team-details-font">{team.team} <br></br></span>*/}
-                                                    {/*Position: <span className="fw-lighter wd-team-details-font">{team.position} <br></br></span>*/}
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                    </li>
+                                    {showTeam && team ?
+                                        <TeamMemberComponent team={team}/> : ''
+                                    }
 
                                 </ul>
 
@@ -152,7 +170,7 @@ const ProfileComponent = () => {
                             <div className="col-12 col-md-7">
                                 <ul className="list-group override-no-borders">
 
-                                    {showInfo ?
+                                    {showInfo  ?
                                         <>
                                             <li className="list-group-item override-pink-dark-information fw-bold wd-font-white"
                                                 onClick={()=>handleShow()}>

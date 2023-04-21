@@ -33,7 +33,6 @@ const DraftComponent = (
             let request = USERS_API_URL + "/:" +toSearch;
             const res = await fetch(request);
             const data = await res.json();
-            console.log(data)
             setPeople(data)
         }else{
             setPeople({})
@@ -42,7 +41,6 @@ const DraftComponent = (
     }
     const searchHandler = () => {
         let p = getList();
-        console.log(people)
     }
 
 

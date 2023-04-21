@@ -9,6 +9,8 @@ import {followUser} from "../../services/follows/follows-service";
 import {profileThunk} from "../../services/users/users-thunks";
 import FollowComponent from "../follow/follow-component";
 import {followUserThunk, unfollowUserThunk} from "../../services/follows/follows-thunk";
+import {findTeams} from "../../services/my-team/my-team-services";
+import TeamMemberComponent from "../team-member";
 
 
 function UserComponent() {
@@ -23,12 +25,25 @@ function UserComponent() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [toPost, setComment] = useState("")
+
+    const [showTeam, setShowTeam] = useState(false)
+
+
+    const showHideHandler = () => {
+        setShowTeam(!showTeam)
+    }
+
+
+
     const getUser = async () =>{
         const user = await findUserById(uid);
 
         setUser(user)
+        return user
 
     }
+
+
     const checkUsers = async () => {
         const user = await findUserById(uid);
         setUser(user)
@@ -51,8 +66,25 @@ function UserComponent() {
         dispatch(findAllPostsThunk());
         // getCurrentUser();
         checkUsers();
+        findTeam();
     }, [uid]);
 
+
+    const { myTeam, l} = useSelector((state) => state.myTeam);
+    const [team, setTeam] = useState(myTeam)
+
+    const findTeam = async () => {
+        const prof = await getUser();
+
+        if (prof){
+            const t = await findTeams(prof._id);
+            if (t){
+                setTeam(t.team)
+            }
+
+        }
+
+    }
     const getAccountType =()=>{
         if (usersPage.userType === "manager"){
             return "Manager";
@@ -178,30 +210,25 @@ function UserComponent() {
 
                     <br></br>
                     <ul className="list-group override-no-borders">
-                        <li className="list-group-item override-blue-dark-my-team fw-bold text-white">
-                            My Team
-                        </li>
-                        <li className="list-group-item override-blue-light-my-team">
-                            <div className="row">
-                                <div className = "col-4">
-                                    {/*<img className="wd-team-icon" src = {team.image}/>*/}
-                                    IMAGE
-                                </div>
-
-                                <div className="col-8">
-                                    <div className="fw-bolder">
-                                        Name: <span className="fw-lighter wd-team-details-font">team name <br></br> </span>
-                                        Team: <span className="fw-lighter wd-team-details-font"> team <br></br></span>
-                                        Position: <span className="fw-lighter wd-team-details-font"> position <br></br></span>
-                                        {/*Name: <span className="fw-lighter wd-team-details-font">{team.name} <br></br> </span>*/}
-                                        {/*Team: <span className="fw-lighter wd-team-details-font">{team.team} <br></br></span>*/}
-                                        {/*Position: <span className="fw-lighter wd-team-details-font">{team.position} <br></br></span>*/}
-                                    </div>
-
-                                </div>
-                            </div>
+                        <li className="list-group-item override-blue-dark-my-team fw-bold text-white fs-3">
+                            {usersPage.firstName}'s Team
+                            {
+                                showTeam ?
+                                    <button className="btn btn-dark rounded-pill float-end"
+                                    onClick={()=>showHideHandler()}>Hide Team</button>
+                                    :
+                                    <button className="btn btn-dark rounded-pill float-end"
+                                            onClick={()=>showHideHandler()}>Show Team</button>
+                            }
 
                         </li>
+
+                        {showTeam && team ?
+                        <TeamMemberComponent team={team}/> : ''
+                        }
+
+
+
 
                     </ul>
 

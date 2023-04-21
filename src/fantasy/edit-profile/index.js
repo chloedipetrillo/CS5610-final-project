@@ -45,9 +45,6 @@ function EditProfileComponent() {
         setProfile({...profile, status: target})
     }
 
-    const UpdateUsernameHandler = (target) => {
-        setProfile({...profile, username: target})
-    }
 
     const UpdateEmailHandler = (target) => {
         setProfile({...profile, email: target})
@@ -131,18 +128,6 @@ function EditProfileComponent() {
                                   id="bio"
                                   onChange={(event) => UpdateStatusHandler(event.target.value)}>
                     </textarea>
-                    </div>
-
-
-
-
-                    <div className="position-relative mt-3">
-                        <div className=" wd-tuit-grey wd-label-nudge">
-                            Username
-                        </div>
-                        <input className="form-control pt-4" value={profile.username}
-                               onChange = {(event) => UpdateUsernameHandler(event.target.value)}></input>
-
                     </div>
 
 

@@ -34,11 +34,9 @@ const MyTeamComponent = (
         const prof = await getUser();
 
         if (prof){
-            console.log(prof._id)
             const t = await findTeams(prof._id);
             if (t){
-                console.log("PAYLOAD")
-                console.log(t)
+
                 setTeam(t.team)
             }
 
@@ -57,7 +55,7 @@ const MyTeamComponent = (
             <div className="d-none d-md-block col-3">
             </div>
             <div className="col-12 col-md-6">
-                {profile && (
+                {profile && team  && (
                     <>
                         my team page NEHA DO ThiS
                         {console.log(profile)}
