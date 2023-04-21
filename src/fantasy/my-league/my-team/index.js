@@ -57,9 +57,13 @@ const MyTeamComponent = (
             <div className="col-12 col-md-6">
                 {profile && team  && (
                     <>
-                        my team page NEHA DO ThiS
-                        {console.log(profile)}
-                        <ul className="list-group">
+
+
+                        <div className="wd-pink-myteam ps-2"> {profile.firstName}'s Draft Team
+
+                        </div>
+
+                        <ul className="list-group override-border-radius">
                             {/*{*/}
                             {/*    team.map((member) => <PlayerIndvComponent*/}
                             {/*        key={member._id}*/}
@@ -68,7 +72,7 @@ const MyTeamComponent = (
 
                             {
                                 team.map((person) =>
-                                    <li className="list-group-item override-search-light-grey">
+                                    <li className="list-group-item override-search-light-grey override-border-radius">
                                         <div className="row">
                                             <div className="col-3">
                                                 <img className=" wd-logo-pic-bigger mt-1 ps-2"

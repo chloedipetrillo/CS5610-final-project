@@ -235,20 +235,20 @@ const SearchPersonComponent = () => {
 
                                 { checkIfPlayerDrafted() ?
 
-                                    <h3 >
+                                    <div className="wd-purple-onteam ps-3 mt-2">
                                         You have {player.first_name} on your team!
-                                    </h3>
+                                    </div>
                                     :
 
-                                    <h3 >
+                                    <div className="wd-purple-onteam ps-3 mt-2" >
                                         You don't have {player.first_name} on your team!
-                                    </h3>
+                                    </div>
 
                                 }
 
-                                <div>
+                                <div className="wd-draft-change-things ps-3 pt-2">
                                     Want to change things up? Navigate to: <Link to={`../../my-league/draft/${player.first_name}/${player.second_name}`}
-                                                                                 className="btn override-button">Draft</Link>
+                                                                                 className="btn override-button wd-sign-up">Draft</Link>
                                 </div>
                             </div>
                         )}

@@ -421,3 +421,36 @@
 .text-responsive-p {
     font-size: calc(100% + 1vw+ 1vh);
 }
+
+.wd-pink-myteam {
+    background-color: rgb(233,0,82);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    font-size: 20px;
+    padding: 4px;
+}
+
+.wd-draft-change-things {
+    background-color: #E1E8ED;
+    color: black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 18px;
+    height: 60px;
+    padding: 5px;
+}
+
+
+.wd-purple-onteam {
+    background-color: rgb(56,0,60);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    font-size: 20px;
+    padding: 4px;
+}
