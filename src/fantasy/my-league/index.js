@@ -6,8 +6,9 @@ import LeaderboardComponent from "./leaderboard";
 import "../index.css"
 import {useDispatch, useSelector} from "react-redux";
 import {profileThunk} from "../../services/users/users-thunks";
-import {findAllPostsThunk} from "../../services/wall/wall-thunks";
-import LeaguesComponent from "./leagues";
+
+import JoinLeaguesComponent from "./join-leagues";
+import MyListOfLeaguesComponent from "./my-leagues";
 
 
 const MyLeagueComponent = (
@@ -52,18 +53,18 @@ const MyLeagueComponent = (
                         } to="./draft">Draft</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className={active === "leagues" ?
+                        <Link className={active === "join-leagues" ?
                             "nav-link fw-bold text-decoration-none text-black override-link"
                             :
                             "nav-link fw-bold text-decoration-none text-black"
-                        } to="./leagues">Leagues</Link>
+                        } to="./join-leagues">Join Leagues</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className={active === "leaderboard" ?
+                        <Link className={active === "my-leagues" ?
                             "nav-link fw-bold text-decoration-none text-black override-link"
                             :
                             "nav-link fw-bold text-decoration-none text-black"
-                        } to="./leaderboard">Leaderboard</Link>
+                        } to="./my-leagues">MyLeagues</Link>
                     </li>
                 </ul>
                 :
@@ -85,8 +86,9 @@ const MyLeagueComponent = (
                 <Route path="my-team" element={<MyTeamComponent/>}/>
                 <Route path="draft" element={<DraftComponent/>}/>
                 <Route path="draft/:name/:last" element={<DraftComponent/>}/>
-                <Route path="leaderboard" element={<LeaderboardComponent/>}/>
-                <Route path="leagues" element={<LeaguesComponent/>}/>
+                {/*<Route path="leaderboard" element={<LeaderboardComponent/>}/>*/}
+                <Route path="join-leagues" element={<JoinLeaguesComponent/>}/>
+                <Route path="my-leagues" element={<MyListOfLeaguesComponent/>}/>
             </Routes>
 
 

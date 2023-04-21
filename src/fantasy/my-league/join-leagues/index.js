@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {profileThunk} from "../../../services/users/users-thunks";
 
-const LeaguesComponent = () => {
+const JoinLeaguesComponent = () => {
 
     const dispatch = useDispatch();
     const { currentUser, load} = useSelector((state) => state.users);
@@ -21,13 +21,12 @@ const LeaguesComponent = () => {
     <>
         {profile && (
             <div className="row mt-2">
-                <div className="d-12 col-md-6">
-                    SEARCH FUNCITONALITY TO SEARCH ALL  LEAGUES (WILL HAVE NAME CANT CLICK UNLESS U JOIN IT)
+                <div className="d-none d-md-block col-3"></div>
+                <div className="col-12 col-md-6">
                     <SearchLeaguesComponent/>
                 </div>
-                <div className="col-12 col-md-6">
-                    LIST OF ALL YOUR LEAGUES IF YOU CLICK ONE IT WILL LINK TO THE LEADERBOARD
-                </div>
+                <div className="d-none d-md-block col-3"></div>
+
             </div>
         )}
 
@@ -38,4 +37,4 @@ const LeaguesComponent = () => {
     );
 }
 
-export default LeaguesComponent;
+export default JoinLeaguesComponent;
