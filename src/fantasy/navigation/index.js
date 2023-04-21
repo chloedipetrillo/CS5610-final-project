@@ -72,6 +72,10 @@ const NavComponent = () => {
                                                         >Draft</Link>
                                                     </div>
                                                     <div className="list-group-item override-lgi-nav-below">
+                                                        <Link to="../my-league/leagues" className="text-decoration-none fw-bold text-white"
+                                                        >Leagues</Link>
+                                                    </div>
+                                                    <div className="list-group-item override-lgi-nav-below">
                                                         <Link to="../my-league/leaderboard" className="text-decoration-none fw-bold text-white"
                                                         >Leaderboard</Link>
                                                     </div>

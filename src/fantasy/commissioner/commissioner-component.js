@@ -35,6 +35,12 @@ const CommissionerComponent = (
 
                         Test page for commissioner
                         ALL OF THE LEAGUE COMMISSIONER STUFF WILL GO HERE
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        List of all leagues the comissioner manages
+                        <br></br>
+                        League commissioner can change league name 
 
 
 

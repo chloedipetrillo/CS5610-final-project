@@ -7,6 +7,7 @@ import "../index.css"
 import {useDispatch, useSelector} from "react-redux";
 import {profileThunk} from "../../services/users/users-thunks";
 import {findAllPostsThunk} from "../../services/wall/wall-thunks";
+import LeaguesComponent from "./leagues";
 
 
 const MyLeagueComponent = (
@@ -51,6 +52,13 @@ const MyLeagueComponent = (
                         } to="./draft">Draft</Link>
                     </li>
                     <li className="nav-item">
+                        <Link className={active === "leagues" ?
+                            "nav-link fw-bold text-decoration-none text-black override-link"
+                            :
+                            "nav-link fw-bold text-decoration-none text-black"
+                        } to="./leagues">Leagues</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className={active === "leaderboard" ?
                             "nav-link fw-bold text-decoration-none text-black override-link"
                             :
@@ -68,6 +76,7 @@ const MyLeagueComponent = (
                         </button>
                     </Link>
                 </div>
+
             }
 
 
@@ -77,6 +86,7 @@ const MyLeagueComponent = (
                 <Route path="draft" element={<DraftComponent/>}/>
                 <Route path="draft/:name/:last" element={<DraftComponent/>}/>
                 <Route path="leaderboard" element={<LeaderboardComponent/>}/>
+                <Route path="leagues" element={<LeaguesComponent/>}/>
             </Routes>
 
 

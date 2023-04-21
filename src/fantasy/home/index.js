@@ -24,11 +24,11 @@ const HomeComponent = (
         <>
             <div className=" row" >
                 <div className=" d-none d-md-block col-12 wd-home-page fw-bolder mb-3 ">
-                    Premier Fantasy League
+                    Fantasy Premier League
                 </div>
                 <div className="col-12 d-md-none wd-home-page fw-bolder mb-3 ">
-                    Premier <br></br>
-                    Fantasy League
+                    Fantasy <br></br>
+                    Premier League
                 </div>
             </div>
 
