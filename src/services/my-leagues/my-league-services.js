@@ -17,3 +17,13 @@ export const findLeaguesManaged = async (id) =>{
     const response = await api.get(`${LEAGUES_URL}/${id}`)
     return response.data
 };
+
+export const findLeaguesByLID = async (lid) =>{
+    const response = await api.get(`${LEAGUES_URL}/byLeague/${lid}`)
+    return response.data
+};
+
+export const findAllLeagues = async () =>{
+    const response = await api.get(LEAGUES_URL)
+    return response.data
+};

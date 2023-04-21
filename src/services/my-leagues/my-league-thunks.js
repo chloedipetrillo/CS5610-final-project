@@ -17,6 +17,14 @@ export const findMyLeaguesThunk = createAsyncThunk(
         return response;
     }
 );
+
+export const findAllLeaguesThunk = createAsyncThunk(
+    "myLeague/findAll",
+    async () => {
+        const response = await myLeagueServices.findAllLeagues();
+        return response;
+    }
+);
 // export const createTeamThunk = createAsyncThunk(
 //     "myTeam/create",
 //     async (team) => {

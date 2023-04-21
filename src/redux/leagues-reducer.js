@@ -1,4 +1,4 @@
-import {createLeagueThunk, findMyLeaguesThunk} from "../services/my-leagues/my-league-thunks";
+import {createLeagueThunk, findAllLeaguesThunk, findMyLeaguesThunk} from "../services/my-leagues/my-league-thunks";
 
 
 const { createSlice } = require("@reduxjs/toolkit");
@@ -32,6 +32,11 @@ const myLeaguesSlice = createSlice({
             (state, action) => {
                 state.loading = false
                 state.error = action.error.message
+            },
+        [findAllLeaguesThunk.fulfilled]:
+            (state, { payload }) => {
+                state.loading = false
+                state.myLeagues = payload
             },
 
     },

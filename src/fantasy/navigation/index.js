@@ -54,7 +54,7 @@ const NavComponent = () => {
                                     <li className="nav-item">
                                         <div className="dropdown">
                                             <Link to="../my-league" className={active === "my-team" || active === "draft"
-                                            || active==="leaderboard" || active === "my-league" || active === "leagues" ?
+                                            || active==="my-leagues" || active === "my-league" || active === "join-leagues" ?
                                                 "nav-link text-black active override-active-nav fw-bold"
                                                 :
                                                 "nav-link text-white fw-bold"
@@ -72,12 +72,12 @@ const NavComponent = () => {
                                                         >Draft</Link>
                                                     </div>
                                                     <div className="list-group-item override-lgi-nav-below">
-                                                        <Link to="../my-league/leagues" className="text-decoration-none fw-bold text-white"
-                                                        >Leagues</Link>
+                                                        <Link to="../my-league/join-leagues" className="text-decoration-none fw-bold text-white"
+                                                        >Join Leagues</Link>
                                                     </div>
                                                     <div className="list-group-item override-lgi-nav-below">
-                                                        <Link to="../my-league/leaderboard" className="text-decoration-none fw-bold text-white"
-                                                        >Leaderboard</Link>
+                                                        <Link to="../my-league/my-leagues" className="text-decoration-none fw-bold text-white"
+                                                        >My Leagues</Link>
                                                     </div>
                                                 </div>
 
