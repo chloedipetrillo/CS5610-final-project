@@ -25,20 +25,20 @@ const HowToPlayComponent = (
 
             <div className="d-none d-md-block col-8">
                 <div className="list-group" >
-                    <div className="list-group-item">
-                        Here is all the info on how to Play
+                    <div className="list-group-item override-border-radius override-pink-dark-information fw-bold text-white wd-larger-font">
+                        Game Information
                     </div>
-                    <div className="list-group-item">
+                    <div className="list-group-item override-search-light-grey">
                         {showFAQ ?
-                            <div>
-                                <button onClick={() => hideHandler()}> Frequently Asked Questions </button>
+                            <div className="center">
+                                <button className="btn override-button wd-sign-up fw-bold" onClick={() => hideHandler()}> Frequently Asked Questions </button>
                                 <div>
                                     All the FAQ's will go here like how did we get so good at coding
                                 </div>
                             </div>
                             :
-                            <div>
-                                <button onClick={() => showHandler()}> Frequently Asked Questions </button>
+                            <div className="center">
+                                <button className="btn override-button wd-sign-up fw-bold" onClick={() => showHandler()}> Frequently Asked Questions </button>
                             </div>
                         }
 
