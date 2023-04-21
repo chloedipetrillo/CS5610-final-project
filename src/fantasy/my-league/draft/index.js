@@ -19,6 +19,7 @@ const DraftComponent = (
     const getUser = async () =>{
         const { payload } = await dispatch(profileThunk());
         setProfile(payload);
+        return payload
     }
 
     // const dispatch = useDispatch()
@@ -52,16 +53,29 @@ const DraftComponent = (
     // load from user
     const [team, setTeam] = useState([])
 
-    const getCurrTeam = async () => {
-        await getUser();
-        const teamEntry = await findTeams(profile._id);
-        if (teamEntry){
-            setTeam(teamEntry.team)
+    // const getCurrTeam = async () => {
+    //     await getUser();
+    //     const teamEntry = await findTeams(profile._id);
+    //     if (teamEntry){
+    //         setTeam(teamEntry.team)
+    //     }
+    // }
+
+    const findTeam = async () => {
+        const prof = await getUser();
+
+        if (prof){
+            const t = await findTeams(prof._id);
+            if (t){
+                setTeam(t.team)
+            }
+
         }
+
     }
 
     useEffect(() => {
-        getCurrTeam();
+        findTeam();
         if (toSearch) {
             searchHandler();
         }else{

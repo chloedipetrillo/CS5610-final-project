@@ -57,24 +57,24 @@ const TeamDraftComponent = (
         dispatch(deleteTeamThunk(sending));
     }
 
-    const updateTeam = async () => {
-        // let userID = "";
-        // if (profile){
-        //     userID = profile._id;
-        // }
-        // let sending = {
-        //     "userId": userID,
-        //     "team" : draftList,
-        // }
-        // dispatch(updateTeamThunk(sending));
+    // const updateTeam = async () => {
+    //     // let userID = "";
+    //     // if (profile){
+    //     //     userID = profile._id;
+    //     // }
+    //     // let sending = {
+    //     //     "userId": userID,
+    //     //     "team" : draftList,
+    //     // }
+    //     // dispatch(updateTeamThunk(sending));
+    //
+    //     const teamEntry = await findTeams(profile._id);
+    //     const updatedEntry = {...teamEntry, team:draftList}
+    //     dispatch(updateTeamThunk(updatedEntry));
+    // }
 
-        const teamEntry = await findTeams(profile._id);
-        const updatedEntry = {...teamEntry, team:draftList}
-        dispatch(updateTeamThunk(updatedEntry));
-    }
 
-
-    console.log("current user is : " + profile)
+    // console.log("current user is : " + profile)
     const saveDraft = async ()=> {
 
         // alert("Drafting players!" + JSON.stringify(draftList))
