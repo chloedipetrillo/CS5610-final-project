@@ -54,7 +54,7 @@ const NavComponent = () => {
                                     <li className="nav-item">
                                         <div className="dropdown">
                                             <Link to="../my-league" className={active === "my-team" || active === "draft"
-                                            || active==="leaderboard" || active === "my-league" ?
+                                            || active==="leaderboard" || active === "my-league" || active === "leagues" ?
                                                 "nav-link text-black active override-active-nav fw-bold"
                                                 :
                                                 "nav-link text-white fw-bold"
