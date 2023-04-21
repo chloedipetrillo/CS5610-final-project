@@ -12,9 +12,9 @@ export const createTeamThunk = createAsyncThunk(
 
 export const updateTeamThunk = createAsyncThunk(
     "myTeam/update",
-    async (pid, team) => {
-        const response = await myTeamServices.updateTeam(pid, team);
-        return response.data;
+    async (entry) => {
+        const status = await myTeamServices.updateTeam(entry);
+        return entry;
     }
 );
 

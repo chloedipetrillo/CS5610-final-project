@@ -11,11 +11,13 @@ export const createTeam = (team) => {
 
 export const findTeams = async (pid) => {
     const response = await api.get(`${USERS_API_URL}/${pid}`);
-    return response.data.team;
+    return response.data;
 };
 
-export const updateTeam = (pid, team) => {
-    return api.put(`${USERS_API_URL}/${pid}`, team);
+export const updateTeam = async (entry) => {
+    const response = await api.put(`${USERS_API_URL}/${entry._id}`, entry);
+    const status = response.data;
+    return status;
 };
 
 export const deleteTeam = (pid) => {

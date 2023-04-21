@@ -4,11 +4,22 @@ import playerArray from "../../componentSearch/fakedata.json"
 import "../../componentSearch/index.css"
 import TeamDraftComponent from "../my-team-draft";
 import SearchItem from "../../componentSearch/search-item";
+import {findTeams} from "../../../services/my-team/my-team-services";
+import {useDispatch, useSelector} from "react-redux";
+import {profileThunk} from "../../../services/users/users-thunks";
 const USERS_API_URL = "http://localhost:4000/api/players";
 
 const DraftComponent = (
 
 ) => {
+    const { currentUser, load} = useSelector((state) => state.users);
+    const [profile, setProfile] = useState(currentUser);
+    const dispatch = useDispatch();
+
+    const getUser = async () =>{
+        const { payload } = await dispatch(profileThunk());
+        setProfile(payload);
+    }
 
     // const dispatch = useDispatch()
     const [toSearch, setSearch] = useState("")
@@ -41,14 +52,22 @@ const DraftComponent = (
     // load from user
     const [team, setTeam] = useState([])
 
+    const getCurrTeam = async () => {
+        await getUser();
+        const teamEntry = await findTeams(profile._id);
+        if (teamEntry){
+            setTeam(teamEntry.team)
+        }
+    }
 
     useEffect(() => {
+        getCurrTeam();
         if (toSearch) {
             searchHandler();
         }else{
             setPeople({})
         }
-    }, [toSearch]);
+    }, []);
 
 
 

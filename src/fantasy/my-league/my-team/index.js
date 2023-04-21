@@ -8,8 +8,9 @@ import {findTeams} from "../../../services/my-team/my-team-services";
 import standings from "../../official-standings/standings.json";
 import StandingItem from "../../official-standings/standing-item";
 import PlayerIndvComponent from "../get-player/player-indv";
+import {Link} from "react-router-dom";
 const USERS_API_URL = "http://localhost:4000/api/myTeam";
-
+const PLAYERS_API_URL = "http://localhost:4000/api/search";
 const MyTeamComponent = (
 ) => {
     const { currentUser, load} = useSelector((state) => state.users);
@@ -35,12 +36,16 @@ const MyTeamComponent = (
         if (prof){
             console.log(prof._id)
             const t = await findTeams(prof._id);
-            console.log("PAYLOAD")
-            console.log(t)
-            setTeam(t)
+            if (t){
+                console.log("PAYLOAD")
+                console.log(t)
+                setTeam(t.team)
+            }
+
         }
 
     }
+
 
     const searchHandler = () => {
         // let p = getList();
@@ -48,20 +53,58 @@ const MyTeamComponent = (
     }
 
     return(
-        <div>
-            {profile && (
-               <>
-                   my team page
-                   {console.log(profile)}
+        <div className="row">
+            <div className="d-none d-md-block col-3">
+            </div>
+            <div className="col-12 col-md-6">
+                {profile && (
+                    <>
+                        my team page NEHA DO ThiS
+                        {console.log(profile)}
+                        <ul className="list-group">
+                            {/*{*/}
+                            {/*    team.map((member) => <PlayerIndvComponent*/}
+                            {/*        key={member._id}*/}
+                            {/*        person={member}/>)*/}
+                            {/*}*/}
 
-                   {
-                       team.map((member, i) => <PlayerIndvComponent
-                           key={i}
-                           player={member}/>)
-                   }
-               </>
+                            {
+                                team.map((person) =>
+                                    <li className="list-group-item override-search-light-grey">
+                                        <div className="row">
+                                            <div className="col-3">
+                                                <img className="rounded-circle wd-logo-pic-bigger"
+                                                     src={person.photo}/>
+                                            </div>
+                                            <div className="col-9">
+                                                <div className="fw-bold">{person.first_name} {person.second_name}</div>
+                                                <div> Team: {person.team_name} </div>
+                                                <div> Position: {person.position} </div>
+                                                <div> Value: {person.value} </div>
 
-            )}
+                                                <Link to={`../../details/${person._id}`} className="btn btn-dark rounded-pill mt-2"
+                                                >More Details</Link>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </li>)
+                            }
+                        </ul>
+
+
+
+                    </>
+
+                )}
+            </div>
+
+
+
+            <div className="d-none d-md-block col-3">
+            </div>
 
         </div>
     );

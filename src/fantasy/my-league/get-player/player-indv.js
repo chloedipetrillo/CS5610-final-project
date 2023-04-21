@@ -1,19 +1,35 @@
+import {useEffect, useState} from "react";
+import {findAllCommentsThunk} from "../../../services/comments/comment-thunks";
 
+const PLAYERS_API_URL = "http://localhost:4000/api/search";
 const PlayerIndvComponent = (
     {
-        player
+        person
     }
 ) => {
 
-    const fetchPlayerInfo = () =>{
-        console.log(player)
-    }
+
+    // const [player, setPlayer] = useState({})
+    // const fetchPlayerInfo = async () => {
+    //     let request = PLAYERS_API_URL + "/:" + person;
+    //     const res = await fetch(request);
+    //     const data = await res.json();
+    //     //alert(request)
+    //     setPlayer(data)
+    //     console.log(data)
+    //     return data;
+    // }
+    //
+    // useEffect(() => {
+    //     fetchPlayerInfo();
+    //
+    // }, [])
 
     return(
         <li className="list-group-item">
-            need a way to fetch the player there is nothing linking to player collection
             <br></br>
-            {player}
+            {person}
+            {person.first_name} {person.second_name}
         </li>
     );
 };

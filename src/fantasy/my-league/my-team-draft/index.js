@@ -9,6 +9,8 @@ import {
     findTeamThunk,
     updateTeamThunk
 } from "../../../services/my-team/my-team-thunks";
+import {findTeams} from "../../../services/my-team/my-team-services";
+import {useNavigate} from "react-router";
 
 const TeamDraftComponent = (
     {
@@ -19,26 +21,29 @@ const TeamDraftComponent = (
     const { currentUser, load} = useSelector((state) => state.users);
     const [profile, setProfile] = useState(currentUser);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const getUser = async () =>{
         const { payload } = await dispatch(profileThunk());
         setProfile(payload);
     }
 
+
+
     useEffect( () => {
         getUser();
     }, []);
 
-    const createTeam = (playerCodes) => {
+    const createTeam = async (playerCodes) => {
         let userID = "";
         if (profile){
             userID = profile._id;
         }
         let sending = {
             "userId": userID,
-            "team" : playerCodes,
+            "team" : draftList,
         }
-        dispatch(createTeamThunk(sending));
+        await dispatch(createTeamThunk(sending));
     }
 
     const deleteTeam = () => {
@@ -52,28 +57,25 @@ const TeamDraftComponent = (
         dispatch(deleteTeamThunk(sending));
     }
 
-    const updateTeam = (playerCodes) => {
-        let userID = "";
-        if (profile){
-            userID = profile._id;
-        }
-        let sending = {
-            "userId": userID,
-            "team" : playerCodes,
-        }
-        dispatch(updateTeamThunk(sending));
+    const updateTeam = async () => {
+        // let userID = "";
+        // if (profile){
+        //     userID = profile._id;
+        // }
+        // let sending = {
+        //     "userId": userID,
+        //     "team" : draftList,
+        // }
+        // dispatch(updateTeamThunk(sending));
+
+        const teamEntry = await findTeams(profile._id);
+        const updatedEntry = {...teamEntry, team:draftList}
+        dispatch(updateTeamThunk(updatedEntry));
     }
 
-    const findTeam = () => {
-        let userID = "";
-        if (profile){
-            userID = profile._id;
-        }
-        dispatch(findTeamThunk(userID));
-    }
 
     console.log("current user is : " + profile)
-    const saveDraft = ()=> {
+    const saveDraft = async ()=> {
 
         // alert("Drafting players!" + JSON.stringify(draftList))
         let no_of_gk = 0
@@ -97,16 +99,38 @@ const TeamDraftComponent = (
             }
         });
         let total_players = no_of_gk + no_of_def + no_of_mid + no_of_att;
-        console.log("find team result is : " + findTeam())
+        // console.log("find team result is : " + findTeam())
         if(no_of_gk > 1 || no_of_def > 4 || no_of_mid > 3 || no_of_att > 3 || total_players > 11 || total_players === 0) {
             alert("no of gk is : " + no_of_gk + "no of def is : " + no_of_def + "no of mid is : " + no_of_mid + "no of att is : " + no_of_att)
-        } else if(findTeam()){
-            updateTeam(playerCodes)
         }
-        else{
-            createTeam(playerCodes)
-            // alert("profile id is : " + profile._id + "\nplayers are : " + playerCodes)
+
+        else {
+            console.log(profile._id)
+            const teamEntry = await findTeams(profile._id);
+            console.log("TEAM")
+
+            if (teamEntry !== null ){
+                alert("Updating your drafted team!")
+                // updateTeam(teamEntry)
+                const updatedEntry = {...teamEntry, team:draftList}
+                await dispatch(updateTeamThunk(updatedEntry));
+
+            } else{
+                alert("Drafting your team!")
+                await createTeam(playerCodes)
+            }
+            navigate("../my-team")
+
         }
+
+
+        // else if(){
+        //     updateTeam(playerCodes)
+        // }
+        // else{
+        //     createTeam(playerCodes)
+        //     // alert("profile id is : " + profile._id + "\nplayers are : " + playerCodes)
+        // }
     }
 
     return (
