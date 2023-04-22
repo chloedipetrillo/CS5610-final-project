@@ -1,0 +1,11 @@
+.wd-label-nudge {
+    position: absolute;
+    bottom: 30px;
+    left: 12px;
+}
+
+
+.wd-text-area-nudge {
+    position: absolute;
+    left: 12px;
+}

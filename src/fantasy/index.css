@@ -6,9 +6,24 @@
     height: 48px;
     width: 48px;
 }
+
+.wd-logo-pic-bigger {
+    height: 90px;
+    border-radius: 10px;
+
+    /*object-fit: cover;*/
+}
+
 .wd-logo-pic-small {
     height: 30px;
     width: 30px;
+}
+
+.wd-prof-edit-pic {
+    height: 140px;
+    width: 140px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .wd-green {
@@ -60,4 +75,399 @@
 
 .nav-tabs .nav-link.override-link {
     background-color: rgb(233,0,82);;
+}
+
+.wd-profile {
+    color: white;
+    background-color:rgb(56,0,60);
+    font-size: 45px;
+    height: 70px;
+    border-radius: 15px;
+    padding-left: 5px;
+}
+
+.wd-profile-info-box {
+    color: black;
+    background-color: #d3d3d3;
+    padding-left: 15px;
+    border-radius: 10px;
+}
+
+.wd-profile-icon {
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.wd-profile-name-font {
+    font-size: 20px;
+}
+
+.wd-inner-profile-box {
+    background-color: rgb(0,255,133);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.wd-inner-profile-box-font {
+    color: rgb(56,0,60);
+    font-weight: bolder;
+    font-size: 15px;
+}
+
+.wd-inner-profile-box-font-2 {
+    font-size: 12px;
+    font-weight: lighter;
+    color: black;
+}
+
+.wd-team-icon {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.list-group-item.override-blue-dark-my-team {
+    background-color: rgb(233,0,82);
+}
+
+.list-group-item.override-blue-light-my-team {
+    background-color: lightgrey;
+}
+
+.list-group-item.override-purple-dark-my-wall {
+    background-color: rgb(56,0,60);
+}
+
+.wd-font-white{
+    color: white;
+}
+
+.list-group-item.override-purple-light-my-wall {
+    background-color: lightgrey;
+}
+
+.list-group-item.override-pink-dark-information{
+    background-color: rgb(233,0,82);
+}
+
+.list-group-item.override-pink-light-information {
+    background-color: lightgrey;
+}
+
+.list-group.override-no-borders {
+    --bs-list-group-border-width: 0px;
+}
+
+.wd-team-details-font {
+    font-size:14px;
+}
+
+.wd-wall-profile-pic {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.wd-private-info {
+    font-size: 14px;
+}
+
+
+.wd-comment-no-border-box {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #E1E8ED;
+    border-color: black;
+    height: 300px;
+
+}
+
+.wd-welcome-box {
+    background-color: rgb(178, 0, 190);
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+
+.wd-welcome {
+    font-size: 35px;
+    color: black;
+    font-weight: bolder;
+}
+
+.wd-user-name {
+    font-size: 35px;
+    color: rgb(233,0,82);
+
+}
+
+.wd-home-fantasy-font {
+    font-size: 50px;
+    color: rgb(56,0,60);
+}
+
+.center {
+    text-align: center;
+}
+
+.wd-welcome-font {
+    font-size: 35px;
+    color: rgb(56,0,60);
+}
+
+.wd-access-blocked {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: rgba(0,0,0,.125);
+    padding: 10px;
+}
+
+.wd-comment-box-grey {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: lightgrey;
+    height: 300px;
+
+}
+.wd-wall-format {
+    background-color: rgb(56,0,60);
+    color: white;
+    height: 40px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px;
+}
+
+.wd-comment-format {
+    background-color: rgb(233,0,82);
+    color: white;
+    height: 40px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px;
+}
+
+.wd-draft-format {
+    background-color: rgb(233,0,82);
+    color: white;
+    height: 20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 5px;
+}
+
+.wd-font-comment-size {
+    font-size: 20px;
+}
+
+.wd-home-page {
+    font-size: 45px;
+    height: auto;
+    border-radius: 15px;
+    padding-left: 5px;
+    background-image: linear-gradient(to right, rgb(4,245,255) , rgb(0,255,133));
+
+}
+
+.wd-sign-up {
+    background-image: linear-gradient(to right, rgb(4,245,255) , rgb(0,255,133));
+    color: white;
+
+}
+
+.wd-home-register-box {
+    background-color: rgb(56,0,60);
+    font-size: 20px;
+    font-weight: bolder;
+    height: auto;
+    color: white;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
+.wd-home-register-box-pink {
+    background-color: rgb(233,0,82);
+    font-size: 20px;
+    font-weight: bolder;
+    height: auto;
+    color: white;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
+.wd-font-register {
+    font-size: 14px;
+
+}
+
+
+.slider {
+    width: 100%;
+    max-width: 1000px;
+    height: 300px;
+    background-color: yellow;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.image-container {
+    width: 3000px;
+    background-color: pink;
+    height: 300px;
+    clear: both;
+    position: relative;
+    -webkit-transition: left 2s;
+    -moz-transition: left 2s;
+    -o-transition: left 2s;
+    transition: left 2s;
+    border-radius: 10px;
+
+}
+.slide {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    border-radius: 10px;
+    opacity: 0.90;
+}
+
+.slide:hover{
+    opacity: 1;
+}
+
+#slide-1:target ~ .image-container {
+    left: 0px;
+}
+#slide-2:target ~ .image-container {
+    left: -1000px;
+}
+#slide-3:target ~ .image-container {
+    left: -2000px;
+}
+.buttons {
+    position: relative;
+    bottom: 25px;
+
+}
+.buttons a {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background-color: lightgrey;
+}
+
+.wd-width-height {
+    width:1000px;
+    height: 300px;
+    object-fit: cover;
+
+}
+
+.wd-background-home {
+    background-color: rgb(243, 246, 248);
+
+}
+
+.wd-welcome-nudge {
+    font-size: 70px;
+    font-weight: bold;
+    left: 50px;
+    bottom: 15px;
+    position: absolute;
+    background: -webkit-linear-gradient(rgb(0,255,133), rgb(4,245,255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.wd-welcome-nudge-md {
+    font-size: 40px;
+    font-weight: bold;
+    left: 50px;
+    bottom: 15px;
+    position: absolute;
+    background: -webkit-linear-gradient(rgb(0,255,133), rgb(4,245,255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.wd-welcome-nudge-md {
+    font-size: 40px;
+    font-weight: bold;
+    left: 20px;
+    bottom: 20px;
+    position: absolute;
+    background: -webkit-linear-gradient(rgb(0,255,133), rgb(4,245,255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.wd-welcome-nudge-xs {
+    font-size: 40px;
+    font-weight: bold;
+    left: 20px;
+    bottom: 20px;
+    position: absolute;
+    background: -webkit-linear-gradient(rgb(0,255,133), rgb(4,245,255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.text-responsive-p {
+    font-size: calc(100% + 1vw+ 1vh);
+}
+
+.wd-pink-myteam {
+    background-color: rgb(233,0,82);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    font-size: 20px;
+    padding: 4px;
+}
+
+.wd-draft-change-things {
+    background-color: #E1E8ED;
+    color: black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 18px;
+    height: 60px;
+    padding: 5px;
+}
+
+
+.wd-purple-onteam {
+    background-color: rgb(56,0,60);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    font-size: 20px;
+    padding: 4px;
+}
+
+.wd-larger-font {
+    font-size: 20px;
 }

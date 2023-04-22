@@ -1,9 +1,42 @@
-.wd-small-team-icon {
-    height: 48px;
-    width: 48px;
-    object-fit: cover;
+.wd-comment-box {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+
+
+    height: 300px;
+
 }
 
-.form-control.override-width{
-    width: 90%;
+.list-group-item.override-search-light-grey {
+    background-color: #E1E8ED;
+}
+
+.list-group.override-border-radius {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.list-group-item.override-border-radius {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.wd-player-name-box {
+    font-size: 40px;
+    background-color: rgb(56,0,60);
+    color: white;
+    border-radius: 10px;
+
+}
+
+.wd-stats-box {
+    font-size: 40px;
+    background-color: rgb(0,255,133);
+    color: black;
+    font-weight: bolder;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+
 }

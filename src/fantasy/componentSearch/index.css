@@ -1,0 +1,12 @@
+.wd-small-team-icon {
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+
+
+}
+
+.form-control.override-width{
+    width: 90%;
+}
+

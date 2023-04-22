@@ -1,0 +1,7 @@
+.wd-access-blocked {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: rgba(0,0,0,.125);
+    padding: 10px;
+}
