@@ -17,3 +17,11 @@ export const getLeaguesIJoinedThunk = createAsyncThunk(
         return response;
     }
 );
+
+export const getAllUsersInLeagueThunk = createAsyncThunk(
+    "teamLeague/getLeagues",
+    async (leagueId) => {
+        const response = await teamLeagueServices.getAllUsersInLeague(leagueId);
+        return response;
+    }
+);

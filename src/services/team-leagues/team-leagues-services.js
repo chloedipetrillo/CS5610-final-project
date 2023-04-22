@@ -17,6 +17,14 @@ export const getLeaguesIJoined = async (userId) => {
     const response = await api.get(`${LEAGUES_URL}/${userId}`)
     return response.data
 }
+
+export const getAllUsersInLeague = async (leagueId) => {
+    // console.log("inside here for test")
+    console.log("the api hitting here is: " + `${LEAGUES_URL}/users/${leagueId}`)
+    const response = await api.get(`${LEAGUES_URL}/users/${leagueId}`)
+    return response.data
+}
+
 // export const findAllLeagues = async () =>{
 //     const response = await api.get(LEAGUES_URL)
 //     return response.data
