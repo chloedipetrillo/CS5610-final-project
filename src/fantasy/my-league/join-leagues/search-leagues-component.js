@@ -24,7 +24,7 @@ function SearchLeaguesComponent() {
     const [allLeagues, setAll] = useState(myLeagues)
     const searchHandler = async () => {
         await getList();
-        alert("trying to search a league")
+
     }
 
     const searchValue = (val)=>{
@@ -81,23 +81,13 @@ function SearchLeaguesComponent() {
                 </div>
             </div>
 
-
-
-            {/*
-                const isJoined = () =>{
-                    let arr = team.filter(member => member._id === person._id);
-                    return arr.length > 0
-                }
-
-        check if youre already part of a league and filter using that
-
-            */}
             <ul className="list-group mt-2">
                 <li className="list-group-item override-pink-dark-information text-white fw-bold wd-font-size-larger">League Results</li>
 
 
                     {
-                        allLeagues.map((leg) => <SearchItemComponent leg={leg} userId={profile._id} key={leg._id}/>)
+                        allLeagues.filter((l) => l.leagueName.toLowerCase().startsWith(toSearch.toLowerCase()))
+                            .map((leg) => <SearchItemComponent leg={leg} userId={profile._id} key={leg._id}/>)
                     }
 
 

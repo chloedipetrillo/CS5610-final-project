@@ -73,11 +73,11 @@ const NavComponent = () => {
                                                     </div>
                                                     <div className="list-group-item override-lgi-nav-below">
                                                         <Link to="../my-league/join-leagues" className="text-decoration-none fw-bold text-white"
-                                                        >Join Leagues</Link>
+                                                        >JoinLeagues</Link>
                                                     </div>
                                                     <div className="list-group-item override-lgi-nav-below">
                                                         <Link to="../my-league/my-leagues" className="text-decoration-none fw-bold text-white"
-                                                        >My Leagues</Link>
+                                                        >MyLeagues</Link>
                                                     </div>
                                                 </div>
 

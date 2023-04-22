@@ -195,6 +195,8 @@
     border-radius: 10px;
 }
 
+
+
 .wd-welcome {
     font-size: 35px;
     color: black;
@@ -286,6 +288,17 @@
 
 .wd-home-register-box {
     background-color: rgb(56,0,60);
+    font-size: 20px;
+    font-weight: bolder;
+    height: auto;
+    color: white;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
+.wd-home-register-box-pink {
+    background-color: rgb(233,0,82);
     font-size: 20px;
     font-weight: bolder;
     height: auto;

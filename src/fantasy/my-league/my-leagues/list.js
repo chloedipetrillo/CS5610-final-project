@@ -39,8 +39,6 @@ const getLeagueName= async(id) =>{
     const getList = async () => {
 
         await dispatch(getLeaguesIJoinedThunk(profile._id));
-        console.log("GET LIST")
-        console.log(myLeagues)
         const all = await getLeaguesIJoined(profile._id);
         console.log(all)
         setAll(all);
@@ -54,7 +52,7 @@ const getLeagueName= async(id) =>{
         <div>
             {allLeagues && (
                 <ul className="list-group mt-2">
-                    <li className="list-group-item override-pink-dark-information text-white fw-bold wd-font-size-larger">Lis of My Leagues</li>
+                    <li className="list-group-item override-pink-dark-information text-white fw-bold wd-font-size-larger">List of My Leagues</li>
                     {console.log(allLeagues)}
 
                     {allLeagues.map((l)=>
