@@ -9,6 +9,7 @@ import {profileThunk} from "../../services/users/users-thunks";
 
 import JoinLeaguesComponent from "./join-leagues";
 import MyListOfLeaguesComponent from "./my-leagues";
+import LeagueLeaderboardComponent from "./league-leaderboard";
 
 
 const MyLeagueComponent = (
@@ -89,6 +90,7 @@ const MyLeagueComponent = (
                 {/*<Route path="leaderboard" element={<LeaderboardComponent/>}/>*/}
                 <Route path="join-leagues" element={<JoinLeaguesComponent/>}/>
                 <Route path="my-leagues" element={<MyListOfLeaguesComponent/>}/>
+                <Route path="my-leagues/:leagueId" element={<LeagueLeaderboardComponent/>}/>
             </Routes>
 
 

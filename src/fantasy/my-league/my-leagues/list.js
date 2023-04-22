@@ -43,10 +43,10 @@ const getLeagueName= async(id) =>{
 
         await dispatch(getLeaguesIJoinedThunk(profile._id));
         const all = await getLeaguesIJoined(profile._id);
-        console.log(all)
+        // console.log(all)
         setAll(all);
         all.forEach(function(league) {
-            console.log("league name here is : " + league.leagueName);
+            // console.log("league name here is : " + league.leagueName);
             getListOfUsers(league);
         });
 
@@ -56,16 +56,16 @@ const getLeagueName= async(id) =>{
         // console.log("users for league : " + l.leagueName)
         await dispatch(findAllLeaguesThunk(l.leagueId));
         const users = await getAllUsersInLeague(l.leagueId);
-        console.log("all users for league " + l.leagueName + "are : " + JSON.stringify(users))
+        // console.log("all users for league " + l.leagueName + "are : " + JSON.stringify(users))
         for (const user of users) {
-            console.log("user id here is : " + user.userId);
+            // console.log("user id here is : " + user.userId);
             // const t = await findTeams(prof._id);
             const t = await findTeams(user.userId)
-            console.log("the score for the team is : " + t.totalScores)
+            // console.log("the score for the team is : " + t.totalScores)
             // allUsers
             allUsers.push(user.userId)
         }
-        console.log("the users here are : " + allUsers)
+        // console.log("the users here are : " + allUsers)
     }
 
     useEffect(() => {
@@ -78,16 +78,12 @@ const getLeagueName= async(id) =>{
             {allLeagues && (
                 <ul className="list-group mt-2">
                     <li className="list-group-item override-pink-dark-information text-white fw-bold wd-font-size-larger">List of My Leagues</li>
-                    {console.log(allLeagues)}
-
                     {allLeagues.map((l)=>
-                    <li className="list-group-item override-search-light-grey ">
+                    <li className="list-group-item override-search-light-grey fw-bold">
                         {l.leagueName}
-                        {/*<Link to={`../${l._id}`} className="btn btn-dark float-end"*/}
-                        {/*>View Details</Link>*/}
-                        <btn className="btn btn-darkbtn btn-dark float-end" >View Details</btn>
-                        <span>League id : {l.leagueId}</span>
-                        <span> All users : {allUsers}</span>
+
+                        <Link to={`./${l.leagueId}`} className="btn btn-darkbtn btn-dark float-end rounded-pill" >Leaderboard Details</Link>
+
                     </li>
                     )}
 

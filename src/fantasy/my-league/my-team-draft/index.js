@@ -101,7 +101,7 @@ const TeamDraftComponent = (
         let total_players = no_of_gk + no_of_def + no_of_mid + no_of_att;
         // console.log("find team result is : " + findTeam())
         if(no_of_gk > 1 || no_of_def > 4 || no_of_mid > 3 || no_of_att > 3 || total_players > 11 || total_players === 0) {
-            alert("no of gk is : " + no_of_gk + "no of def is : " + no_of_def + "no of mid is : " + no_of_mid + "no of att is : " + no_of_att)
+            alert("You can have a maximum of \n\t1 Goalkeeper\n\t4 Defenders\n\t3 Midfielders\n\t3 Attackers\nPlease update your team to conform to these requirements")
         }
 
         else {
