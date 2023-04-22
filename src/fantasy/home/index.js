@@ -187,18 +187,33 @@ const HomeComponent = (
 
                         </div>
                         <div className="center col-8 wd-home-register-box mt-2">
-                            <div>How do you like your newest team member, {newestMember.first_name} {newestMember.second_name}?</div>
-                            <div className="fw-lighter wd-font-register">
-                                <span className="pe-2"> Want to leave him some words of encouragement? Head to </span>
-                                <Link to={`../details/${newestMember._id}`}
-                                      className="btn override-log rounded-pill">Player Page</Link>
-                            </div>
-                            <div className="fw-lighter wd-font-register">
-                                <span className="pe-2"> Want to switch things up? Head to </span>
+                            {newestMember.first_name ?
+                                <>
+                                    <div>How do you like your newest team member, {newestMember.first_name} {newestMember.second_name}?</div>
+                                    <div className="fw-lighter wd-font-register">
+                                        <span className="pe-2"> Want to leave him some words of encouragement? Head to </span>
+                                        <Link to={`../details/${newestMember._id}`}
+                                              className="btn override-log rounded-pill">Player Page</Link>
+                                    </div>
+                                    <div className="fw-lighter wd-font-register">
+                                        <span className="pe-2"> Want to switch things up? Head to </span>
 
-                                <Link to={`../my-league/draft/${newestMember.first_name}/${newestMember.second_name}`}
-                                      className="btn override-log rounded-pill">Draft</Link>
-                            </div>
+                                        <Link to={`../my-league/draft/${newestMember.first_name}/${newestMember.second_name}`}
+                                              className="btn override-log rounded-pill">Draft</Link>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <div>You don't have anyone drafted!</div>
+                                    <div className="fw-lighter wd-font-register">
+                                        <span className="pe-2"> Want to switch things up? Head to </span>
+
+                                        <Link to={`../my-league/draft/`}
+                                              className="btn override-log rounded-pill">Draft</Link>
+                                    </div>
+                                </>
+                            }
+
                         </div>
 
                         <div className="col-2">
