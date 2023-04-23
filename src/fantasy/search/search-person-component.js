@@ -122,11 +122,18 @@ const SearchPersonComponent = () => {
                         </div>
 
                         {player.news ?
-                            <div>
-                                <h3>News</h3>
-                                <ul>
-                                    <li>{player.news} {handleDate(player.news_added)}</li>
-                                </ul>
+                            <div className="mb-3">
+                                <div className="row">
+                                    <div className="col-7">
+                                        <div className=" wd-purple-onteam ps-3 mt-2">News</div>
+                                        <ul className="list-group override-border-radius">
+                                            <li className=" list-group-item override-search-light-grey override-border-radius">{player.news} • {handleDate(player.news_added)}</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+
                             </div>
                             :
 
